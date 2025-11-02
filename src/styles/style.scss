@@ -5,26 +5,29 @@
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Підключення загальних віддалених шрифтів (Google Fonts)
+@import url(https://fonts.googleapis.com/css?family=JetBrains+Mono:100,200,300,regular,500,600,700,800,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic);
+@import url(https://fonts.googleapis.com/css?family=Geist:100,200,300,regular,500,600,700,800,900);
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Стилі тега BODY
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 body {
-	min-width: #{$minWidth}px;
-	color: $mainColor;
-	font-family: $fontFamily;
-	font-size: #{$fontSize}px;
+  min-width: #{$minWidth}px;
+  color: $mainColor;
+  font-family: $fontFamily;
+  font-size: #{$fontSize}px;
+  background-color: $bgColor;
 
-	// Скролл заблоковано
-	[data-fls-scrolllock] & {
-		overflow: hidden;
-		touch-action: none;
-		overscroll-behavior: none;
-	}
-	// Сайт завантажений
-	[data-fls-loaded] & {
-	}
+  // Скролл заблоковано
+  [data-fls-scrolllock] & {
+    overflow: hidden;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
+  // Сайт завантажений
+  [data-fls-loaded] & {
+  }
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -32,18 +35,18 @@ body {
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 .wrapper {
-	min-height: 100%;
-	display: flex;
-	flex-direction: column;
-	overflow: clip;
-	// Притискаємо footer
-	> main {
-		flex: 1 1 auto;
-	}
-	// Фікс для слайдерів
-	> * {
-		min-width: 0;
-	}
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: clip;
+  // Притискаємо footer
+  > main {
+    flex: 1 1 auto;
+  }
+  // Фікс для слайдерів
+  > * {
+    min-width: 0;
+  }
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -56,48 +59,56 @@ body {
 // Сніппет (HTML): cnt
 
 @if ($responsiveType==1) {
-	// Чуйна
-	[class*="__container"] {
-		@if ($maxWidthContainer>0) {
-			max-width: #{$containerWidth}px;
-			margin: 0 auto;
-		}
-		@if ($containerPadding>0) {
-			@if ($maxWidthContainer>0) {
-				padding-left: #{math.div($containerPadding, 2)}px;
-				padding-right: #{math.div($containerPadding, 2)}px;
-			} @else {
-				@include adaptiveValue("padding-left", math.div($containerPadding, 2), 15);
-				@include adaptiveValue("padding-right", math.div($containerPadding, 2), 15);
-			}
-		}
-	}
+  // Чуйна
+  [class*='__container'] {
+    @if ($maxWidthContainer>0) {
+      max-width: #{$containerWidth}px;
+      margin: 0 auto;
+    }
+    @if ($containerPadding>0) {
+      @if ($maxWidthContainer>0) {
+        padding-left: #{math.div($containerPadding, 2)}px;
+        padding-right: #{math.div($containerPadding, 2)}px;
+      } @else {
+        @include adaptiveValue(
+          'padding-left',
+          math.div($containerPadding, 2),
+          15
+        );
+        @include adaptiveValue(
+          'padding-right',
+          math.div($containerPadding, 2),
+          15
+        );
+      }
+    }
+  }
 } @else {
-	// Брейк-поїнтами
-	[class*="__container"] {
-		margin: 0 auto;
-		@if ($maxWidthContainer>0) {
-			max-width: #{$maxWidthContainer}px;
-		} @else {
-			@if ($containerPadding>0) {
-				padding-left: #{math.div($containerPadding, 2)}px;
-				padding-right: #{math.div($containerPadding, 2)}px;
-			}
-		}
-		@media (max-width: toEm($pc)) {
-			max-width: 970px;
-		}
-		@media (max-width: toEm($tablet)) {
-			max-width: 750px;
-		}
-		@media (max-width: toEm($mobile)) {
-			max-width: none;
-			@if ($containerPadding>0 and $maxWidthContainer>0) {
-				padding-left: #{math.div($containerPadding, 2)}px;
-				padding-right: #{math.div($containerPadding, 2)}px;
-			}
-		}
-	}
+  // Брейк-поїнтами
+  [class*='__container'] {
+    margin: 0 auto;
+    @if ($maxWidthContainer>0) {
+      max-width: #{$maxWidthContainer}px;
+    } @else {
+      @if ($containerPadding>0) {
+        padding-left: #{math.div($containerPadding, 2)}px;
+        padding-right: #{math.div($containerPadding, 2)}px;
+      }
+    }
+    @media (max-width: toEm($pc)) {
+      max-width: 970px;
+    }
+    @media (max-width: toEm($tablet)) {
+      max-width: 750px;
+    }
+    @media (max-width: toEm($mobile)) {
+      max-width: none;
+      @if ($containerPadding>0 and $maxWidthContainer>0) {
+        padding-left: #{math.div($containerPadding, 2)}px;
+        padding-right: #{math.div($containerPadding, 2)}px;
+      }
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
