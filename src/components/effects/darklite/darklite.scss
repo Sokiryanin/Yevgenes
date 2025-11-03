@@ -1,4 +1,20 @@
 [data-fls-darklite-light] {
+  transition: background-color 0.5s ease, color 0.5s ease;
+  body {
+    background-color: $bgColor;
+  }
 }
 [data-fls-darklite-dark] {
+  transition: background-color 0.5s ease, color 0.5s ease;
+  body {
+    background-color: $mainColor;
+  }
+
+  .header {
+    &__body {
+      &::before {
+        background-color: rgba(89, 99, 111, 0.75);
+      }
+    }
+  }
 }

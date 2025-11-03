@@ -1,98 +1,157 @@
 .menu {
-	// .menu__icon
-	&__icon {
-	}
-	// .menu__body
-	&__body {
-		@media (max-width: toEm($mobile)) {
-			position: fixed;
-			width: 100%;
-			height: 100svh;
-			left: -100%;
-			top: 0;
-			overflow: auto;
-			padding: 50px 15px 30px 15px;
-			transition: left 0.3s;
-			&::before {
-				content: "";
-				position: fixed;
-				width: 100%;
-				height: 70px;
-				left: -100%;
-				top: 0;
-				transition: left 0.3s;
-				z-index: 2;
-			}
-			[data-fls-menu-open] & {
-				left: 0;
-				&::before {
-					left: 0;
-				}
-			}
-		}
-	}
-	// .menu__list
-	&__list {
-		@media (max-width: toEm($mobile)) {
-		}
-	}
-	// .menu__item
-	&__item {
-	}
-	// .menu__link
-	&__link {
-		@media (max-width: toEm($mobile)) {
-		}
-	}
+  @media (min-width: toEm($mobile)) {
+    position: relative;
+    z-index: 5;
+  }
+
+  @media (max-width: toEm($mobile)) {
+    flex-grow: 1;
+  }
+
+  // .menu__icon
+  &__icon {
+    margin-left: auto;
+  }
+  // .menu__body
+  &__body {
+    @media (max-width: toEm($mobile)) {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 100%;
+      top: 0;
+      overflow: auto;
+      padding: 150px 15px 30px 15px;
+      transition: left 0.3s;
+      background-color: $mainColor;
+      &::before {
+        content: '';
+        position: fixed;
+        width: 100%;
+        height: 70px;
+        left: -100%;
+        top: 0;
+        transition: left 0.3s;
+        z-index: 2;
+      }
+      [data-fls-menu-open] & {
+        left: 0;
+        &::before {
+          left: 0;
+        }
+      }
+    }
+  }
+  // .menu__list
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 32px;
+    align-items: center;
+
+    @media (max-width: toEm($mobile)) {
+      gap: 15px 20px;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+
+  // .menu__item
+  &__item {
+    &:last-child {
+      a {
+        padding: 8px 24px;
+        border-radius: 8px;
+        border: none;
+        background-color: $orangeColor;
+
+        font-weight: 500;
+        letter-spacing: -0.07em;
+        color: $mainColor;
+        transition: background-color 0.5s;
+
+        @media (any-hover: hover) {
+          &:hover {
+            background-color: $hoverColor;
+          }
+        }
+      }
+    }
+  }
+  // .menu__link
+  &__link {
+    font-weight: 500;
+    letter-spacing: -0.07em;
+    color: $lightTextColor;
+    transition: color 0.5s;
+    @media (max-width: toEm($mobile)) {
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+  }
 }
 
 //Burger Icon
 .icon-menu {
-	display: none;
-	@media (max-width: toEm($mobile)) {
-		display: block;
-		position: relative;
-		width: toRem(30);
-		height: toRem(18);
-		z-index: 5;
-		@media (any-hover: none) {
-			cursor: default;
-		}
-		span,
-		&::before,
-		&::after {
-			content: "";
-			transition: all 0.3s ease 0s;
-			right: 0;
-			position: absolute;
-			width: 100%;
-			height: 2px;
-			background-color: #000;
-		}
-		&::before {
-			top: 0;
-		}
-		&::after {
-			bottom: 0;
-		}
-		span {
-			top: calc(50% - 1px);
-		}
-		[data-fls-menu-open] & {
-			span {
-				width: 0;
-			}
-			&::before,
-			&::after {
-			}
-			&::before {
-				top: calc(50% - 1px);
-				transform: rotate(-45deg);
-			}
-			&::after {
-				bottom: calc(50% - 1px);
-				transform: rotate(45deg);
-			}
-		}
-	}
+  display: none;
+  @media (max-width: toEm($mobile)) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: $orangeColor;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 5;
+
+    @media (any-hover: none) {
+      cursor: default;
+    }
+    span,
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 18px; // немного меньше ширины кнопки для аккуратности
+      height: 2px;
+      background-color: #000; // черные полоски
+      right: 0;
+      left: 0;
+      margin: auto;
+      transition: all 0.3s ease;
+    }
+    &::before {
+      top: 12px;
+    }
+    &::after {
+      bottom: 12px;
+    }
+    span {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    [data-fls-menu-open] & {
+      span {
+        width: 0;
+      }
+
+      &::before {
+        top: 50%;
+        transform: translateY(-50%) rotate(-45deg);
+      }
+
+      &::after {
+        bottom: 50%;
+        transform: translateY(50%) rotate(45deg);
+      }
+    }
+  }
 }
