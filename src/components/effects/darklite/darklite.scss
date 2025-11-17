@@ -3,7 +3,16 @@
   body {
     background-color: $bgColor;
   }
+
+  .menu {
+    &__body {
+      @media (max-width: toEm($mobile)) {
+        background-color: rgba(32, 38, 56);
+      }
+    }
+  }
 }
+
 [data-fls-darklite-dark] {
   transition: background-color 0.5s ease, color 0.5s ease;
   body {
@@ -13,8 +22,29 @@
   .header {
     &__body {
       &::before {
-        background-color: rgba(89, 99, 111, 0.75);
+        background-color: #959aa7;
       }
+    }
+
+    &__logo {
+      content: url('@img/logo-dark.svg');
+    }
+  }
+
+  .menu {
+    &__body {
+      @media (max-width: toEm($mobile)) {
+        background-color: #959aa7;
+      }
+    }
+    &__link {
+      color: $mainColor;
+    }
+  }
+
+  .hero {
+    &__title {
+      color: $lightTextColor;
     }
   }
 }

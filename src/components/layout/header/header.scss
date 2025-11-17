@@ -22,15 +22,6 @@
     align-items: center;
   }
 
-  &__logo-text {
-    font-weight: 700;
-    font-size: 32px;
-    letter-spacing: -0.07em;
-    color: white;
-    @include adaptiveValue('font-size', 32, 24);
-    @include adaptiveValue('font-weight', 700, 500);
-  }
-
   &__body {
     padding: 16px;
     display: flex;
@@ -128,6 +119,92 @@
       transform: translateX(
         24px
       ); // 60 - 32 - (2px*2) = 24px свободного пространства
+      opacity: 0;
+    }
+
+    .theme-toggle__icon--sun {
+      transform: translateX(24px);
+      opacity: 1;
+    }
+  }
+}
+
+// ---------------------------------------------
+// Размещение переключателя темы
+// ---------------------------------------------
+.theme-toggle {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  // Когда ширина меньше мобильного брейкпоинта —
+  // переносим внутрь header__body
+  @media (max-width: toEm($tablet)) {
+    position: static;
+    transform: none;
+    margin-left: auto;
+    order: 2; // чтобы шёл после логотипа, но перед бургером
+    @include adaptiveValue('margin-top', 32, 8);
+  }
+
+  &__btn {
+    position: relative;
+    width: 60px;
+    height: 36px;
+    border: none;
+    border-radius: 50px;
+    background-color: #4b4f58;
+    cursor: pointer;
+    padding: 2px;
+    transition: background-color 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__icon {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #d8d8d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #222;
+    transition: transform 0.5s ease, opacity 0.5s ease,
+      background-color 0.5s ease;
+  }
+
+  &__icon--sun {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  // Светлая тема (луна слева)
+  [data-fls-darklite-light] &__btn {
+    background-color: rgba(32, 38, 56, 0.75);
+
+    .theme-toggle__icon--moon {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .theme-toggle__icon--sun {
+      transform: translateX(0);
+      opacity: 0;
+    }
+  }
+
+  // Тёмная тема (солнце справа)
+  [data-fls-darklite-dark] &__btn {
+    background-color: rgba(89, 99, 111, 0.75);
+
+    .theme-toggle__icon--moon {
+      transform: translateX(24px);
       opacity: 0;
     }
 

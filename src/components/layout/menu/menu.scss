@@ -24,6 +24,7 @@
       padding: 150px 15px 30px 15px;
       transition: left 0.3s;
       background-color: $mainColor;
+
       &::before {
         content: '';
         position: fixed;
