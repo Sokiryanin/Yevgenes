@@ -176,24 +176,11 @@
 // }
 
 .hero {
-  position: relative;
-  text-align: center;
-  // overflow: hidden;
   @include adaptiveValue('padding-top', 210, 200);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url('@img/network.svg') center/cover no-repeat;
-    opacity: 0.8;
-    z-index: 0;
-    pointer-events: none;
-  }
+  text-align: center;
+  z-index: 1;
 
   &__container {
-    position: relative;
-    z-index: 1;
   }
 
   &__header {

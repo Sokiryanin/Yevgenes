@@ -1,14 +1,19 @@
 <header data-fls-header class="header">
   <div class="header__container">
     <div class="header__body">
-      <a class="header__logo"> YevGenes </a>
+      <a class="header__logo">YevGenes</a>
       <include
         src="@components/layout/menu/menu.html"
         locals='{"active":"[[active]]"}'
       ></include>
     </div>
+
     <!-- Перемикач теми -->
-    <div class="theme-toggle" data-fls-darklite>
+    <div
+      class="theme-toggle"
+      data-fls-darklite
+      data-fls-dynamic=".header__body,991.98"
+    >
       <button
         class="theme-toggle__btn"
         data-fls-darklite-set
@@ -24,6 +29,7 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         </span>
+
         <span class="theme-toggle__icon theme-toggle__icon--sun">
           <svg
             viewBox="0 0 24 24"
