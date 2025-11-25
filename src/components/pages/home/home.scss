@@ -1,182 +1,5 @@
-// .hero {
-//   text-align: center;
-//   min-height: 55svh;
-
-//   @include adaptiveValue('padding-top', 208, 258);
-
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     inset: 0;
-//     background: url('@img/network.svg') center/cover no-repeat;
-//     opacity: 0.8;
-//     z-index: 0;
-//     pointer-events: none;
-//   }
-
-//   &__container {
-//     position: relative;
-//     z-index: 1; // контент поверх сетки
-//   }
-
-//   &__header {
-//     text-align: center;
-//     display: grid;
-//     justify-items: center;
-//     @include adaptiveValue('gap', 8, 4);
-//     max-width: 884px;
-//   }
-
-//   &__subtitle {
-//     font-weight: 400;
-//     letter-spacing: -0.07em;
-//     text-transform: uppercase;
-//     text-align: center;
-//     color: $orangeColor;
-//     @include adaptiveValue('font-size', 24, 16);
-//   }
-
-//   &__title {
-//     font-family: $fontSecondary;
-//     font-weight: 400;
-
-//     line-height: 1.1;
-//     letter-spacing: -0.05em;
-//     color: $mainColor;
-//     text-align: center;
-//     @include adaptiveValue('font-size', 112, 48);
-
-//     @media (max-width: $tablet) {
-//       display: flex;
-//       flex-direction: column;
-//       gap: 8px; // уменьшаем расстояние между элементами
-//       span {
-//         width: 48px;
-//         height: 48px;
-//       }
-//     }
-
-//     strong {
-//       font-family: $fontFamily;
-//       font-weight: 700;
-//       letter-spacing: -0.07em;
-//       color: $orangeColor;
-//       display: inline-flex;
-//       align-items: center;
-//       justify-content: center;
-//       gap: 16px;
-//     }
-
-//     span {
-//       display: inline-flex;
-//       align-items: center;
-//       justify-content: center;
-//       width: 64px;
-//       height: 64px;
-//       flex-shrink: 0;
-
-//       svg {
-//         width: 100%;
-//         height: 100%;
-//         display: block; // убираем лишние отступы SVG
-//       }
-//     }
-//   }
-
-//   &__text {
-//     font-family: $fontSecondary;
-//     font-weight: 400;
-//     @include adaptiveValue('font-size', 112, 48);
-//     line-height: 1.1;
-//     letter-spacing: -0.05em;
-//     color: #7b808d;
-//   }
-// }
-
-// .page {
-//   // .page--home
-
-//   &--home {
-//   }
-
-//   // .page__hero
-
-//   &__hero {
-//   }
-// }
-// .hero {
-//   text-align: center;
-//   @include adaptiveValue('padding-top', 208, 258);
-
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     inset: 0;
-//     background: url('@img/network.svg') center/cover no-repeat;
-//     opacity: 0.8;
-//     z-index: 0;
-//     pointer-events: none;
-//   }
-
-//   // .hero__container
-
-//   &__container {
-//   }
-
-//   // .hero__header
-
-//   &__header {
-//     display: grid;
-//   }
-
-//   // .hero__subtitle
-
-//   &__subtitle {
-//     font-weight: 400;
-//     letter-spacing: -0.07em;
-//     text-transform: uppercase;
-//     text-align: center;
-//     color: $orangeColor;
-//     @include adaptiveValue('font-size', 24, 16);
-//   }
-
-//   // .hero__title
-
-//   &__title {
-//     font-family: $fontSecondary;
-//     font-weight: 400;
-//     line-height: 1.1;
-//     letter-spacing: -0.05em;
-//     text-align: center;
-//     @include adaptiveValue('font-size', 112, 48);
-
-//     strong {
-//       font-family: $fontFamily;
-//       font-weight: 700;
-//       line-height: 1.1;
-//       letter-spacing: -0.07em;
-//       text-align: center;
-//       color: $orangeColor;
-
-//       @include adaptiveValue('font-size', 112, 48);
-//     }
-//   }
-
-//   // .hero__text
-
-//   &__text {
-//     font-family: $fontSecondary;
-//     font-weight: 400;
-//     line-height: 1.1;
-//     letter-spacing: -0.05em;
-//     text-align: center;
-//     color: #7a808d;
-//     @include adaptiveValue('font-size', 112, 48);
-//   }
-// }
-
 .hero {
-  @include adaptiveValue('padding-top', 210, 200);
+  @include adaptiveValue('padding-top', 210, 194);
   text-align: center;
   z-index: 1;
 
@@ -186,15 +9,16 @@
   &__header {
     display: grid;
     justify-items: center;
-    gap: 12px;
   }
 
   &__subtitle {
     font-weight: 400;
     letter-spacing: -0.07em;
+    line-height: 1.35;
     text-transform: uppercase;
     color: $orangeColor;
     @include adaptiveValue('font-size', 24, 16);
+    margin-bottom: 4px;
   }
 
   &__title {
@@ -205,8 +29,13 @@
     color: $mainColor;
     @include adaptiveValue('font-size', 112, 48);
 
+    @media (min-width: toEm($tablet)) {
+      margin-bottom: -16px;
+    }
+
     // Группа слов + иконка
     &-group {
+      margin-top: 4px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -220,7 +49,7 @@
       // На мобильных — перенос в колонку
       @media (max-width: toEm($tablet)) {
         flex-direction: column;
-        gap: 8px;
+        gap: 4px;
       }
     }
   }
@@ -230,18 +59,13 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 1em; // иконка пропорциональна размеру шрифта
-    height: 1em;
 
+    @include adaptiveValue('width', 64, 32);
+    @include adaptiveValue('height', 64, 32);
     img {
       width: 100%;
       height: 100%;
       display: block;
-    }
-
-    @media (max-width: toEm($tablet)) {
-      width: 0.8em;
-      height: 0.8em;
     }
   }
 
@@ -250,20 +74,31 @@
   }
 
   &__text {
+    position: relative;
+    display: inline-block;
     font-family: $fontSecondary;
     font-weight: 400;
     color: #7a808d;
     @include adaptiveValue('font-size', 112, 48);
     line-height: 1.1;
     letter-spacing: -0.05em;
-  }
-}
 
-.projects {
-  &__content {
-    position: relative;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      padding-top: 12px;
+      transform: translateX(-50%);
+      width: 100%; // линия равна ширине текста!
+      height: 30px; // можно адаптировать
+      background: url('@img/lines.svg') center/contain no-repeat;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* темна лінія */
+    [data-fls-darklite-dark] &::after {
+      background: url('@img/lines-dark.svg') center/contain no-repeat;
+    }
   }
 }
