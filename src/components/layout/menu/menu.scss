@@ -15,35 +15,30 @@
   // .menu__body
   &__body {
     @media (max-width: toEm($tablet)) {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      left: 100%;
-      top: 0;
-      overflow: auto;
-      padding: 150px 15px 30px 15px;
-      transition: left 0.3s;
-      background-color: $mainColor;
+      position: absolute;
+      top: 100%; // отступ как на макете
+      left: 12px;
+      right: 12px;
+      width: auto; // уменьшаем ширину на 24px (по 12px с каждой стороны) и центрируем
 
-      &::before {
-        content: '';
-        position: fixed;
-        width: 100%;
-        height: 70px;
-        left: -100%;
-        top: 0;
-        transition: left 0.3s;
-        z-index: 2;
-      }
+      background-color: $mainColor;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+
+      max-height: 0;
+      opacity: 0;
+
+      padding-top: 16px;
+      padding-bottom: 16px;
+      transition: max-height 0.25s ease, opacity 0.25s ease;
+
+      // Активное состояние
       [data-fls-menu-open] & {
-        left: 0;
-        &::before {
-          left: 0;
-        }
+        max-height: 900px; // достаточно, меню не переполнится
+        opacity: 1;
       }
     }
   }
-
   // .menu__list
   &__list {
     display: flex;
@@ -52,9 +47,8 @@
     align-items: center;
 
     @media (max-width: toEm($tablet)) {
-      gap: 15px 20px;
+      gap: 32px;
       flex-direction: column;
-      align-items: flex-end;
     }
   }
 

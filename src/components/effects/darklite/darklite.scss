@@ -37,8 +37,8 @@
 
   .menu {
     &__body {
-      @media (max-width: toEm($mobile)) {
-        background-color: #959aa7;
+      @media (max-width: toEm($tablet)) {
+        background-color: #59636f;
       }
     }
 
