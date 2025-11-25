@@ -1,38 +1,33 @@
 .swiper {
-	overflow: hidden;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
-.swiper-initialized {
-	touch-action: pan-y;
+
+.swiper-slide {
+  width: 260px;
+  height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+  transform: scale(0.75);
 }
-.swiper-wrapper {
-	width: 100%;
-	height: 100%;
-	box-sizing: content-box;
-	display: flex;
-	position: relative;
+
+/* Увеличиваем центральный слайд */
+.swiper-slide-active {
+  transform: scale(1);
+  z-index: 5;
 }
-.swiper-vertical {
-	.swiper-wrapper {
-		flex-direction: column;
-	}
+
+/* Можно увеличить соседние */
+.swiper-slide-next,
+.swiper-slide-prev {
+  transform: scale(0.85);
 }
-.swiper-autoheight {
-	.swiper-wrapper {
-		align-items: flex-start;
-	}
-}
-.swiper-initialized {
-	.swiper-slide {
-		flex-shrink: 0;
-		// transition-property: transform;
-	}
-}
-.swiper-android {
-	.swiper-slide,
-	.swiper-wrapper {
-		transform: translate3d(0px, 0, 0);
-	}
-}
-.swiper-button-lock {
-	display: none !important;
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

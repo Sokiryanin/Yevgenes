@@ -6,8 +6,8 @@
   z-index: 50;
   pointer-events: none;
 
-  @media (min-width: toEm($mobile)) {
-    top: 32px;
+  @media (min-width: toEm($tablet)) {
+    top: 30px;
   }
 
   // .header__container
@@ -20,6 +20,21 @@
     z-index: 5;
     display: flex;
     align-items: center;
+
+    @include adaptiveValue('font-size', 32, 24);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.06em;
+    color: $lightTextColor;
+
+    &::before {
+      content: url('../../../assets/img/logo-header.svg');
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      align-content: center;
+      margin-right: 3px;
+    }
   }
 
   &__body {
@@ -41,12 +56,12 @@
       z-index: 5;
     }
 
-    @media (min-width: toEm($mobile)) {
+    @media (min-width: toEm($tablet)) {
       gap: 128px;
     }
   }
 
-  @media (min-width: toEm($mobile)) {
+  @media (min-width: toEm($tablet)) {
     display: flex;
     justify-content: center;
   }
