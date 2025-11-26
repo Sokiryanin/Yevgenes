@@ -10,6 +10,10 @@
     top: 30px;
   }
 
+  // .header__content
+  &__content {
+  }
+
   // .header__container
   &__container {
     pointer-events: auto;
@@ -77,11 +81,18 @@
   justify-content: center;
 
   position: absolute;
-  right: 32px;
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
 
+  @media (min-width: toEm($tablet)) {
+    /* 
+      Когда viewport шире 1448px — 
+      toggle не движется дальше, остаётся у края контейнера.
+    */
+    right: clamp(32px, calc((100vw - 1448px) / 2), 9999px);
+  }
   &__btn {
     position: relative;
     width: 60px;

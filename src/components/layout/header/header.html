@@ -1,23 +1,25 @@
 <header data-fls-header class="header">
-  <div class="header__container">
-    <div class="header__body">
-      <a class="header__logo">YevGenes</a>
-      <include
-        src="@components/layout/menu/menu.html"
-        locals='{"active":"[[active]]"}'
-      ></include>
-    </div>
+  <div class="header__content">
+    <div class="header__container">
+      <div class="header__body">
+        <a class="header__logo">YevGenes</a>
+        <include
+          src="@components/layout/menu/menu.html"
+          locals='{"active":"[[active]]"}'
+        ></include>
+      </div>
 
-    <!-- Перемикач теми -->
+      <!-- Перемикач теми -->
 
-    <div class="theme-toggle" data-fls-dynamic=".header__body,991.98">
-      <button
-        class="theme-toggle__btn"
-        data-fls-darklite-set
-        aria-label="Toggle theme"
-      >
-        <span class="theme-toggle__icon"></span>
-      </button>
+      <div class="theme-toggle" data-fls-dynamic=".header__body,991.98">
+        <button
+          class="theme-toggle__btn"
+          data-fls-darklite-set
+          aria-label="Toggle theme"
+        >
+          <span class="theme-toggle__icon"></span>
+        </button>
+      </div>
     </div>
   </div>
 </header>
