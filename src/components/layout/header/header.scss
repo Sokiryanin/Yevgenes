@@ -6,7 +6,7 @@
   z-index: 50;
   pointer-events: none;
 
-  @media (min-width: toEm($tablet)) {
+  @media (max-width: toEm($tablet)) {
     top: 30px;
   }
 
@@ -99,35 +99,64 @@
     background-color: rgba(32, 38, 56, 0.75);
   }
 
+  /* --- Кружок-бегунок --- */
   &__icon {
     position: absolute;
     width: 32px;
     height: 32px;
+
     border-radius: 50%;
     background-color: $lightTextColor;
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    color: $mainColor;
-    transition: transform 0.3s ease, opacity 0.3s ease,
-      background-color 0.3s ease;
 
-    .theme-toggle__icon--moon {
-      transform: translateX(0);
-      opacity: 1;
-    }
+    transition: transform 0.3s ease, background-color 0.3s ease;
 
-    .theme-toggle__icon--sun {
-      transform: translateX(0);
-      opacity: 0;
+    /* Псевдоэлемент-иконка */
+    &::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 28px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      /* Иконка светлой темы */
+      background-image: url('@img/moon.svg');
     }
   }
 
-  &__icon--sun {
-    opacity: 0;
-    transform: translateX(0);
+  /* Светлая тема = луна слева */
+  // [data-fls-darklite-light] &__btn {
+  //   background-color: rgba(32, 38, 56, 0.75);
+
+  //   .theme-toggle__icon {
+  //     transform: translateX(0);
+
+  //     &::before {
+  //       background-image: url('@img/moon.svg');
+  //     }
+  //   }
+  // }
+
+  /* Тёмная тема = солнце справа */
+  [data-fls-darklite-dark] &__btn {
+    background-color: rgba(89, 99, 111, 0.75);
+
+    .theme-toggle__icon {
+      transform: translateX(24px);
+
+      &::before {
+        background-image: url('@img/sun.svg');
+      }
+    }
   }
+
+  /* Адаптив — маленькая таблетка */
 
   @media (max-width: toEm($tablet)) {
     @include adaptiveValue('right', 80, 60);
@@ -140,7 +169,18 @@
     &__icon {
       width: 24px;
       height: 24px;
-      font-size: 12px;
+
+      &::before {
+        content: '';
+
+        width: 21px;
+        height: 21px;
+      }
+    }
+
+    /* Пересчёт смещения: 44 - 24 - 4px padding = 16px */
+    [data-fls-darklite-dark] &__btn .theme-toggle__icon {
+      transform: translateX(16px);
     }
   }
 }
