@@ -44,6 +44,9 @@
 
     &__item {
       color: $mainColor;
+      @media (max-width: toEm($tablet)) {
+        color: $lightTextColor;
+      }
 
       @media (any-hover: hover) {
         &:hover {
