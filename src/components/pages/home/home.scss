@@ -103,3 +103,163 @@
     }
   }
 }
+
+// =================================================================================================================================================================
+
+// .project {
+//   padding-top: 128px;
+//   padding-bottom: 128px;
+//   // .project__container
+
+//   &__container {
+//   }
+
+//   // .project__slider
+
+//   &__slider {
+//   }
+
+//   // .project__slider-wrapper
+
+//   &__slider-wrapper {
+//   }
+
+//   // .project__slider-card
+
+//   &__slider-card {
+//   }
+// }
+
+// .card-slide {
+//   border-radius: 24px;
+//   overflow: hidden;
+//   // .card-slide__img
+
+//   &__img {
+//     border-radius: 24px;
+//     overflow: hidden;
+
+//     img {
+//       width: 100%;
+//       height: auto;
+//       display: block;
+//     }
+//   }
+
+//   // .card-slide__content
+
+//   &__content {
+//   }
+// }
+
+// .content-slide {
+//   position: absolute;
+//   left: 16px;
+//   right: 16px;
+//   bottom: 16px;
+//   color: #ffffff;
+//   // .content-slide__text
+
+//   &__text {
+//   }
+
+//   // .content-slide__tag
+
+//   &__tag {
+//   }
+
+//   // .content-slide__title
+
+//   &__title {
+//   }
+
+//   // .content-slide__link
+
+//   &__link {
+//   }
+// }
+
+// ==================
+
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 128px;
+  padding-bottom: 128px;
+
+  // .project__slider
+  &__slider {
+    width: 100%;
+    height: 80vh;
+  }
+
+  // .project__wrapper
+
+  &__wrapper {
+  }
+
+  // .project__slide
+
+  &__slide {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 2px 4px 0 rgba(32, 38, 56, 0.15),
+      0 0 8px 0 rgba(32, 38, 56, 0.15);
+  }
+
+  &__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    filter: grayscale(1);
+  }
+
+  // .project__slide-img
+
+  &__slide-img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.3);
+    transition: 0.5s;
+  }
+
+  // .project__slide-content
+
+  &__slide-content {
+  }
+}
+
+.content-slide {
+  // .content-slide__title
+
+  &__title {
+  }
+}
+
+.swiper {
+}
+.swiper-wrapper {
+}
+
+.swiper-slide-active .project__slide-img {
+  transform: scale(1);
+}
+
+.swiper-slide-active img {
+  filter: grayscale(0);
+}
+
+.swiper-slide-active .content-slide {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  padding: 16px;
+  color: #fff;
+  background-color: gray;
+  z-index: 2;
+}

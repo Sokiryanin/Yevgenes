@@ -1,123 +1,39 @@
-/*
-Документація по роботі у шаблоні: 
-Документація слайдера: https://swiperjs.com/
-Сніппет(HTML): swiper
-*/
-
-// Підключаємо слайдер Swiper з node_modules
-// При необхідності підключаємо додаткові модулі слайдера, вказуючи їх у {} через кому
-// Приклад: { Navigation, Autoplay }
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
-/*
-Основні модулі слайдера:
-Navigation, Pagination, Autoplay, 
-EffectFade, Lazy, Manipulation
-Детальніше дивись https://swiperjs.com/
-*/
 
-// Стилі Swiper
-// Підключення базових стилів
-import './slider.scss';
-// Повний набір стилів з node_modules
-// import 'swiper/css/bundle';
+// import { Navigation } from 'swiper/modules';
 
-// Ініціалізація слайдерів
-function initSliders() {
-  // Список слайдерів
-  // Перевіряємо, чи є слайдер на сторінці
-  if (document.querySelector('.mySwiper')) {
-    // <- Вказуємо склас потрібного слайдера
-    // Створюємо слайдер
-    new Swiper('..mySwiper', {
-      // <- Вказуємо склас потрібного слайдера
-      // Підключаємо модулі слайдера
-      // для конкретного випадку
-      loop: true,
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
+import 'swiper/css/bundle';
 
-      coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 150,
-        modifier: 1.5,
-        slideShadows: false
-      },
+// // Ініціалізація слайдерів
+// function initSliders() {
+//   // Список слайдерів
+//   // Перевіряємо, чи є слайдер на сторінці
 
-      //   modules: [Navigation],
-      //   observer: true,
-      //   observeParents: true,
-      //   slidesPerView: 1,
-      //   spaceBetween: 0,
-      //autoHeight: true,
-      //   speed: 800,
+//   if (document.querySelector('.project__slider')) {
+//     new Swiper('.project__slider', {
+//       slidesPerView: '3',
+//       centeredSlides: true,
+//       spaceBetween: 16,
+//       loop: true
+//     });
+//   }
+// }
 
-      //touchRatio: 0,
-      //simulateTouch: false,
-      //loop: true,
-      //preloadImages: false,
-      //lazy: true,
+// document.querySelector('[data-fls-slider]')
+//   ? window.addEventListener('load', initSliders)
+//   : null;
 
-      /*
-			// Ефекти
-			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
+// -----------------------------------------------------------------
 
-      // Пагінація
-      /*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-      // Скроллбар
-      /*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
-
-      // Кнопки "вліво/вправо"
-      //   navigation: {
-      //     prevEl: '.swiper-button-prev',
-      //     nextEl: '.swiper-button-next'
-      //   },
-      /*
-			// Брейкпоінти
-			breakpoints: {
-				640: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
-				},
-			},
-			*/
-      // Події
-      on: {}
-    });
+const swiper = new Swiper('.swiper', {
+  grabCursor: true,
+  slidesPerView: 1.5,
+  centeredSlides: true,
+  initialSlide: 2,
+  speed: 900,
+  parallax: true,
+  spaceBetween: 30,
+  mousewheel: {
+    thresholdDelta: 50
   }
-}
-document.querySelector('[data-fls-slider]')
-  ? window.addEventListener('load', initSliders)
-  : null;
+});
