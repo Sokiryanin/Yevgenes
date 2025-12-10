@@ -185,13 +185,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 128px;
-  padding-bottom: 128px;
+  @include adaptiveValue('padding-top', 128, 96);
 
   // .project__slider
   &__slider {
     width: 100%;
-    height: 80vh;
+    height: 65vh;
   }
 
   // .project__wrapper
@@ -203,7 +202,6 @@
 
   &__slide {
     position: relative;
-    height: 100%;
     overflow: hidden;
     border-radius: 24px;
     box-shadow: 0 2px 4px 0 rgba(32, 38, 56, 0.15),
@@ -240,11 +238,6 @@
   }
 }
 
-.swiper {
-}
-.swiper-wrapper {
-}
-
 .swiper-slide-active .project__slide-img {
   transform: scale(1);
 }
@@ -262,4 +255,172 @@
   color: #fff;
   background-color: gray;
   z-index: 2;
+}
+
+// ============== About =================
+
+.about {
+  @include adaptiveValue('padding-top', 128, 96);
+  // .about__container
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // .about__title
+
+  &__title {
+    font-family: $fontSecondary;
+    @include adaptiveValue('font-size', 112, 44);
+    @include adaptiveValue('margin-bottom', 48, 32);
+    display: block;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+
+    span {
+      color: #7a808d;
+    }
+  }
+
+  // .about__cards
+
+  &__cards {
+    display: flex;
+    @include adaptiveValue('gap', 24, 16);
+    align-content: center;
+    text-align: center;
+    margin-bottom: 32px;
+
+    @media (max-width: toEm($tablet)) {
+      flex-direction: column;
+      margin-bottom: 24px;
+    }
+  }
+
+  // .about__card
+
+  &__card {
+    border: 1px solid rgba(89, 99, 111, 0.2);
+    border-radius: 16px;
+    padding: 16px 24px;
+
+    backdrop-filter: blur(40px);
+    background: rgba(32, 38, 56, 0.1);
+  }
+
+  // .about__items
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    @include adaptiveValue('gap', 32, 16);
+
+    align-items: center;
+    justify-content: center;
+    max-width: 957px;
+    @media (max-width: toEm($mobile)) {
+      align-items: stretch; // <--- Это ключевой момент, чтобы все карточки стали одинаковой высоты
+    }
+  }
+
+  // .about__item
+
+  &__item {
+  }
+}
+
+.card-about {
+  font-weight: 400;
+  // .card-about__block
+
+  &__block {
+  }
+
+  // .card-about__tag
+
+  &__tag {
+    @include adaptiveValue('font-size', 24, 16);
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+    color: $orangeColor;
+  }
+
+  // .card-about__title
+
+  &__title {
+    @include adaptiveValue('font-size', 48, 32);
+    @include adaptiveValue('margin-bottom', 32, 24);
+
+    font-family: $fontSecondary;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+  }
+
+  // .card-about__text
+
+  &__text {
+    font-family: $fontSecondary;
+    line-height: 1.5;
+    letter-spacing: -0.03em;
+  }
+}
+
+.item-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  padding: 16px 32px;
+
+  backdrop-filter: blur(40px);
+  background: rgba(32, 38, 56, 0.55);
+
+  @media (max-width: toEm($mobile)) {
+    width: calc(50% - 12px);
+    padding: 8px 18px;
+
+    &:last-child {
+      width: 100%;
+    }
+  }
+
+  // .item-about__img
+
+  &__img {
+    margin-bottom: 8px;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    @media (max-width: toEm($mobile)) {
+      width: 26px;
+      height: 24px;
+      margin-bottom: 4px;
+      align-items: stretch;
+    }
+  }
+
+  // .item-about__title
+
+  &__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    text-align: center;
+    color: $lightTextColor;
+
+    @media (max-width: toEm($mobile)) {
+      font-size: 16px;
+    }
+  }
 }
