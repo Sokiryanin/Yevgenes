@@ -102,4 +102,31 @@
       background-color: $mainColor;
     }
   }
+
+  .about {
+    &__title {
+      color: #7a7f8e;
+      span {
+        color: $lightTextColor;
+      }
+    }
+
+    // .about__card
+    &__card {
+      color: $lightTextColor;
+      background-color: rgba(212, 216, 227, 0.1);
+    }
+
+    .item-about {
+      background-color: rgba(212, 216, 227, 0.45);
+
+      &__icon {
+        color: $mainColor;
+      }
+
+      &__title {
+        color: $mainColor;
+      }
+    }
+  }
 }
