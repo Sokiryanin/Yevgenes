@@ -1,6 +1,6 @@
 import Swiper from 'swiper';
 
-// import { Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 import 'swiper/css/bundle';
 
@@ -25,15 +25,18 @@ import 'swiper/css/bundle';
 
 // -----------------------------------------------------------------
 
-const swiper = new Swiper('.swiper', {
-  grabCursor: true,
-  slidesPerView: 3,
+swiper = new Swiper('.mySwiper', {
+  slidesPerView: 'auto',
+  loop: true,
+  // spaceBetween: 32,
   centeredSlides: true,
-  initialSlide: 2,
-  speed: 900,
-  parallax: true,
-  spaceBetween: 30,
-  mousewheel: {
-    thresholdDelta: 50
+  grabCursor: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev'
   }
 });

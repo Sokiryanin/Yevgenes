@@ -1,5 +1,90 @@
 .footer {
-	// .footer__container
-	&__container {
-	}
+  @include adaptiveValue('padding-top', 128, 96);
+  // .footer__container
+
+  &__container {
+  }
+
+  // .footer__content
+
+  &__content {
+    backdrop-filter: blur(40px);
+    background: rgba(32, 38, 56, 0.1);
+    border-radius: 16px;
+    border: none;
+    padding: 32px;
+    text-align: center;
+  }
+
+  // .footer__header
+
+  &__header {
+    max-width: 955px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  // .footer__title
+
+  &__title {
+    font-family: $fontSecondary;
+    @include adaptiveValue('font-size', 112, 44);
+    // @include adaptiveValue('margin-bottom', 48, 32);
+    display: block;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    margin-bottom: 24px;
+
+    span {
+      color: #7a808d;
+    }
+  }
+
+  // .footer__title-text
+
+  &__title-text {
+    font-family: $fontSecondary;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    text-align: center;
+    color: $mainColor;
+  }
+
+  // .footer__block
+
+  &__block {
+  }
+}
+
+.block-footer {
+  display: flex;
+
+  // .block-footer__form
+  &__form {
+  }
+
+  // .block-footer__contacts
+
+  &__contacts {
+  }
+}
+.contacts-footer {
+  // .contacts-footer__phone
+
+  &__phone {
+  }
+
+  // .contacts-footer__tg
+
+  &__tg {
+  }
+
+  // .contacts-footer__email
+
+  &__email {
+  }
 }
