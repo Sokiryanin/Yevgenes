@@ -113,35 +113,39 @@
 .swiper-container {
   max-width: 1920px;
   height: 720px;
+  overflow: visible; // ВАЖНО
 }
 
 .swiper-wrapper {
   align-items: center;
-  padding: 0;
 }
 
 .swiper-slide {
   width: 569px;
   height: 569px;
-  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 16px;
 }
 
-.swiper-slide > div {
-  /* 2. Контейнер контента внутри слайда должен быть 100% ширины и высоты 
-        и иметь те же border-radius, чтобы не обрезать картинку. */
+.slide-inner {
   width: 100%;
   height: 100%;
-  border-radius: inherit; /* Наследуем 24px */
-}
-
-.swiper-slide img {
   border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.4s ease;
 }
 
-.mySwiper .swiper-wrapper .swiper-slide-active {
-  z-index: 10;
-  transform: scale(1.25) !important;
-  transition: 0.4s;
+.slide-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-slide-active .slide-inner {
+  transform: scale(1.25);
+  z-index: 2;
 }
 
 // ============== About =================

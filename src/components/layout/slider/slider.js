@@ -25,16 +25,18 @@ import 'swiper/css/bundle';
 
 // -----------------------------------------------------------------
 
-swiper = new Swiper('.mySwiper', {
+const swiper = new Swiper('.mySwiper', {
   slidesPerView: 'auto',
-  loop: true,
-  // spaceBetween: 32,
   centeredSlides: true,
+  loop: true,
+  spaceBetween: 32, // можно оставить, но margin надёжнее
   grabCursor: true,
+
   pagination: {
     el: '.swiper-pagination',
     clickable: true
   },
+
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev'

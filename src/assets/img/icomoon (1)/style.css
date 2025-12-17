@@ -15,6 +15,10 @@ Single-colored icons can be modified like so:
 }
 ========================================== */
 
+.icon-telegram {
+  width: 1.0830078125em;
+}
+
 .icon-app {
   width: 0.9697265625em;
 }

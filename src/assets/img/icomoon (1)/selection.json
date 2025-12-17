@@ -4,6 +4,150 @@
     {
       "icon": {
         "paths": [
+          "M128 298.661c0-22.632 8.99-44.337 24.994-60.34s37.708-24.994 60.34-24.994h597.332c22.634 0 44.339 8.991 60.342 24.994 16 16.003 24.992 37.708 24.992 60.34v426.667c0 22.63-8.992 44.336-24.992 60.339-16.003 16.003-37.709 24.995-60.342 24.995h-597.332c-22.632 0-44.337-8.992-60.34-24.995s-24.994-37.709-24.994-60.339v-426.667z",
+          "M128 298.672l384 256 384-256"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "opacity": 0.7,
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "opacity": 0.7,
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "mail"
+        ]
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "opacity": 0.7,
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "opacity": 0.7,
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 32,
+        "id": 9,
+        "name": "mail",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 10,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M150.187 40.96h218.453l109.228 273.067-136.535 81.92c58.489 118.593 154.471 214.578 273.067 273.065l81.92-136.532 273.068 109.228v218.452c0 28.967-11.51 56.75-31.994 77.234s-48.267 31.994-77.234 31.994c-213.033-12.947-413.962-103.412-564.875-254.325-150.915-150.917-241.379-351.844-254.325-564.876 0-28.969 11.508-56.751 31.992-77.235s48.266-31.992 77.235-31.992z"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "opacity": 0.7,
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 81.92
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "phone"
+        ]
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "opacity": 0.7,
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 81.92
+        }
+      ],
+      "properties": {
+        "order": 33,
+        "id": 8,
+        "name": "phone",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 10,
+      "iconIdx": 1
+    },
+    {
+      "icon": {
+        "paths": [
+          "M725.333 384l-227.554 227.554 341.333 341.333 227.554-910.221-1024 398.221 227.555 113.779 113.778 341.333 170.667-227.554"
+        ],
+        "attrs": [
+          {
+            "fill": "none",
+            "opacity": 0.7,
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 85.33333333333333
+          }
+        ],
+        "width": 1109,
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "telegram"
+        ]
+      },
+      "attrs": [
+        {
+          "fill": "none",
+          "opacity": 0.7,
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 85.33333333333333
+        }
+      ],
+      "properties": {
+        "order": 34,
+        "id": 7,
+        "name": "telegram",
+        "prevSize": 32
+      },
+      "setIdx": 0,
+      "setId": 10,
+      "iconIdx": 2
+    },
+    {
+      "icon": {
+        "paths": [
           "M124.121 299.96c0-21.946 8.718-42.993 24.236-58.511s36.565-24.236 58.511-24.236h579.231c21.948 0 42.996 8.718 58.514 24.236 15.515 15.518 24.235 36.565 24.235 58.511v413.737c0 21.945-8.72 42.992-24.235 58.511-15.518 15.518-36.566 24.238-58.514 24.238h-579.231c-21.946 0-42.993-8.72-58.511-24.238s-24.236-36.566-24.236-58.511v-413.737z",
           "M248.242 337.886h0.414",
           "M372.364 337.886h0.413"
@@ -82,7 +226,7 @@
       },
       "setIdx": 0,
       "setId": 10,
-      "iconIdx": 0
+      "iconIdx": 3
     },
     {
       "icon": {
@@ -183,7 +327,7 @@
       },
       "setIdx": 0,
       "setId": 10,
-      "iconIdx": 1
+      "iconIdx": 4
     },
     {
       "icon": {
@@ -284,7 +428,7 @@
       },
       "setIdx": 0,
       "setId": 10,
-      "iconIdx": 2
+      "iconIdx": 5
     },
     {
       "icon": {
@@ -366,7 +510,7 @@
       },
       "setIdx": 0,
       "setId": 10,
-      "iconIdx": 3
+      "iconIdx": 6
     },
     {
       "icon": {
@@ -467,7 +611,7 @@
       },
       "setIdx": 0,
       "setId": 10,
-      "iconIdx": 4
+      "iconIdx": 7
     },
     {
       "icon": {
@@ -568,7 +712,7 @@
       },
       "setIdx": 0,
       "setId": 10,
-      "iconIdx": 5
+      "iconIdx": 8
     },
     {
       "icon": {
@@ -688,7 +832,7 @@
       },
       "setIdx": 0,
       "setId": 10,
-      "iconIdx": 6
+      "iconIdx": 9
     }
   ],
   "height": 1024,
