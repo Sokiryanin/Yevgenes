@@ -23,7 +23,8 @@
   .header {
     &__body {
       &::before {
-        background-color: #959aa7;
+        backdrop-filter: blur(40px);
+        background: rgba(212, 216, 227, 0.65);
       }
     }
 
