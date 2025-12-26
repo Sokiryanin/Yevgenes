@@ -122,7 +122,8 @@
       background-color: rgba(212, 216, 227, 0.45);
 
       &__icon {
-        color: $mainColor;
+        color: rgba($mainColor, 0.7);
+        fill: none;
       }
 
       &__title {
@@ -156,6 +157,131 @@
       .swiper-pagination-bullet-active {
         background-color: $orangeColor;
       }
+    }
+  }
+
+  .footer {
+    // .footer__container
+
+    &__container {
+    }
+
+    // .footer__content
+
+    &__content {
+      background-color: rgba(212, 216, 227, 0.1);
+    }
+
+    // .footer__header
+
+    &__header {
+    }
+
+    // .footer__header-title
+
+    &__header-title {
+      color: rgba(212, 216, 227, 0.5);
+
+      span {
+        color: $lightTextColor;
+      }
+    }
+
+    // .footer__header-text
+
+    &__header-text {
+      color: $lightTextColor;
+    }
+
+    // .footer__block
+
+    &__block {
+    }
+
+    // .footer__block-form
+
+    &__block-form {
+    }
+
+    // .footer__block-contacts
+
+    &__block-contacts {
+    }
+  }
+
+  .form-block {
+    background-color: rgba(212, 216, 227, 0.45);
+
+    // .form-block__title
+    &__title {
+      color: $mainColor;
+
+      span {
+        color: #444f5f;
+      }
+    }
+
+    // .form-block__btn
+
+    &__btn {
+    }
+  }
+  .form-footer {
+    // .form-footer__form
+
+    &__form {
+    }
+
+    // .form-footer__label
+
+    &__label {
+      color: $mainColor;
+    }
+
+    // .form-footer__input
+
+    &__input {
+    }
+  }
+  .contacts-block {
+    // .contacts-block__card
+
+    &__card {
+    }
+
+    // .contacts-block__card-title
+
+    &__card-title {
+      color: rgba($lightTextColor, 0.7);
+      background-color: $mainColor;
+      // .contacts-block__card-title--phone
+
+      &--phone {
+        &::before {
+          background-color: $lightTextColor;
+        }
+      }
+
+      // .contacts-block__card-title--telegram
+
+      &--telegram {
+        &::before {
+          background-color: $lightTextColor;
+        }
+      }
+
+      // .contacts-block__card-title--mail
+
+      &--mail {
+        &::before {
+          background-color: $lightTextColor;
+        }
+      }
+    }
+
+    // .contacts-block__card-link
+
+    &__card-link {
     }
   }
 }

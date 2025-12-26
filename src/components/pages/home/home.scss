@@ -429,7 +429,8 @@
   }
 
   &__icon {
-    color: #b6bbc7;
+    color: rgba($lightTextColor, 0.7);
+    fill: none;
     width: 32px;
     height: 32px;
 
