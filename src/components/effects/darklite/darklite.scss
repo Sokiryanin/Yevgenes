@@ -130,4 +130,32 @@
       }
     }
   }
+
+  .project {
+    // .project__arrow
+
+    &__arrow {
+      background: #444f5f url('@img/arrow-left-light.svg') center no-repeat;
+      // .project__arrow--left
+
+      &--left {
+      }
+
+      // .project__arrow--right
+
+      &--right {
+      }
+    }
+
+    // .project__bullets
+
+    &__bullets {
+      .swiper-pagination-bullet {
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: $orangeColor;
+      }
+    }
+  }
 }
