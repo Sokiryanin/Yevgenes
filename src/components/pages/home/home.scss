@@ -108,11 +108,12 @@
 
 .project {
   @include adaptiveValue('padding-top', 128, 96);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  &__container {
+    max-width: 1690px;
+    overflow: hidden;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   // .project__slider
 
   &__slider {

@@ -10,7 +10,7 @@ function initSliders() {
       slidesPerView: 'auto',
       centeredSlides: true,
       grabCursor: true,
-      spaceBetween: -11,
+      spaceBetween: -10,
       speed: 800,
       loop: true,
 
