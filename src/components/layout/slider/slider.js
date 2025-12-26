@@ -1,44 +1,39 @@
 import Swiper from 'swiper';
-
-import { Navigation } from 'swiper/modules';
-
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/bundle';
 
-// // Ініціалізація слайдерів
-// function initSliders() {
-//   // Список слайдерів
-//   // Перевіряємо, чи є слайдер на сторінці
+// Ініціалізація слайдерів
+function initSliders() {
+  if (document.querySelector('.project__slider')) {
+    new Swiper('.project__slider', {
+      modules: [Navigation, Pagination],
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      grabCursor: true,
+      spaceBetween: 0,
+      speed: 800,
+      // loop: true,
+      lazy: true,
 
-//   if (document.querySelector('.project__slider')) {
-//     new Swiper('.project__slider', {
-//       slidesPerView: '3',
-//       centeredSlides: true,
-//       spaceBetween: 16,
-//       loop: true
-//     });
-//   }
-// }
+      spaceBetween: 24,
 
-// document.querySelector('[data-fls-slider]')
-//   ? window.addEventListener('load', initSliders)
-//   : null;
+      // Пагінація
 
-// -----------------------------------------------------------------
+      pagination: {
+        el: '.project__bullets',
+        clickable: true
+      },
 
-const swiper = new Swiper('.mySwiper', {
-  slidesPerView: 'auto',
-  centeredSlides: true,
-  loop: true,
-  spaceBetween: 32, // можно оставить, но margin надёжнее
-  grabCursor: true,
+      // Кнопки "вліво/вправо"
+      navigation: {
+        prevEl: '.project__arrow--left',
+        nextEl: '.project__arrow--right'
+      },
 
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true
-  },
-
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev'
+      on: {}
+    });
   }
-});
+}
+document.querySelector('[data-fls-slider]')
+  ? window.addEventListener('load', initSliders)
+  : null;
