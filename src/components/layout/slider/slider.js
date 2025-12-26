@@ -9,6 +9,9 @@ function initSliders() {
       modules: [Navigation, Pagination],
       slidesPerView: 'auto',
       centeredSlides: true,
+      grabCursor: true,
+      spaceBetween: -10,
+      speed: 800,
       loop: true,
 
       // Пагінація
