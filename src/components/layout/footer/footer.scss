@@ -13,6 +13,10 @@
     padding: 32px;
     backdrop-filter: blur(40px);
     background-color: #c2c6d2;
+
+    @media (max-width: toEm($mobile)) {
+      padding: 8px;
+    }
   }
 
   // .footer__header
@@ -47,11 +51,18 @@
   // .footer__header-text
 
   &__header-text {
-    @include adaptiveValue('font-size', 32, 28);
+    @include adaptiveValue('font-size', 32, 24);
     font-family: $fontSecondary;
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.05em;
+
+    @media (max-width: toEm($mobile)) {
+      font-weight: 400;
+
+      line-height: 1.5;
+      letter-spacing: -0.03em;
+    }
   }
 
   // .footer__block
@@ -59,6 +70,9 @@
   &__block {
     display: flex;
     gap: 24px;
+    @media (max-width: toEm($mobile)) {
+      flex-direction: column;
+    }
   }
 
   // .footer__block-form
@@ -71,6 +85,10 @@
   &__block-contacts {
     flex: 1 1 581px;
     max-width: 581px;
+    @media (max-width: toEm($mobile)) {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
   }
 }
 
@@ -80,6 +98,11 @@
   padding: 32px;
   background-color: rgba(32, 38, 56, 0.55);
   max-width: 803px;
+
+  @media (max-width: toEm($mobile)) {
+    padding: 24px;
+    max-width: 100%;
+  }
 
   // .form-block__title
 
@@ -95,6 +118,10 @@
     span {
       @include adaptiveValue('font-size', 32, 24);
       color: rgba(212, 216, 227, 0.5);
+
+      @media (max-width: toEm($mobile)) {
+        line-height: 1.5;
+      }
     }
   }
 
@@ -102,12 +129,25 @@
 
   &__btn {
     border-radius: 16px;
-    padding: 16px 24px;
+    padding: 16px 48px;
+    width: 200px;
     background-color: $orangeColor;
-    @include adaptiveValue('font-size', 32, 24);
-    @include adaptiveValue('font-weight', 700, 500);
-    @include adaptiveValue('line-height', 1.3, 1.35);
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.3;
     letter-spacing: -0.07em;
+
+    @media (max-width: toEm($tablet)) {
+      border-radius: 16px;
+      padding: 8px 24px;
+      width: 126px;
+
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -0.07em;
+    }
   }
 }
 
@@ -115,14 +155,27 @@
   display: flex;
   gap: 24px;
   margin-bottom: 24px;
+
+  @media (max-width: toEm($tablet)) {
+    flex-direction: column;
+  }
   // .form-footer__label
 
   &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include adaptiveValue('font-size', 24, 16);
     font-weight: 500;
-    font-size: 24px;
     line-height: 1.35;
     letter-spacing: -0.07em;
     color: $lightTextColor;
+
+    @media (max-width: toEm($mobile)) {
+      line-height: 1.3;
+      letter-spacing: -0.05em;
+    }
   }
 
   // .form-footer__input
@@ -142,6 +195,12 @@
   /* Создаем две колонки одинаковой ширины */
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
+
+  @media (max-width: toEm($tablet)) {
+    grid-template-columns: 1fr;
+    padding: 0;
+    gap: 24px;
+  }
 
   // .contacts-block__card
 
