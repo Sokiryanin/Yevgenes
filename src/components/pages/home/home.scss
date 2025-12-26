@@ -128,17 +128,18 @@
   // .project__slider-slide
 
   &__slider-slide {
-    width: 80%; /* центральный слайд резиновый */
-    max-width: 712px; /* ограничение для больших экранов */
-    aspect-ratio: 712 / 534;
+    position: relative;
+    width: 80%;
+    max-width: 570px;
     transition: transform 0.3s, opacity 0.3s;
     border-radius: 24px;
     overflow: hidden;
     flex-shrink: 0;
     display: flex;
-    @media (max-width: toEm($mobile)) {
-      aspect-ratio: auto;
-    }
+
+    transform: scale(0.9);
+    opacity: 0.7;
+    transition: transform 0.6s ease, opacity 0.6s ease;
   }
 
   &__slider-slide img {
@@ -244,6 +245,7 @@
 // Стили для центрального слайда
 .swiper-slide-active {
   opacity: 1;
+  transform: scale(1);
 }
 
 .slide-project {
