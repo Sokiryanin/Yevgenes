@@ -216,7 +216,7 @@
     align-items: center;
 
     .swiper-pagination-bullet {
-      transition: all 0.3s;
+      transition: transform 0.3s, background-color 0.3s;
       flex-grow: 0;
       flex-shrink: 0;
       flex-basis: 24px;
@@ -224,6 +224,8 @@
       border-radius: 12px;
       background-color: #b2b7c3;
       cursor: pointer;
+      will-change: flex-basis; // подсказка браузеру
+      transform: translateZ(0); // форсим GPU
 
       @media (max-width: toEm($mobile)) {
         flex-basis: 16px;
