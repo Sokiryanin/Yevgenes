@@ -216,7 +216,7 @@
     align-items: center;
 
     .swiper-pagination-bullet {
-      transition: transform 0.3s, background-color 0.3s;
+      transition: all 0.3s ease;
       flex-grow: 0;
       flex-shrink: 0;
       flex-basis: 24px;
