@@ -109,7 +109,7 @@
 .project {
   @include adaptiveValue('padding-top', 128, 96);
   &__container {
-    max-width: 1690px;
+    max-width: 1920px;
     overflow: hidden;
     padding-left: 15px;
     padding-right: 15px;
@@ -131,7 +131,7 @@
   &__slider-slide {
     position: relative;
     width: 80%;
-    max-width: 570px;
+    max-width: 712px;
     transition: transform 0.3s, opacity 0.3s;
     border-radius: 24px;
     overflow: hidden;

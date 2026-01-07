@@ -222,6 +222,11 @@
     &:last-child {
       grid-column: 1 / -1;
     }
+
+    &:hover .contacts-block__card-link {
+      // ← hover на card
+      background-color: $hoverColor;
+    }
   }
 
   // .contacts-block__card-title
@@ -340,6 +345,14 @@
   // .contacts-block__card-link
 
   .contacts-block__card-link {
+    color: $orangeColor;
+    @include adaptiveValue('font-size', 24, 16);
+    @include adaptiveValue('line-height', 1.35, 1.3);
+
+    font-weight: 500;
+    letter-spacing: -0.07em;
+    text-align: center;
+
     padding: 24px 8px;
     background-color: #444f5f;
     text-align: center;
@@ -348,15 +361,7 @@
     align-items: center;
     justify-content: center;
     flex: 1 1;
-  }
 
-  .contacts-block__card-link a {
-    color: $orangeColor;
-    @include adaptiveValue('font-size', 24, 16);
-    @include adaptiveValue('line-height', 1.35, 1.3);
-
-    font-weight: 500;
-    letter-spacing: -0.07em;
-    text-align: center;
+    transition: background-color 0.3s ease;
   }
 }
