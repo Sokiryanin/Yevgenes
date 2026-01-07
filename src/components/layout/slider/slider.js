@@ -10,10 +10,15 @@ function initSliders() {
       slidesPerView: 'auto',
       centeredSlides: true,
       grabCursor: true,
-      spaceBetween: -10,
+      spaceBetween: 8,
       speed: 800,
       loop: true,
 
+      breakpoints: {
+        992: {
+          spaceBetween: 16
+        }
+      },
       // Пагінація
 
       pagination: {
