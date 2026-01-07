@@ -81,6 +81,7 @@
       @media (any-hover: hover) {
         &:hover {
           background-color: $hoverColor;
+          color: $mainColor;
         }
       }
     }
