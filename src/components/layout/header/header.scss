@@ -117,7 +117,7 @@
     height: 32px;
 
     border-radius: 50%;
-    background-color: $lightTextColor;
+    background-color: rgba(212, 216, 227, 0.75);
     flex-shrink: 0;
 
     display: flex;
@@ -155,8 +155,9 @@
   // }
 
   /* Тёмная тема = солнце справа */
+
   [data-fls-darklite-dark] &__btn {
-    background-color: rgba(89, 99, 111, 0.75);
+    background-color: #202638 0.75;
 
     .theme-toggle__icon {
       transform: translateX(24px);
