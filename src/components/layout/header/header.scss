@@ -81,7 +81,6 @@
   justify-content: center;
 
   position: absolute;
-  right: 15px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
@@ -91,8 +90,11 @@
       Когда viewport шире 1448px — 
       toggle не движется дальше, остаётся у края контейнера.
     */
+
     right: clamp(32px, calc((100vw - 1448px) / 2), 9999px);
   }
+
+  /* --- Кнопка переключения темы --- */
   &__btn {
     position: relative;
     width: 60px;
@@ -171,7 +173,7 @@
   /* Адаптив — маленькая таблетка */
 
   @media (max-width: toEm($tablet)) {
-    @include adaptiveValue('right', 80, 60);
+    right: 76px;
 
     &__btn {
       width: 44px;
