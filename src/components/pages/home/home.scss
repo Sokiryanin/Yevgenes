@@ -135,6 +135,9 @@
     border-radius: 24px;
     overflow: hidden;
 
+    box-shadow: 0 2px 4px 0 rgba(32, 38, 56, 0.15),
+      0 0 8px 0 rgba(32, 38, 56, 0.15);
+
     @media (max-width: 768px) {
       // мобилка
 
@@ -234,9 +237,22 @@
 .swiper-slide-active {
   opacity: 1;
 
-  .slide-project__info {
-    opacity: 1;
-    transform: translateY(0);
+  transition: box-shadow 0.3s ease; // добавляем плавность для тени
+
+  @media (any-hover: hover) {
+    &:hover {
+      // Заменяем border на outline с небольшим смещением внутрь
+      outline: 2px solid rgba(228, 115, 92, 0.75);
+      outline-offset: -2px; // Заставляет рамку рисоваться внутри слайда
+
+      box-shadow: 0 2px 4px 0 rgba(32, 38, 56, 0.15),
+        0 0 8px 0 rgba(32, 38, 56, 0.15);
+
+      .slide-project__info {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   }
 }
 
@@ -290,10 +306,6 @@
 
     &--light {
       color: $lightTextColor;
-
-      .slide-project__btn {
-        border: 1px solid $lightTextColor;
-      }
     }
   }
 
@@ -330,7 +342,9 @@
   // .slide-project__btn
 
   &__btn {
-    border: 1px solid $mainColor;
+    border: none;
+    background-color: $orangeColor;
+    color: $mainColor;
     border-radius: 8px;
     padding: 8px 24px;
 
@@ -338,6 +352,14 @@
     font-size: 24px;
     line-height: 1.35;
     letter-spacing: -0.07em;
+
+    transition: background-color 0.3s ease;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $hoverColor;
+      }
+    }
   }
 }
 
