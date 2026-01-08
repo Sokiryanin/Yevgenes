@@ -76,31 +76,41 @@
   .theme-toggle {
     &__btn {
       background-color: rgba(212, 216, 227, 0.65);
-
-      .theme-toggle__icon--moon {
-        transform: translateX(
-          24px
-        ); // 60 - 32 - (2px*2) = 24px свободного пространства
-        opacity: 0;
-
-        @media (max-width: toEm($tablet)) {
-          transform: translateX(16px);
-        }
-      }
-
-      .theme-toggle__icon--sun {
-        transform: translateX(24px);
-        opacity: 1;
-
-        @media (max-width: toEm($tablet)) {
-          transform: translateX(16px);
-        }
-      }
     }
 
     &__icon {
       color: $lightTextColor;
-      background-color: $mainColor;
+      background-color: rgba($mainColor, 0.75);
+      transform: translateX(24px);
+
+      &::before {
+        background-image: url('@img/sun.svg');
+      }
+
+      @media (max-width: toEm($tablet)) {
+        /* Пересчёт смещения: 44 - 24 - 4px padding = 16px */
+        transform: translateX(16px);
+      }
+    }
+
+    &__icon--moon {
+      transform: translateX(
+        24px
+      ); // 60 - 32 - (2px*2) = 24px свободного пространства
+      opacity: 0;
+
+      @media (max-width: toEm($tablet)) {
+        transform: translateX(16px);
+      }
+    }
+
+    &__icon--sun {
+      transform: translateX(24px);
+      opacity: 1;
+
+      @media (max-width: toEm($tablet)) {
+        transform: translateX(16px);
+      }
     }
   }
 

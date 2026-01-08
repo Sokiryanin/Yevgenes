@@ -226,6 +226,7 @@
     &:hover .contacts-block__card-link {
       // ← hover на card
       background-color: $hoverColor;
+      color: $mainColor;
     }
   }
 

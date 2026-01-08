@@ -111,60 +111,36 @@
   &__container {
     max-width: 100vw;
     overflow: hidden;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0;
+    padding-right: 0;
   }
   // .project__slider
 
   &__slider {
-    width: 100%;
   }
 
   // .project__slider-wrapper
 
   &__slider-wrapper {
-    align-items: center;
   }
 
   // .project__slider-slide
 
   &__slider-slide {
-    width: 80%;
-    max-width: 712px;
+    width: 712px; // максимальная ширина центрального слайда
+    max-width: 90vw; // для адаптивности
+    aspect-ratio: 712 / 534; // пропорции для desktop
+
     flex-shrink: 0;
-    opacity: 0.6;
-    transition: opacity 0.6s ease;
     border-radius: 24px;
-    cursor: grab;
+    overflow: hidden;
 
-    // position: relative;
-    // width: 80%;
-    // max-width: 712px;
-    // border-radius: 24px;
-    // overflow: hidden;
-    // flex-shrink: 0;
-    // display: flex;
-    // cursor: grab;
+    @media (max-width: 768px) {
+      // мобилка
 
-    //     transition: transform 0.3s, opacity 0.3s;
-    // transform: scale(0.9);
-    // opacity: 0.7;
-    // transition: transform 0.6s ease, opacity 0.6s ease;
-  }
-
-  &__slider-slide img {
-    // width: 100%;
-    // height: 100%;
-    // object-fit: cover;
-    // display: block;
-    // transition: transform 0.3s;
-    // border-radius: 20px;
-  }
-
-  .swiper-slide-prev img,
-  .swiper-slide-next img {
-    // transform: scale(0.9);
-    // opacity: 0.7;
+      aspect-ratio: 1 / 1; // квадрат
+      max-width: calc(100vw - 32px); // с учётом отступов
+    }
   }
 
   // .project__controls
@@ -196,7 +172,7 @@
 
     @media (any-hover: hover) {
       &:hover {
-        background-color: $orangeColor;
+        background-color: $hoverColor;
       }
     }
 
@@ -216,46 +192,45 @@
   }
 
   // .project__bullets
-
   &__bullets {
     @include adaptiveValue('column-gap', 24, 16);
     display: flex;
     justify-content: center;
     align-items: center;
     --swiper-pagination-bullet-horizontal-gap: 0px;
-
-    .swiper-pagination-bullet {
-      transition: all 0.3s ease;
-      flex-grow: 0;
-      flex-shrink: 0;
-      flex-basis: 24px;
-      height: 24px;
-      border-radius: 12px;
-      background-color: #b2b7c3;
-      cursor: pointer;
-      will-change: flex-basis; // подсказка браузеру
-      transform: translateZ(0); // форсим GPU
-
-      @media (max-width: toEm($mobile)) {
-        flex-basis: 16px;
-        height: 16px;
-      }
-    }
-
-    .swiper-pagination-bullet-active {
-      background-color: $orangeColor;
-      flex-grow: 0;
-      flex-shrink: 0;
-      flex-basis: 72px;
-
-      @media (max-width: toEm($mobile)) {
-        flex-basis: 48px;
-      }
-    }
+    --swiper-pagination-bullet-inactive-opacity: 1;
   }
 }
 
-// Стили для центрального слайда
+.swiper-pagination-bullet {
+  transition: all 0.3s ease;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #b2b7c3;
+  cursor: pointer;
+  will-change: flex-basis; // подсказка браузеру
+  transform: translateZ(0); // форсим GPU
+
+  @media (max-width: toEm($mobile)) {
+    flex-basis: 16px;
+    height: 16px;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $orangeColor;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 72px;
+
+  @media (max-width: toEm($mobile)) {
+    flex-basis: 48px;
+  }
+}
+
 .swiper-slide-active {
   opacity: 1;
 
@@ -266,16 +241,9 @@
 }
 
 .slide-project {
-  border-radius: 24px;
-  overflow: hidden;
-  transition: transform 0.6s ease;
   // .slide-project__inner
 
   &__inner {
-    position: relative;
-    width: 100%;
-    border-radius: 24px;
-    overflow: hidden;
   }
 
   // .slide-project__picture
@@ -287,9 +255,15 @@
 
   &__image {
     width: 100%;
-
     object-fit: cover;
     display: block;
+
+    @media (max-width: 768px) {
+      // мобилка
+
+      aspect-ratio: 1 / 1; // квадрат
+      // max-width: calc(100vw - 32px); // с учётом отступов
+    }
   }
 
   // .slide-project__info
@@ -300,11 +274,12 @@
     right: 16px;
     bottom: 16px;
 
-    padding: 16px;
+    padding: 16px 24px;
     border-radius: 16px;
 
-    background: rgba(0, 0, 0, 0.65);
-    color: #fff;
+    backdrop-filter: blur(40px);
+    background-color: rgba(32, 38, 56, 0.1);
+    color: $mainColor;
 
     opacity: 0;
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -312,26 +287,58 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &--light {
+      color: $lightTextColor;
+
+      .slide-project__btn {
+        border: 1px solid $lightTextColor;
+      }
+    }
   }
 
   // .slide-project__info-text
 
   &__info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
   }
 
+  &__info-text p {
+    font-weight: 400;
+    @include adaptiveValue('font-size', 24, 16);
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+    text-align: center;
+
+    @media (max-width: toEm($mobile)) {
+      line-height: 1.3;
+    }
+  }
   // .slide-project__title
 
   &__title {
+    font-family: $fontSecondary;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
   }
 
   // .slide-project__btn
 
   &__btn {
-  }
-}
+    border: 1px solid $mainColor;
+    border-radius: 8px;
+    padding: 8px 24px;
 
-.swiper-slide-active .slide-project__picture {
-  transform: scale(1);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+  }
 }
 
 // ============== About =================
