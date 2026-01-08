@@ -236,8 +236,13 @@
 
 .swiper-slide-active {
   opacity: 1;
-
   transition: box-shadow 0.3s ease; // добавляем плавность для тени
+
+  @media (max-width: toEm($mobile)) {
+    .slide-project__info {
+      opacity: 1;
+    }
+  }
 
   @media (any-hover: hover) {
     &:hover {
@@ -247,10 +252,16 @@
 
       box-shadow: 0 2px 4px 0 rgba(32, 38, 56, 0.15),
         0 0 8px 0 rgba(32, 38, 56, 0.15);
+    }
+  }
 
-      .slide-project__info {
-        opacity: 1;
-        transform: translateY(0);
+  @media (min-width: toEm($mobile)) {
+    @media (any-hover: hover) {
+      &:hover {
+        .slide-project__info {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     }
   }
@@ -332,9 +343,9 @@
   // .slide-project__title
 
   &__title {
+    @include adaptiveValue('font-size', 48, 32);
     font-family: $fontSecondary;
     font-weight: 400;
-    font-size: 48px;
     line-height: 1.1;
     letter-spacing: -0.05em;
   }
@@ -342,23 +353,47 @@
   // .slide-project__btn
 
   &__btn {
+    display: flex;
+    align-items: center; /* одна ось по вертикали */
+    justify-content: space-between;
+
     border: none;
     background-color: $orangeColor;
     color: $mainColor;
     border-radius: 8px;
     padding: 8px 24px;
-
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 1.35;
-    letter-spacing: -0.07em;
+    gap: 8px;
 
     transition: background-color 0.3s ease;
+
+    &--text {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -0.07em;
+
+      @media (max-width: toEm($mobile)) {
+        display: none;
+      }
+    }
+
+    &--icon {
+      width: 24px;
+      height: 24px;
+      color: $mainColor;
+
+      flex-shrink: 0; /* иконка не сжимается */
+      display: block;
+    }
 
     @media (any-hover: hover) {
       &:hover {
         background-color: $hoverColor;
       }
+    }
+
+    @media (max-width: toEm($mobile)) {
+      padding: 8px;
     }
   }
 }

@@ -71,5 +71,19 @@
         <path d="M12 28v-5.333c0-0.707 0.281-1.386 0.781-1.886s1.178-0.781 1.886-0.781h2.667c0.707 0 1.386 0.281 1.886 0.781s0.781 1.178 0.781 1.886v5.333" />
       </g>
     </symbol>
+
+    <symbol id="icon-link" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M16 8h-8c-0.707 0-1.386 0.281-1.886 0.781s-0.781 1.178-0.781 1.886v13.333c0 0.707 0.281 1.385 0.781 1.886s1.178 0.781 1.886 0.781h13.333c0.707 0 1.385-0.281 1.886-0.781s0.781-1.178 0.781-1.886v-8"></path>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M14.667 17.333l12-12"></path>
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M20 5.333h6.667v6.667"></path>
+</symbol>
+
+    <symbol id="icon-link" viewBox="0 0 32 32">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path  d="M16 8h-8c-0.707 0-1.386 0.281-1.886 0.781s-0.781 1.178-0.781 1.886v13.333c0 0.707 0.281 1.385 0.781 1.886s1.178 0.781 1.886 0.781h13.333c0.707 0 1.385-0.281 1.886-0.781s0.781-1.178 0.781-1.886v-8"></path>
+        <path  d="M14.667 17.333l12-12"></path>
+        <path  d="M20 5.333h6.667v6.667"></path>
+      </g>
+    </symbol>
   </defs>
 </svg>
