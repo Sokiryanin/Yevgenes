@@ -1,5 +1,5 @@
 .footer {
-  @include adaptiveValue('padding-top', 128, 60);
+  @include adaptiveValue('padding-top', 128, 96);
   // .footer__container
 
   &__container {
@@ -205,7 +205,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
 
-  @media (max-width: toEm($tablet)) {
+  @media (max-width: 1130px) {
     grid-template-columns: 1fr;
     padding: 0;
     gap: 24px;

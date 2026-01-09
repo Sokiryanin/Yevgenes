@@ -401,7 +401,7 @@
 // ============== About =================
 
 .about {
-  @include adaptiveValue('padding-top', 128, 96);
+  @include adaptiveValue('padding-top', 132, 96);
   // .about__container
 
   &__container {
