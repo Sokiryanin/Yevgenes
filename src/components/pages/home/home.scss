@@ -238,7 +238,7 @@
   opacity: 1;
   transition: box-shadow 0.3s ease; // добавляем плавность для тени
 
-  @media (max-width: toEm($mobile)) {
+  @media (max-width: toEm($tablet)) {
     .slide-project__info {
       opacity: 1;
     }
@@ -255,7 +255,7 @@
     }
   }
 
-  @media (min-width: toEm($mobile)) {
+  @media (min-width: toEm($tablet)) {
     @media (any-hover: hover) {
       &:hover {
         .slide-project__info {
