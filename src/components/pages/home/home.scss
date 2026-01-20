@@ -309,6 +309,7 @@
     backdrop-filter: blur(40px);
     background-color: rgba(32, 38, 56, 0.1);
     color: $mainColor;
+    border: 1px solid rgba(89, 99, 111, 0.2);
 
     opacity: 0;
     transition:
