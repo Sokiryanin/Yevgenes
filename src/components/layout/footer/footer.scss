@@ -42,16 +42,22 @@
     letter-spacing: -0.05em;
     color: rgba(32, 38, 56, 0.5);
 
-    font-kerning: normal;
-    font-feature-settings: 'kern';
-    unicode-bidi: isolate;
-    white-space: nowrap;
-
     @include adaptiveValue('margin-bottom', 24, 12);
 
     span {
       color: $mainColor;
     }
+  }
+
+  &__header-title::after {
+    content: '?';
+    // letter-spacing: 0;
+    color: rgba(32, 38, 56, 0.5); // цвет как у заголовка
+    @include adaptiveValue('font-size', 112, 48);
+    font-family: $fontSecondary;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
   }
 
   // .footer__header-text
