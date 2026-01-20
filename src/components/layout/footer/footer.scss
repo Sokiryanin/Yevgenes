@@ -44,6 +44,8 @@
 
     font-kerning: normal;
     font-feature-settings: 'kern';
+    unicode-bidi: isolate;
+    white-space: nowrap;
 
     @include adaptiveValue('margin-bottom', 24, 12);
 
