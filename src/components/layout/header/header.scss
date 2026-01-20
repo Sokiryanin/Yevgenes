@@ -109,6 +109,7 @@
     align-items: center;
     justify-content: flex-start;
     background-color: rgba(32, 38, 56, 0.75);
+    backdrop-filter: blur(30px);
   }
 
   /* --- Кружок-бегунок --- */
@@ -125,7 +126,9 @@
     align-items: center;
     justify-content: center;
 
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease;
 
     /* Псевдоэлемент-иконка */
 
