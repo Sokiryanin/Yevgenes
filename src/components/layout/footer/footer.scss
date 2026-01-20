@@ -49,16 +49,16 @@
     }
   }
 
-  &__header-title::after {
-    content: '?';
-    // letter-spacing: 0;
-    color: rgba(32, 38, 56, 0.5); // цвет как у заголовка
-    @include adaptiveValue('font-size', 112, 48);
-    font-family: $fontSecondary;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.05em;
-  }
+  // &__header-title::after {
+  //   content: '?';
+  //   // letter-spacing: 0;
+  //   color: rgba(32, 38, 56, 0.5); // цвет как у заголовка
+  //   @include adaptiveValue('font-size', 112, 48);
+  //   font-family: $fontSecondary;
+  //   font-weight: 400;
+  //   line-height: 1.1;
+  //   letter-spacing: -0.05em;
+  // }
 
   // .footer__header-text
 
@@ -206,6 +206,8 @@
     border-radius: 8px;
     padding: 15px;
     background-color: rgba(212, 216, 227, 0.4);
+
+    font-family: $fontSecondary;
   }
 }
 
