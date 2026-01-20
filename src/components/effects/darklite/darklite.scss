@@ -64,6 +64,7 @@
 
         @media (any-hover: hover) {
           &:hover {
+            color: $mainColor;
             background-color: $hoverColor;
           }
         }
@@ -314,6 +315,6 @@
 
   #back-to-top {
     background-color: rgba(178, 183, 195, 0.5);
-    color: $mainColor;
+    color: $mainColor !important;
   }
 }

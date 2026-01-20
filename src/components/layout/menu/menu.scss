@@ -30,7 +30,9 @@
 
       padding-top: 16px;
       padding-bottom: 16px;
-      transition: max-height 0.25s ease, opacity 0.25s ease;
+      transition:
+        max-height 0.25s ease,
+        opacity 0.25s ease;
 
       // Активное состояние
       [data-fls-menu-open] & {
