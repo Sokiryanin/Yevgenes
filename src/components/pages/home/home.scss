@@ -135,7 +135,8 @@
     border-radius: 24px;
     overflow: hidden;
 
-    box-shadow: 0 2px 4px 0 rgba(32, 38, 56, 0.15),
+    box-shadow:
+      0 2px 4px 0 rgba(32, 38, 56, 0.15),
       0 0 8px 0 rgba(32, 38, 56, 0.15);
 
     @media (max-width: 768px) {
@@ -250,7 +251,8 @@
       outline: 2px solid rgba(228, 115, 92, 0.75);
       outline-offset: -2px; // Заставляет рамку рисоваться внутри слайда
 
-      box-shadow: 0 2px 4px 0 rgba(32, 38, 56, 0.15),
+      box-shadow:
+        0 2px 4px 0 rgba(32, 38, 56, 0.15),
         0 0 8px 0 rgba(32, 38, 56, 0.15);
     }
   }
@@ -309,7 +311,9 @@
     color: $mainColor;
 
     opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
 
     display: flex;
     align-items: center;
@@ -588,6 +592,18 @@
 
     @media (max-width: toEm($mobile)) {
       font-size: 16px;
+    }
+  }
+}
+
+#back-to-top {
+  backdrop-filter: blur(40px) !important;
+  box-shadow: none !important;
+  transition: background-color 0.3s ease;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $hoverColor;
     }
   }
 }

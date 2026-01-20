@@ -1,5 +1,7 @@
 [data-fls-darklite-light] {
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
   body {
     background-color: $bgColor;
   }
@@ -14,7 +16,9 @@
 }
 
 [data-fls-darklite-dark] {
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
 
   body {
     background-color: $mainColor;
@@ -294,5 +298,10 @@
 
     &__card-link {
     }
+  }
+
+  #back-to-top {
+    background-color: rgba(178, 183, 195, 0.5);
+    color: $mainColor;
   }
 }
