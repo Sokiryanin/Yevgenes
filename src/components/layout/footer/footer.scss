@@ -127,6 +127,7 @@
 
   &__title {
     @include adaptiveValue('font-size', 48, 32);
+    @include adaptiveValue('margin-bottom', 32, 24);
     font-family: $fontSecondary;
     font-weight: 400;
     line-height: 1.1;
@@ -137,10 +138,6 @@
     span {
       @include adaptiveValue('font-size', 32, 24);
       color: rgba(212, 216, 227, 0.5);
-
-      @media (max-width: toEm($mobile)) {
-        line-height: 1.5;
-      }
     }
   }
 
