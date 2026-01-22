@@ -164,7 +164,7 @@
 
     @media (max-width: toEm($mobile)) {
       max-width: 100%; // или убрать max-width вообще
-      padding: 0 8px; // отступы от краёв экрана
+      padding: 0 16px; // отступы от краёв экрана
       padding-top: 24px;
     }
   }
