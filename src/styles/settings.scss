@@ -24,8 +24,8 @@ $maxWidth: 1920;
 // Ширина обмежуючого контейнера (0 = немає обмеження)
 $maxWidthContainer: 1448;
 // Загальний відступ у контейнера
-// (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
-$containerPadding: 30;
+// (64 = по 32px ліворуч і праворуч, 0 = немає відступу)
+$containerPadding: 64;
 
 // Ширина спрацьовування першого брейкпоінту
 $containerWidth: $maxWidthContainer + $containerPadding;

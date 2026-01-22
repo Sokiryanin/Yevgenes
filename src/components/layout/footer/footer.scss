@@ -4,6 +4,9 @@
   // .footer__container
 
   &__container {
+    @media (max-width: toEm($mobile)) {
+      padding: 0 16px;
+    }
   }
 
   // .footer__content

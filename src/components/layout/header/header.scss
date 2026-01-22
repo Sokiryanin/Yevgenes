@@ -17,6 +17,14 @@
   // .header__container
   &__container {
     pointer-events: auto;
+    padding: 0;
+
+    @media (max-width: toEm($tablet)) {
+      padding: 0 32px;
+    }
+    @media (max-width: toEm($mobile)) {
+      padding: 0 16px;
+    }
   }
 
   &__logo {

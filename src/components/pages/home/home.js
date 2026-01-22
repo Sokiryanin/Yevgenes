@@ -1,7 +1,11 @@
 import { addBackToTop } from 'vanilla-back-to-top';
 
+// const isMobile = window.innerWidth <= 768;
+
+// const buttonSize = isMobile ? 48 : 64;
+
 addBackToTop({
-  diameter: 64,
+  // diameter: buttonSize,
   backgroundColor: 'rgba(68, 79, 95, 0.5)',
 
   innerHTML:
