@@ -130,6 +130,9 @@
   // .project__slider-slide
 
   &__slider-slide {
+    animation: zoomIn; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+
     width: 712px; // максимальная ширина центрального слайда
     max-width: 90vw; // для адаптивности
     aspect-ratio: 712 / 534; // пропорции для desktop
@@ -152,6 +155,9 @@
 
   // .project__controls
   &__controls {
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+
     @include adaptiveValue('gap', 48, 24);
     padding-top: 24px;
     display: flex;
@@ -451,6 +457,9 @@
   // .about__title
 
   &__title {
+    animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+
     font-family: $fontSecondary;
     @include adaptiveValue('font-size', 112, 44);
     @include adaptiveValue('margin-bottom', 48, 32);

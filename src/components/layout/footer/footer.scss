@@ -118,6 +118,9 @@
   background-color: rgba(32, 38, 56, 0.55);
   max-width: 803px;
 
+  animation: fadeInLeft; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+
   @media (max-width: toEm($mobile)) {
     padding: 24px;
     max-width: 100%;
@@ -221,6 +224,9 @@
   /* Создаем две колонки одинаковой ширины */
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
+
+  animation: fadeInRight; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
 
   @media (max-width: 1130px) {
     grid-template-columns: 1fr;
