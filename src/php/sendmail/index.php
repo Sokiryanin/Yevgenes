@@ -3,18 +3,26 @@
 require 'config.php';
 
 //Від кого лист
-$mail->setFrom('some@gmail.com', 'Лист від ЧФ4'); // Вказати потрібний E-mail
+$mail->setFrom('some@gmail.com', 'Лист від Yevgenes.dev'); // Вказати потрібний E-mail
 //Кому відправити
-$mail->addAddress('some@gmail.com'); // Вказати потрібний E-mail
+$mail->addAddress('eugene.sidorov.dp.ua@gmail.com'); // Вказати потрібний E-mail
 //Тема листа
-$mail->Subject = 'Вітання! Це Чертоги Фрілансера 4';
+$mail->Subject = 'Вітання! Це Yevgenes.dev';
 
 //Тіло листа
-$body = '<h1>Зустрічайте супер листа!</h1>';
+$body = '<h1>Зустрічайте нового клієнта</h1>';
 
-//if(trim(!empty($_POST['email']))){
-//$body.=$_POST['email'];
-//}	
+if(trim(!empty($_POST['name']))){
+$body.= '<p>Name:' .$_POST['name'].'</p>';
+}	
+
+if(trim(!empty($_POST['tel']))){
+$body.= '<p>Tel:' .$_POST['tel'].'</p>';
+}	
+
+// if(trim(!empty($_POST['message']))){
+// $body.= '<p>Message:' .$_POST['message'].'</p>';
+// }	
 
 /*
 	//Прикріпити файл

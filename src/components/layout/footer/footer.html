@@ -15,10 +15,18 @@
             Fill the form <span>to discuss the project</span>
           </h3>
 
-          <form data-fls-form action="#" class="form-footer__form form-footer">
+          <form
+            data-fls-form="ajax"
+            data-fls-form-popup="popup"
+            method="POST"
+            action="php/sendmail/index.php"
+            class="form-footer__form form-footer"
+          >
             <label class="form-footer__label">
               Your name
               <input
+                data-fls-form-errtext
+                required
                 data-fls-input
                 class="form-footer__input"
                 type="text"
@@ -30,15 +38,17 @@
             <label class="form-footer__label">
               Phone
               <input
+                data-fls-form-errtext
                 data-fls-input
+                required
                 class="form-footer__input"
                 type="tel"
                 name="tel"
                 id="tel"
               />
             </label>
+            <button class="form-block__btn" type="submit">Submit</button>
           </form>
-          <button class="form-block__btn" type="submit">Submit</button>
         </div>
 
         <div class="footer__block-contacts contacts-block">
