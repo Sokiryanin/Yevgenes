@@ -5,5 +5,3 @@ import {
   isMobile,
   FLS
 } from '@js/common/functions.js';
-
-import 'animate.css';
