@@ -86,7 +86,6 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
-    "intl-tel-input": "^26.7.6",
     "vanilla-back-to-top": "^7.2.1"
   }
 }
