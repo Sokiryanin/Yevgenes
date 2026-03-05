@@ -15,18 +15,51 @@
             Fill the form <span>to discuss the project</span>
           </h3>
 
-          <form
+          <form id="contact-form" class="form-footer__form form-footer">
+            <label class="form-footer__label">
+              Your name
+              <input
+                class="form-footer__input"
+                type="text"
+                name="name"
+                id="name"
+              />
+            </label>
+
+            <label class="form-footer__label">
+              Phone
+              <input
+                class="form-footer__input"
+                type="tel"
+                name="phone"
+                id="phone"
+              />
+            </label>
+          </form>
+
+          <div class="form-block__submit submit-block">
+            <button form="contact-form" class="submit-block__btn" type="submit">
+              Submit
+            </button>
+
+            <div class="submit-block__error-message" id="form-error">
+              <p>You must fill in the highlighted fields to submit</p>
+            </div>
+          </div>
+
+          <!-- <form
             id="contact-form"
-            action="https://formsubmit.co/eugene.sidorov.dp.ua@gmail.com"
-            method="POST"
+            data-fls-form="dev"
+            data-fls-form-popup="#success-popup"
             class="form-footer__form form-footer"
           >
             <label class="form-footer__label">
               Your name
               <input
-                data-fls-form-errtext
+                data-fls-form-validatenow
                 required
                 data-fls-input
+                minlength="2"
                 class="form-footer__input"
                 type="text"
                 name="name"
@@ -42,14 +75,15 @@
                 required
                 class="form-footer__input"
                 type="tel"
-                name="tel"
-                id="tel"
+                name="phone"
+                id="phone"
               />
             </label>
-          </form>
-          <button form="contact-form" class="form-block__btn" type="submit">
+
+          </form> -->
+          <!-- <button form="contact-form" class="form-block__btn" type="submit">
             Submit
-          </button>
+          </button> -->
         </div>
 
         <div class="footer__block-contacts contacts-block">
@@ -79,6 +113,46 @@
             </div>
             <div class="contacts-block__card-link">mail@mail.com</div>
           </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Додай в кінці сторінки перед </body> -->
+  <div data-fls-popup="success-popup" aria-hidden="true" class="popup">
+    <div data-fls-popup-wrapper class="popup__wrapper">
+      <div data-fls-popup-body class="popup__body success-popup">
+        <button data-fls-popup-close type="button" class="popup__close">
+          <svg
+            width="23"
+            height="23"
+            viewBox="0 0 23 23"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              opacity="0.850056"
+              d="M1.73333 1.48883L21.5469 21.0288"
+              stroke="#1a1a2e"
+              stroke-linecap="square"
+            />
+            <path
+              opacity="0.850056"
+              d="M21.2667 1.48883L1.45309 21.0288"
+              stroke="#1a1a2e"
+              stroke-linecap="square"
+            />
+          </svg>
+        </button>
+
+        <div data-fls-popup-content class="success-popup__content">
+          <h2 class="success-popup__title">
+            Thank you, <span id="popup-name">Your name</span>!
+          </h2>
+          <p class="success-popup__text">
+            We will contact you shortly to discuss the details of the project.
+          </p>
+          <img src="@img/popup-img.png" alt="" class="success-popup__image" />
         </div>
       </div>
     </div>
