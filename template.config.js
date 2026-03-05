@@ -28,7 +28,7 @@ export default {
     transition: '300'
   },
   statistics: {
-    enable: false,
+    enable: true,
     showonbuild: false
   },
   server: {

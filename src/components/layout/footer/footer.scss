@@ -21,6 +21,13 @@
     @media (max-width: toEm($mobile)) {
       padding: 8px;
     }
+
+    translate: 0 30%;
+    transition-property: translate;
+    transition-duration: 1s;
+    &.--watcher-view {
+      translate: 0 0;
+    }
   }
 
   // .footer__header
@@ -49,6 +56,13 @@
 
     span {
       color: $mainColor;
+    }
+
+    translate: 0 30%;
+    transition-property: translate;
+    transition-duration: 1s;
+    &.--watcher-view {
+      translate: 0 0;
     }
   }
 

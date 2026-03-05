@@ -1,10 +1,17 @@
 .header {
   position: fixed;
-  top: 32px;
+  // top: 32px;
   left: 0;
   right: 0;
   z-index: 50;
   pointer-events: none;
+
+  transition:
+    margin-top 0.8s,
+    top 0.8s;
+  @media (min-width: toEm($mobile)) {
+    top: 32px;
+  }
 
   @media (max-width: toEm($tablet)) {
     top: 16px;

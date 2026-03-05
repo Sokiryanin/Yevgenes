@@ -85,6 +85,7 @@
     "@img/sharp-win32-x64": "latest"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "vanilla-back-to-top": "^7.2.1"
   }
 }

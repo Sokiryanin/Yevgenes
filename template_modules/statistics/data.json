@@ -1,6 +1,26 @@
 {
   "statistics": {
-    "sessions": [],
-    "files": []
+    "sessions": [
+      {
+        "date": "05.03.2026",
+        "start": 1772708674465,
+        "end": 1772714785358
+      },
+      {
+        "date": "05.03.2026",
+        "start": 1772714843287,
+        "end": 1772715763112
+      }
+    ],
+    "files": [
+      "app.js",
+      "home.scss",
+      "home.html",
+      "footer.scss",
+      "footer.html",
+      "scroll.scss",
+      "header.html",
+      "header.scss"
+    ]
   }
 }

@@ -1,20 +1,20 @@
 [data-fls-header-scroll] {
-	&.--header-scroll {
-		// position: fixed;
-		position: sticky;
-		top: 0;
-		right: 0;
-		left: 0;
-		z-index: 50;
-	}
+  &.--header-scroll {
+    // top: 15px;
+  }
 }
 
+//прибираємо стікі хедер при скролі вниз
+
 [data-fls-header-scroll-show] {
-	&.--header-scroll {
-		transition: translate 0.3s;
-		translate: 0px -100%;
-	}
-	&.--header-show {
-		translate: 0 0;
-	}
+  &.--header-scroll {
+    margin-top: -85px;
+
+    @media (min-width: toEm($mobile)) {
+      margin-top: -115px;
+    }
+  }
+  &.--header-show {
+    margin-top: 0;
+  }
 }

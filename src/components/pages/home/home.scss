@@ -13,6 +13,25 @@
     display: grid;
     justify-items: center;
     width: 100%;
+
+    opacity: 0;
+    // transform: translate(0, -10%);
+    // position: relative;
+
+    [data-fls-loaded] & {
+      animation: show-items 1.5s ease forwards 0.3s;
+    }
+
+    @keyframes show-items {
+      0% {
+        top: 10%;
+        opacity: 0;
+      }
+      100% {
+        top: 0;
+        opacity: 1;
+      }
+    }
   }
 
   &__subtitle {
@@ -463,6 +482,14 @@
     span {
       color: #7a808d;
     }
+
+    opacity: 0;
+    translate: 0 30%;
+    &.--watcher-view {
+      transition: all 0.8s;
+      opacity: 1;
+      translate: 0 0;
+    }
   }
 
   // .about__cards
@@ -477,6 +504,14 @@
     @media (max-width: toEm($tablet)) {
       flex-direction: column;
       margin-bottom: 24px;
+    }
+
+    opacity: 0;
+    translate: 0 30%;
+    &.--watcher-view {
+      transition: all 0.8s;
+      opacity: 1;
+      translate: 0 0;
     }
   }
 
@@ -517,11 +552,32 @@
     @media (max-width: toEm($mobile)) {
       align-items: stretch; // <--- Это ключевой момент, чтобы все карточки стали одинаковой высоты
     }
+
+    // opacity: 0;
+    // translate: 0 30%;
+    // &.--watcher-view {
+    //   transition: all 0.8s;
+    //   opacity: 1;
+    //   translate: 0 0;
+    // }
   }
 
   // .about__item
 
   &__item {
+    // плавний скейл кожного елемента.
+    scale: 0;
+
+    .--watcher-view & {
+      transition-duration: 0.5s;
+      @for $i from 1 through 7 {
+        &:nth-child(#{$i}) {
+          $delay: 0.1 * $i;
+          transition-delay: #{$delay}s;
+        }
+      }
+      scale: 1;
+    }
   }
 }
 
