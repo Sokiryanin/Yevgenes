@@ -46,6 +46,11 @@
     letter-spacing: -0.07em;
     color: $lightTextColor;
 
+    @media (max-width: toEm($mobile)) {
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
     &::before {
       content: url('@img/logo-header.svg');
       width: 32px;

@@ -2,8 +2,10 @@
   <div class="footer__container">
     <div data-fls-watcher class="footer__content">
       <div class="footer__header">
-        <h2 class="footer__header-title">Ready <span>to discuss?</span></h2>
-        <div class="footer__header-text">
+        <h2 class="footer__header-title" data-i18n-html="cta.title">
+          Ready <span>to discuss?</span>
+        </h2>
+        <div class="footer__header-text" data-i18n="cta.text">
           Let's talk about how we can create a website that not only looks
           great, but also drives real growth for your business.
         </div>
@@ -11,23 +13,24 @@
 
       <div class="footer__block">
         <div class="footer__block-form form-block">
-          <h3 class="form-block__title">
+          <h3 class="form-block__title" data-i18n-html="cta.formTitle">
             Fill the form <span>to discuss the project</span>
           </h3>
 
           <form id="contact-form" class="form-footer__form form-footer">
             <label class="form-footer__label">
-              Your name
+              <span data-i18n="form.name">Your name</span>
               <input
                 class="form-footer__input"
                 type="text"
                 name="name"
                 id="name"
+                data-i18n-placeholder="form.name"
               />
             </label>
 
             <label class="form-footer__label">
-              Phone
+              <span data-i18n="form.phone">Phone</span>
               <input
                 class="form-footer__input"
                 type="tel"
@@ -38,12 +41,19 @@
           </form>
 
           <div class="form-block__submit submit-block">
-            <button form="contact-form" class="submit-block__btn" type="submit">
+            <button
+              form="contact-form"
+              class="submit-block__btn"
+              type="submit"
+              data-i18n="form.submit"
+            >
               Submit
             </button>
 
             <div class="submit-block__error-message" id="form-error">
-              <p>You must fill in the highlighted fields to submit</p>
+              <p data-i18n="form.error">
+                You must fill in the highlighted fields to submit
+              </p>
             </div>
           </div>
         </div>
@@ -52,6 +62,7 @@
           <a href="tel:+380734990000" class="contacts-block__card">
             <div
               class="contacts-block__card-title contacts-block__card-title--phone"
+              data-i18n="footer.phone"
             >
               {Phone}
             </div>
@@ -61,8 +72,9 @@
           <a href="https://t.me/YevGenes" class="contacts-block__card">
             <div
               class="contacts-block__card-title contacts-block__card-title--telegram"
+              data-i18n="footer.telegram"
             >
-              {Telergam}
+              {Telegram}
             </div>
             <div class="contacts-block__card-link">@YevGenes</div>
           </a>
@@ -70,6 +82,7 @@
           <a href="mailto:mail@mail.com" class="contacts-block__card">
             <div
               class="contacts-block__card-title contacts-block__card-title--mail"
+              data-i18n="footer.email"
             >
               {Email}
             </div>
@@ -80,7 +93,7 @@
     </div>
   </div>
 
-  <!-- Додай в кінці сторінки перед </body> -->
+  <!-- Popup -->
   <div data-fls-popup="success-popup" aria-hidden="true" class="popup">
     <div data-fls-popup-wrapper class="popup__wrapper">
       <div data-fls-popup-body class="popup__body success-popup">
@@ -109,9 +122,10 @@
 
         <div data-fls-popup-content class="success-popup__content">
           <h2 class="success-popup__title">
-            Thank you, <span id="popup-name">Your name</span>!
+            <span data-i18n="popup.title">Thank you,</span>
+            <span id="popup-name">Your name</span>!
           </h2>
-          <p class="success-popup__text">
+          <p class="success-popup__text" data-i18n="popup.text">
             We will contact you shortly to discuss the details of the project.
           </p>
           <img src="@img/popup-img.png" alt="" class="success-popup__image" />

@@ -98,31 +98,22 @@ class Translator {
    * та замінює їх текст на переклад
    */
   updateDOM() {
-    // ----- Текстовий контент -----
-    // Шукаємо всі елементи з data-i18n="ключ.перекладу"
-    // Наприклад: <span data-i18n="nav.projects">Projects</span>
+    // Текст
     document.querySelectorAll('[data-i18n]').forEach((el) => {
-      const key = el.dataset.i18n; // Отримуємо ключ: "nav.projects"
-      const text = this.get(key); // Отримуємо переклад: "Проєкти"
-      if (text) el.textContent = text; // Замінюємо текст елемента
+      const text = this.t(el.dataset.i18n);
+      if (text) el.textContent = text;
     });
 
-    // ----- Placeholder для інпутів -----
-    // Наприклад: <input data-i18n-placeholder="form.name">
+    // HTML (для складної розмітки)
+    document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+      const html = this.t(el.dataset.i18nHtml);
+      if (html) el.innerHTML = html;
+    });
 
+    // Placeholder
     document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
-      const key = el.dataset.i18nPlaceholder;
-      const text = this.get(key);
+      const text = this.t(el.dataset.i18nPlaceholder);
       if (text) el.placeholder = text;
-    });
-
-    // ----- Aria-label для доступності -----
-    // Наприклад: <button data-i18n-aria="buttons.submit">
-
-    document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
-      const key = el.dataset.i18nAria;
-      const text = this.get(key);
-      if (text) el.setAttribute('aria-label', text);
     });
   }
 

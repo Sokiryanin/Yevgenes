@@ -226,7 +226,7 @@
   &__btn {
     border-radius: 16px;
     padding: 16px 48px;
-    width: 200px;
+    // width: 200px;
     background-color: $orangeColor;
 
     font-weight: 700;
@@ -239,7 +239,7 @@
     @media (max-width: toEm($tablet)) {
       border-radius: 16px;
       padding: 8px 24px;
-      width: 126px;
+      // width: 126px;
 
       font-weight: 500;
       font-size: 24px;

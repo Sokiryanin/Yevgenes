@@ -10,7 +10,9 @@
   }
 
   &__header {
-    display: grid;
+    // display: grid;
+    display: flex;
+    flex-direction: column;
     justify-items: center;
     width: 100%;
 
@@ -70,7 +72,7 @@
       @include adaptiveValue('font-size', 112, 48);
 
       // На мобильных — перенос в колонку
-      @media (max-width: toEm($tablet)) {
+      @media (max-width: toEm($mobile)) {
         flex-direction: column;
         gap: 4px;
       }
