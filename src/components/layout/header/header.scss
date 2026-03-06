@@ -184,3 +184,99 @@
     }
   }
 }
+
+// Lagn switcher
+
+.lang-switch {
+  position: absolute;
+  top: 50%;
+  @media (min-width: toEm($tablet)) {
+    /* 
+      Когда viewport шире 1448px — 
+      toggle не движется дальше, остаётся у края контейнера.
+    */
+
+    left: clamp(32px, calc((100vw - 1448px) / 2), 9999px);
+  }
+  transform: translateY(-50%);
+  z-index: 10;
+
+  z-index: 5;
+  width: 60px;
+  height: 38px;
+  background-color: rgba(32, 38, 56, 0.75);
+  border: 1px solid rgba(212, 216, 227, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  color: $lightTextColor;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $hoverColor;
+      color: $mainColor;
+    }
+  }
+
+  // Текст
+  &__text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: -0.07em;
+
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  // UA — видно коли EN активна
+  &__text--to-uk {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  // EN — видно коли UK активна
+  &__text--to-en {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  // Стан: українська активна
+  &.--uk {
+    .lang-switch__text--to-uk {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    .lang-switch__text--to-en {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  // ===== DESKTOP =====
+  @media (min-width: toEm($tablet)) {
+    margin-left: auto;
+    margin-right: 24px;
+  }
+
+  // ===== MOBILE (в меню) =====
+  @media (max-width: toEm($tablet)) {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    width: 44px;
+    height: 28px;
+
+    .lang-switch__text {
+      font-size: 12px;
+    }
+  }
+}

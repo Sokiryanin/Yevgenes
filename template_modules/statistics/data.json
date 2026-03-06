@@ -36,6 +36,11 @@
         "date": "05.03.2026",
         "start": 1772734040326,
         "end": 1772734058267
+      },
+      {
+        "date": "06.03.2026",
+        "start": 1772795116213,
+        "end": 1772801770440
       }
     ],
     "files": [
@@ -51,7 +56,15 @@
       "popup.js",
       "popup-img.png",
       "popup.scss",
-      "popup.html"
+      "popup.html",
+      "menu.scss",
+      "langSwitch.js",
+      "main.html",
+      "head.html",
+      "en.json",
+      "ua.json",
+      "translator.js",
+      "menu.html"
     ]
   }
 }
