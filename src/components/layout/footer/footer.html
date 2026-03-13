@@ -32,7 +32,6 @@
                 type="text"
                 name="name"
                 id="name"
-                data-i18n-placeholder="form.name"
               />
             </label>
 
@@ -104,7 +103,12 @@
   </div>
 
   <!-- Popup -->
-  <div data-fls-popup="success-popup" aria-hidden="true" class="popup">
+  <div
+    data-fls-popup="success-popup"
+    aria-hidden="true"
+    class="popup"
+    data-fls-popup-focus-off
+  >
     <div data-fls-popup-wrapper class="popup__wrapper">
       <div data-fls-popup-body class="popup__body success-popup">
         <button data-fls-popup-close type="button" class="popup__close">

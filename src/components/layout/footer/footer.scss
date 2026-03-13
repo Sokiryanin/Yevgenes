@@ -481,11 +481,6 @@
     letter-spacing: -0.05em;
     margin-bottom: 15px;
     color: $mainColor;
-
-    span {
-      // Ім'я користувача можна виділити
-      // color: $orangeColor;
-    }
   }
 
   // .success-popup__text
@@ -507,116 +502,6 @@
 
     @media (max-width: toEm($mobile)) {
       max-width: 200px;
-    }
-  }
-}
-
-.iti {
-  // Кнопка з флагом
-  .iti__selected-country {
-    padding-left: 5px;
-  }
-}
-
-// intl-tel-input кастомізація
-.iti {
-  width: 100%;
-
-  &__country-container {
-    width: 90px;
-  }
-
-  &iti__tel-input {
-    padding-left: calc(90px + 15px) !important; // ширина контейнера + відступ
-  }
-
-  // Флаг більший
-  &__flag {
-    transform: scale(1.4);
-  }
-
-  // Стрілка
-  &__arrow {
-    display: none;
-  }
-
-  // Код країни
-  &__selected-dial-code {
-    color: $mainColor;
-    font-weight: 500;
-    line-height: 1.35;
-    letter-spacing: -0.07em;
-    padding-left: 5px;
-  }
-
-  // Дропдаун
-  .iti__dropdown-content {
-    background-color: $mainColor;
-    border: 1px solid rgba(212, 216, 227, 0.2);
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  }
-
-  // Пошук
-  .iti__search-input {
-    background-color: rgba(212, 216, 227, 0.1);
-    border: none;
-    border-bottom: 1px solid rgba(212, 216, 227, 0.2);
-    color: #d4d8e3;
-    padding: 12px;
-    padding-left: 32px;
-
-    &::placeholder {
-      color: rgba(212, 216, 227, 0.4);
-    }
-  }
-
-  // Країна в списку
-  .iti__country {
-    padding: 10px 16px;
-
-    @include adaptiveValue('font-size', 24, 16);
-    font-weight: 500;
-    line-height: 1.35;
-    letter-spacing: -0.07em;
-    color: $lightTextColor;
-
-    @media (max-width: toEm($mobile)) {
-      line-height: 1.3;
-      letter-spacing: -0.05em;
-    }
-
-    &:hover {
-      background-color: rgba(212, 216, 227, 0.1);
-    }
-
-    &.iti__active {
-      background-color: rgba(232, 90, 90, 0.2);
-    }
-  }
-
-  .iti__dial-code {
-    color: rgba(212, 216, 227, 0.5);
-
-    @include adaptiveValue('font-size', 24, 16);
-    font-weight: 500;
-    line-height: 1.35;
-    letter-spacing: -0.07em;
-
-    @media (max-width: toEm($mobile)) {
-      line-height: 1.3;
-      letter-spacing: -0.05em;
-    }
-  }
-
-  // Скролбар
-  .iti__country-list {
-    &::-webkit-scrollbar {
-      width: 6px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: rgba(212, 216, 227, 0.3);
-      border-radius: 3px;
     }
   }
 }

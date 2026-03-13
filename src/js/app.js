@@ -19,11 +19,7 @@ window.addEventListener('load', () => {
   initTranslator();
 
   // 3. Потім форма
-  // initContactForm();
-
-  requestIdleCallback(() => {
-    initContactForm();
-  });
+  initContactForm();
 });
 addLoadedAttr();
 //
