@@ -62,7 +62,7 @@
   }
 
   &__body {
-    @include adaptiveValue('padding', 16, 12);
+    padding: 16px;
 
     display: flex;
     align-items: center;
@@ -90,30 +90,31 @@
     display: flex;
     justify-content: center;
   }
+
+  &__buttons {
+    display: flex;
+    z-index: 10;
+
+    @media (max-width: toEm($tablet)) {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // theme-switcher
 
 .theme-toggle {
-  display: inline-flex;
-  align-items: center;
+  z-index: 10;
+  display: flex;
+  align-self: center;
   justify-content: center;
 
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-
   @media (min-width: toEm($tablet)) {
-    /* 
-      Когда viewport шире 1448px — 
-      toggle не движется дальше, остаётся у края контейнера.
-    */
-
-    right: clamp(32px, calc((100vw - 1448px) / 2), 9999px);
+    margin-right: 87px;
   }
-
   /* --- Кнопка переключения темы --- */
   &__btn {
     position: relative;
@@ -192,96 +193,109 @@
 
 // Lagn switcher
 
+// .lang-switch {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   z-index: 10;
+//   display: inline-flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+
+//   font-size: 24px;
+//   line-height: 1.35;
+//   font-weight: 500;
+//   letter-spacing: -0.07em;
+//   color: $lightTextColor;
+//   transition: color 0.3s;
+
+//   @media (any-hover: hover) {
+//     &:hover {
+//       color: $hoverColor;
+//     }
+//   }
+// }
+
 .lang-switch {
   position: absolute;
-  top: 50%;
-  @media (min-width: toEm($tablet)) {
-    /* 
-      Когда viewport шире 1448px — 
-      toggle не движется дальше, остаётся у края контейнера.
-    */
-
-    left: clamp(32px, calc((100vw - 1448px) / 2), 9999px);
-  }
-  transform: translateY(-50%);
   z-index: 10;
-
-  z-index: 5;
-  width: 60px;
-  height: 38px;
-  background-color: rgba(32, 38, 56, 0.75);
-  border: 1px solid rgba(212, 216, 227, 0.25);
-  border-radius: 8px;
-  cursor: pointer;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 71px;
+  height: 100%; // Висота header__body
+  border: none;
+  border-radius: 0 16px 16px 0; // Закруглення справа як у header
   overflow: hidden;
-  transition: all 0.3s ease;
-  color: $lightTextColor;
+  cursor: pointer;
 
-  @media (any-hover: hover) {
-    &:hover {
-      background-color: $hoverColor;
-      color: $mainColor;
-    }
+  // ===== Адаптив для tablet/mobile =====
+
+  @media (max-width: toEm($tablet)) {
+    position: static;
+    flex-direction: row;
+    width: 84px;
+    border-radius: 4px;
   }
 
-  // Текст
-  &__text {
-    position: absolute;
-    inset: 0;
+  // Базовий стиль опції
+  &__option {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 18px;
-    line-height: 1.35;
+    flex: 1; // Рівні половини
+    width: 100%;
+
+    font-size: 24px;
     font-weight: 500;
-    letter-spacing: -0.07em;
+    letter-spacing: -0.03em;
+    line-height: 1.5;
 
     transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
+      background-color 0.3s ease,
+      color 0.3s ease;
+
+    @media (max-width: toEm($tablet)) {
+      font-size: 16px;
+    }
   }
 
-  // UA — видно коли EN активна
-  &__text--to-uk {
-    transform: translateY(0);
-    opacity: 1;
+  // ===== Стан: English активний (за замовчуванням) =====
+  &__option--en {
+    background-color: rgba(212, 216, 227, 0.75);
+    color: #202638;
   }
 
-  // EN — видно коли UK активна
-  &__text--to-en {
-    transform: translateY(100%);
-    opacity: 0;
+  &__option--uk {
+    background-color: rgba(32, 38, 56, 0.75);
+    color: rgba(212, 216, 227, 0.1);
   }
 
-  // Стан: українська активна
+  // ===== Стан: Ukrainian активний (клас --uk на кнопці) =====
   &.--uk {
-    .lang-switch__text--to-uk {
-      transform: translateY(-100%);
-      opacity: 0;
+    .lang-switch__option--en {
+      background-color: rgba(32, 38, 56, 0.75);
+      color: rgba(212, 216, 227, 0.1);
     }
-    .lang-switch__text--to-en {
-      transform: translateY(0);
-      opacity: 1;
+
+    .lang-switch__option--uk {
+      background-color: rgba(212, 216, 227, 0.75);
+      color: #202638;
     }
   }
 
-  // ===== DESKTOP =====
-  @media (min-width: toEm($tablet)) {
-    margin-left: auto;
-    margin-right: 24px;
-  }
-
-  // ===== MOBILE (в меню) =====
-  @media (max-width: toEm($tablet)) {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    width: 44px;
-    height: 28px;
-
-    .lang-switch__text {
-      font-size: 12px;
+  // Hover ефект (тільки desktop)
+  html:not([data-fls-touch]) & {
+    @media (any-hover: hover) {
+      &:hover {
+        .lang-switch__option--en,
+        .lang-switch__option--uk {
+          // Легке підсвічування при hover
+        }
+      }
     }
   }
 }

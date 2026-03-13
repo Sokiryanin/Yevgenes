@@ -23,7 +23,7 @@ export function initContactForm() {
   };
 
   const validateName = () => nameInput.value.trim().length >= 2;
-  const validatePhone = () => phoneInput.value.replace(/\D/g, '').length >= 6;
+  const validatePhone = () => phoneInput.value.replace(/\D/g, '').length >= 8;
 
   function handleSubmit() {
     let isValid = true;
@@ -61,7 +61,7 @@ export function initContactForm() {
         window.flsPopup.open('success-popup');
       } catch (e) {}
     }
-    console.log(submissions);
+
     form.reset();
     errorMessage?.classList.remove('--visible');
   }

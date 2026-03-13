@@ -119,6 +119,32 @@
     }
   }
 
+  .lang-switch {
+    // ===== Стан: English активний (за замовчуванням) =====
+    &__option--en {
+      background-color: rgba(32, 38, 56, 0.75);
+      color: #d4d8e3;
+    }
+
+    &__option--uk {
+      background-color: rgba(212, 216, 227, 0.75);
+      color: rgba(32, 38, 56, 0.1);
+    }
+
+    // ===== Стан: Ukrainian активний (клас --uk на кнопці) =====
+    &.--uk {
+      .lang-switch__option--en {
+        background-color: rgba(212, 216, 227, 0.75);
+        color: rgba(32, 38, 56, 0.1);
+      }
+
+      .lang-switch__option--uk {
+        background-color: rgba(32, 38, 56, 0.75);
+        color: #d4d8e3;
+      }
+    }
+  }
+
   .about {
     &__title {
       color: #7a7f8e;

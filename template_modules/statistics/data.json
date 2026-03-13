@@ -118,6 +118,11 @@
         "date": "13.03.2026",
         "start": 1773402033902,
         "end": 1773402556225
+      },
+      {
+        "date": "13.03.2026",
+        "start": 1773405376838,
+        "end": 1773405376838
       }
     ],
     "files": [
@@ -144,7 +149,8 @@
       "menu.html",
       "style.scss",
       "index.html",
-      "scroll.js"
+      "scroll.js",
+      "darklite.scss"
     ]
   }
 }

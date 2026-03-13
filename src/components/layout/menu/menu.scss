@@ -28,8 +28,8 @@
       max-height: 0;
       opacity: 0;
 
-      padding-top: 16px;
-      padding-bottom: 16px;
+      padding: 16px;
+
       transition:
         max-height 0.25s ease,
         opacity 0.25s ease;
@@ -51,6 +51,7 @@
     @media (max-width: toEm($tablet)) {
       gap: 32px;
       flex-direction: column;
+      margin-bottom: 32px;
     }
   }
 
