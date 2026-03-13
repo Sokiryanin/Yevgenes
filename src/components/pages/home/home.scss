@@ -1,0 +1,717 @@
+.hero {
+  @include adaptiveValue('padding-top', 208, 144);
+  text-align: center;
+  z-index: 1;
+
+  &__container {
+    @media (max-width: toEm($mobile)) {
+      padding: 0 16px;
+    }
+  }
+
+  &__header {
+    // display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    width: 100%;
+
+    opacity: 0;
+    // transform: translate(0, -10%);
+    // position: relative;
+
+    [data-fls-loaded] & {
+      animation: show-items 1.5s ease forwards 0.3s;
+    }
+
+    @keyframes show-items {
+      0% {
+        top: 10%;
+        opacity: 0;
+      }
+      100% {
+        top: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-weight: 400;
+    letter-spacing: -0.07em;
+    line-height: 1.35;
+    text-transform: uppercase;
+    color: $orangeColor;
+    @include adaptiveValue('font-size', 24, 16);
+    margin-bottom: 4px;
+  }
+
+  &__title {
+    font-family: $fontSecondary;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    color: $mainColor;
+    @include adaptiveValue('font-size', 112, 48);
+
+    @media (min-width: toEm($tablet)) {
+      margin-bottom: -16px;
+    }
+
+    // Группа слов + иконка
+    &-group {
+      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: $orangeColor;
+      font-family: $fontFamily;
+      font-weight: 700;
+      letter-spacing: -0.07em;
+      @include adaptiveValue('font-size', 112, 48);
+
+      // На мобильных — перенос в колонку
+      @media (max-width: toEm($mobile)) {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    @include adaptiveValue('width', 64, 32);
+    @include adaptiveValue('height', 64, 32);
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  &__word {
+    display: inline-block;
+  }
+
+  &__text {
+    position: relative;
+    display: inline-block;
+    font-family: $fontSecondary;
+    font-weight: 400;
+    color: #7a808d;
+    @include adaptiveValue('font-size', 112, 48);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      padding-top: 12px;
+      transform: translateX(-50%);
+      width: 100%; // линия равна ширине текста!
+      height: 30px; // можно адаптировать
+      background: url('@img/lines.svg') center/contain no-repeat;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* темна лінія */
+    [data-fls-darklite-dark] &::after {
+      background: url('@img/lines-dark.svg') center/contain no-repeat;
+    }
+  }
+}
+
+// ================
+
+.project {
+  @include adaptiveValue('padding-top', 128, 96);
+  &__container {
+    max-width: 100vw;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  // .project__slider
+
+  &__slider {
+  }
+
+  // .project__slider-wrapper
+
+  &__slider-wrapper {
+  }
+
+  // .project__slider-slide
+
+  &__slider-slide {
+    width: 712px; // максимальная ширина центрального слайда
+    max-width: 90vw; // для адаптивности
+    aspect-ratio: 712 / 534; // пропорции для desktop
+
+    flex-shrink: 0;
+    border-radius: 24px;
+    overflow: hidden;
+
+    box-shadow:
+      0 2px 4px 0 rgba(32, 38, 56, 0.15),
+      0 0 8px 0 rgba(32, 38, 56, 0.15);
+
+    @media (max-width: 768px) {
+      // мобилка
+
+      aspect-ratio: 1 / 1; // квадрат
+      max-width: calc(100vw - 32px); // с учётом отступов
+    }
+  }
+
+  // .project__controls
+  &__controls {
+    @include adaptiveValue('gap', 48, 24);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    // gap: 48px;
+
+    @media (max-width: toEm($mobile)) {
+      max-width: 100%; // или убрать max-width вообще
+      padding: 0 16px; // отступы от краёв экрана
+      padding-top: 24px;
+    }
+  }
+
+  // .project__arrow
+
+  &__arrow {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #b2b7c3 url('@img/arrow-left.svg') center no-repeat;
+    background-size: 14px 26px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $hoverColor;
+      }
+    }
+
+    @media (max-width: toEm($mobile)) {
+      // display: none;
+      background-size: 10px 10px;
+      width: 48px;
+      height: 48px;
+      background-size: 10px 20px;
+    }
+
+    &--right {
+      transform: rotate(180deg);
+    }
+
+    &.swiper-button-disabled {
+      background: #e3e6f0 url('@img/arrow-left.svg') center no-repeat;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  // .project__bullets
+  &__bullets {
+    @include adaptiveValue('column-gap', 24, 14);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --swiper-pagination-bullet-horizontal-gap: 0px;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+  }
+}
+
+.swiper-pagination-bullet {
+  transition: all 0.3s ease;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #b2b7c3;
+  cursor: pointer;
+  will-change: flex-basis; // подсказка браузеру
+  transform: translateZ(0); // форсим GPU
+
+  @media (max-width: toEm($mobile)) {
+    flex-basis: 16px;
+    height: 16px;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $orangeColor;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 72px;
+
+  @media (max-width: toEm($mobile)) {
+    flex-basis: 48px;
+  }
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transition: box-shadow 0.3s ease; // добавляем плавность для тени
+
+  @media (max-width: toEm($tablet)) {
+    outline: 2px solid rgba(228, 115, 92, 0.75);
+    outline-offset: -2px; // Заставляет рамку рисоваться внутри слайда
+
+    box-shadow:
+      0 2px 4px 0 rgba(32, 38, 56, 0.15),
+      0 0 8px 0 rgba(32, 38, 56, 0.15);
+
+    .slide-project__info {
+      opacity: 1;
+    }
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      // Заменяем border на outline с небольшим смещением внутрь
+      outline: 2px solid rgba(228, 115, 92, 0.75);
+      outline-offset: -2px; // Заставляет рамку рисоваться внутри слайда
+
+      box-shadow:
+        0 2px 4px 0 rgba(32, 38, 56, 0.15),
+        0 0 8px 0 rgba(32, 38, 56, 0.15);
+    }
+  }
+
+  @media (min-width: toEm($tablet)) {
+    @media (any-hover: hover) {
+      &:hover {
+        .slide-project__info {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+.slide-project {
+  // .slide-project__inner
+
+  &__inner {
+  }
+
+  // .slide-project__picture
+
+  &__picture {
+  }
+
+  // .slide-project__image
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+
+    @media (max-width: 768px) {
+      // мобилка
+
+      aspect-ratio: 1 / 1; // квадрат
+      // max-width: calc(100vw - 32px); // с учётом отступов
+    }
+  }
+
+  // .slide-project__info
+
+  &__info {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+
+    padding: 16px 24px;
+    border-radius: 16px;
+
+    backdrop-filter: blur(40px);
+    background-color: rgba(32, 38, 56, 0.1);
+    color: $mainColor;
+    border: 1px solid rgba(89, 99, 111, 0.2);
+
+    opacity: 0;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--light {
+      color: $lightTextColor;
+    }
+
+    @media (max-width: toEm($tablet)) {
+      padding: 8px 16px;
+    }
+
+    @media (max-width: toEm($mobile)) {
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+    }
+  }
+
+  // .slide-project__info-text
+
+  &__info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  &__info-text p {
+    font-weight: 400;
+    @include adaptiveValue('font-size', 24, 16);
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+    text-align: center;
+
+    @media (max-width: toEm($mobile)) {
+      line-height: 1.3;
+    }
+  }
+  // .slide-project__title
+
+  &__title {
+    @include adaptiveValue('font-size', 48, 32);
+    font-family: $fontSecondary;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+  }
+
+  // .slide-project__btn
+
+  &__btn {
+    display: flex;
+    align-items: center; /* одна ось по вертикали */
+    justify-content: space-between;
+
+    border: none;
+    background-color: $orangeColor;
+    color: $mainColor;
+    border-radius: 8px;
+    padding: 8px 24px;
+    gap: 8px;
+
+    transition: background-color 0.3s ease;
+
+    &--text {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -0.07em;
+
+      @media (max-width: toEm($mobile)) {
+        display: none;
+      }
+    }
+
+    &--icon {
+      width: 24px;
+      height: 24px;
+      color: $mainColor;
+
+      flex-shrink: 0; /* иконка не сжимается */
+      display: block;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $hoverColor;
+      }
+    }
+
+    @media (max-width: toEm($mobile)) {
+      padding: 8px;
+    }
+  }
+}
+
+// ============== About =================
+
+.about {
+  @include adaptiveValue('padding-top', 132, 96);
+  // .about__container
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: toEm($mobile)) {
+      padding: 0 16px;
+    }
+  }
+
+  // .about__title
+
+  &__title {
+    font-family: $fontSecondary;
+    @include adaptiveValue('font-size', 112, 44);
+    @include adaptiveValue('margin-bottom', 48, 32);
+    display: block;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+
+    span {
+      color: #7a808d;
+    }
+
+    opacity: 0;
+    translate: 0 30%;
+    &.--watcher-view {
+      transition: all 0.8s;
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  // .about__cards
+
+  &__cards {
+    display: flex;
+    @include adaptiveValue('gap', 24, 16);
+    align-content: center;
+    text-align: center;
+    margin-bottom: 32px;
+
+    @media (max-width: toEm($tablet)) {
+      flex-direction: column;
+      margin-bottom: 24px;
+    }
+
+    opacity: 0;
+    translate: 0 30%;
+    &.--watcher-view {
+      transition: all 0.8s;
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  // .about__card
+
+  &__card {
+    border: 1px solid rgba(89, 99, 111, 0.1);
+    border-radius: 16px;
+    padding: 16px 24px;
+
+    backdrop-filter: blur(40px);
+    background-color: #c2c6d2;
+
+    flex: 1 1 30%;
+    max-width: 467px;
+
+    @media (max-width: toEm($tablet)) {
+      // Отменяем ограничение, заданное на десктопе
+      max-width: 100%;
+
+      // Делаем карточку полной ширины.
+      // В режиме column, чтобы занять всю доступную ширину по горизонтали,
+      // достаточно установить width: 100% (или flex-basis: 100%).
+      width: 100%;
+    }
+  }
+
+  // .about__items
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    @include adaptiveValue('gap', 32, 16);
+
+    align-items: center;
+    justify-content: center;
+    max-width: 957px;
+    @media (max-width: toEm($mobile)) {
+      align-items: stretch; // <--- Это ключевой момент, чтобы все карточки стали одинаковой высоты
+    }
+
+    // opacity: 0;
+    // translate: 0 30%;
+    // &.--watcher-view {
+    //   transition: all 0.8s;
+    //   opacity: 1;
+    //   translate: 0 0;
+    // }
+  }
+
+  // .about__item
+
+  &__item {
+    // плавний скейл кожного елемента.
+    scale: 0;
+
+    .--watcher-view & {
+      transition-duration: 0.5s;
+      @for $i from 1 through 7 {
+        &:nth-child(#{$i}) {
+          $delay: 0.1 * $i;
+          transition-delay: #{$delay}s;
+        }
+      }
+      scale: 1;
+    }
+  }
+}
+
+.card-about {
+  font-weight: 400;
+  // .card-about__block
+
+  &__block {
+  }
+
+  // .card-about__tag
+
+  &__tag {
+    @include adaptiveValue('font-size', 24, 16);
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+    color: $orangeColor;
+  }
+
+  // .card-about__title
+
+  &__title {
+    @include adaptiveValue('font-size', 48, 32);
+    @include adaptiveValue('margin-bottom', 32, 24);
+
+    font-family: $fontSecondary;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+  }
+
+  // .card-about__text
+
+  &__text {
+    @include adaptiveValue('font-size', 24, 16);
+    font-family: $fontSecondary;
+    line-height: 1.5;
+    letter-spacing: -0.03em;
+  }
+}
+
+.item-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  padding: 16px 32px;
+
+  backdrop-filter: blur(40px);
+  background-color: rgba(32, 38, 56, 0.55);
+
+  @media (max-width: toEm($mobile)) {
+    width: calc(50% - 12px);
+    padding: 8px 18px;
+
+    &:last-child {
+      width: 100%;
+    }
+  }
+
+  // .item-about__img
+
+  &__img {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    width: 32px;
+    height: 32px;
+
+    @media (max-width: toEm($mobile)) {
+      width: 26px;
+      height: 26px;
+
+      margin-bottom: 4px;
+    }
+  }
+
+  &__icon {
+    color: rgba($lightTextColor, 0.7);
+    fill: none;
+    width: 32px;
+    height: 32px;
+
+    @media (max-width: toEm($mobile)) {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  // .item-about__title
+
+  &__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    text-align: center;
+    color: $lightTextColor;
+
+    @media (max-width: toEm($mobile)) {
+      font-size: 16px;
+    }
+  }
+}
+
+#back-to-top {
+  svg {
+    margin: 0 !important;
+  }
+
+  backdrop-filter: blur(40px) !important;
+  box-shadow: none !important;
+  transition: background-color 0.3s ease;
+
+  width: 64px !important;
+  height: 64px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $hoverColor;
+      color: $mainColor;
+    }
+  }
+
+  @media (max-width: toEm($mobile)) {
+    width: 48px !important;
+    height: 48px !important;
+  }
+}

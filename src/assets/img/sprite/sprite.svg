@@ -1,0 +1,79 @@
+<svg
+  aria-hidden="true"
+  style="position:absolute;width:0;height:0;overflow:hidden"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+
+    <!-- LINK -->
+    <symbol id="icon-link" viewBox="0 0 32 32">
+      <path
+        d="M16 8h-8c-0.707 0-1.386 0.281-1.886 0.781s-0.781 1.178-0.781 1.886v13.333c0 0.707 0.281 1.385 0.781 1.886s1.178 0.781 1.886 0.781h13.333c0.707 0 1.385-0.281 1.886-0.781s0.781-1.178 0.781-1.886v-8"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.6667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M14.667 17.333l12-12"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.6667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M20 5.333h6.667v6.667"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.6667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <!-- MAIL -->
+    <symbol id="icon-mail" viewBox="0 0 32 32">
+      <path
+        d="M4 9.333c0-0.707 0.281-1.386 0.781-1.886s1.178-0.781 1.886-0.781h18.667c0.707 0 1.386 0.281 1.886 0.781s0.781 1.178 0.781 1.886v13.333c0 0.707-0.281 1.386-0.781 1.886s-1.178 0.781-1.886 0.781h-18.667c-0.707 0-1.386-0.281-1.886-0.781s-0.781-1.178-0.781-1.886v-13.333z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M4 9.334l12 8 12-8"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <!-- PHONE -->
+    <symbol id="icon-phone" viewBox="0 0 32 32">
+      <path
+        d="M4.693 1.28h6.827l3.413 8.533-4.267 2.56c1.828 3.706 4.827 6.706 8.533 8.533l2.56-4.267 8.533 3.413v6.827c0 0.905-0.36 1.773-1 2.414s-1.508 1-2.414 1c-6.657-0.405-12.936-3.232-17.652-7.948s-7.543-10.995-7.948-17.652c0-0.905 0.36-1.773 1-2.414s1.508-1 2.414-1z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.56"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <!-- TELEGRAM -->
+    <symbol id="icon-telegram" viewBox="0 0 35 32">
+      <path
+        d="M22.667 12l-7.111 7.111 10.667 10.667 7.111-28.444-32 12.444 7.111 3.556 3.556 10.667 5.333-7.111"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.6667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+  </defs>
+</svg>

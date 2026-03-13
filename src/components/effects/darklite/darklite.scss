@@ -1,0 +1,320 @@
+[data-fls-darklite-light] {
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+  body {
+    background-color: $bgColor;
+  }
+
+  .menu {
+    &__body {
+      @media (max-width: toEm($mobile)) {
+        background-color: rgba(32, 38, 56);
+      }
+    }
+  }
+}
+
+[data-fls-darklite-dark] {
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+
+  body {
+    background-color: $mainColor;
+  }
+
+  .header {
+    &__body {
+      &::before {
+        backdrop-filter: blur(40px);
+        background: rgba(212, 216, 227, 0.65);
+      }
+    }
+
+    &__logo {
+      color: $mainColor;
+      &::before {
+        content: url('@img/logo-header-dark.svg');
+      }
+    }
+  }
+
+  .menu {
+    &__body {
+      @media (max-width: toEm($tablet)) {
+        background-color: #59636f;
+      }
+    }
+
+    &__item {
+      color: $mainColor;
+      @media (max-width: toEm($tablet)) {
+        color: $lightTextColor;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          color: $hoverColor;
+        }
+      }
+
+      &:last-child {
+        color: $mainColor;
+
+        @media (any-hover: hover) {
+          &:hover {
+            color: $mainColor;
+            background-color: $hoverColor;
+          }
+        }
+      }
+    }
+  }
+
+  .hero {
+    &__title {
+      color: $lightTextColor;
+    }
+  }
+
+  .theme-toggle {
+    &__btn {
+      background-color: rgba(212, 216, 227, 0.65);
+    }
+
+    &__icon {
+      color: $lightTextColor;
+      background-color: rgba($mainColor, 0.75);
+      transform: translateX(24px);
+
+      &::before {
+        background-image: url('@img/sun.svg');
+      }
+
+      @media (max-width: toEm($tablet)) {
+        /* Пересчёт смещения: 44 - 24 - 4px padding = 16px */
+        transform: translateX(16px);
+      }
+    }
+
+    &__icon--moon {
+      transform: translateX(
+        24px
+      ); // 60 - 32 - (2px*2) = 24px свободного пространства
+      opacity: 0;
+
+      @media (max-width: toEm($tablet)) {
+        transform: translateX(16px);
+      }
+    }
+
+    &__icon--sun {
+      transform: translateX(24px);
+      opacity: 1;
+
+      @media (max-width: toEm($tablet)) {
+        transform: translateX(16px);
+      }
+    }
+  }
+
+  .about {
+    &__title {
+      color: #7a7f8e;
+      span {
+        color: $lightTextColor;
+      }
+    }
+
+    // .about__card
+    &__card {
+      color: $lightTextColor;
+      background-color: rgba(212, 216, 227, 0.1);
+    }
+
+    .item-about {
+      background-color: rgba(212, 216, 227, 0.45);
+
+      &__icon {
+        color: rgba($mainColor, 0.7);
+        fill: none;
+      }
+
+      &__title {
+        color: $mainColor;
+      }
+    }
+  }
+
+  .project {
+    // .project__arrow
+
+    &__arrow {
+      background: #444f5f url('@img/arrow-left-light.svg') center no-repeat;
+      transition: background 0.3s ease;
+
+      @media (any-hover: hover) {
+        &:hover {
+          background: $hoverColor url('@img/arrow-left.svg') center no-repeat;
+        }
+      }
+      // .project__arrow--left
+
+      &--left {
+      }
+
+      // .project__arrow--right
+
+      &--right {
+      }
+    }
+
+    // .project__bullets
+
+    &__bullets {
+      .swiper-pagination-bullet {
+        background-color: #444f5f;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: $orangeColor;
+      }
+    }
+  }
+
+  .footer {
+    // .footer__container
+
+    &__container {
+    }
+
+    // .footer__content
+
+    &__content {
+      background-color: rgba(212, 216, 227, 0.1);
+    }
+
+    // .footer__header
+
+    &__header {
+    }
+
+    // .footer__header-title
+
+    &__header-title {
+      color: rgba(212, 216, 227, 0.5);
+
+      span {
+        color: $lightTextColor;
+      }
+    }
+
+    // .footer__header-text
+
+    &__header-text {
+      color: $lightTextColor;
+    }
+
+    .footer__question-mark {
+      color: rgba(212, 216, 227, 0.5);
+    }
+
+    // .footer__block
+
+    &__block {
+    }
+
+    // .footer__block-form
+
+    &__block-form {
+    }
+
+    // .footer__block-contacts
+
+    &__block-contacts {
+    }
+  }
+
+  .form-block {
+    background-color: rgba(212, 216, 227, 0.45);
+
+    // .form-block__title
+    &__title {
+      color: $mainColor;
+
+      span {
+        color: #444f5f;
+      }
+    }
+
+    // .form-block__btn
+
+    &__btn {
+    }
+  }
+  .form-footer {
+    // .form-footer__form
+
+    &__form {
+    }
+
+    // .form-footer__label
+
+    &__label {
+      color: $mainColor;
+    }
+
+    // .form-footer__input
+
+    &__input {
+      border-color: #444f5f;
+    }
+  }
+  .contacts-block {
+    // .contacts-block__card
+
+    &__card {
+    }
+
+    // .contacts-block__card-title
+
+    &__card-title {
+      color: rgba($lightTextColor, 0.7);
+      background-color: $mainColor;
+      // .contacts-block__card-title--phone
+
+      &--phone {
+        &::before {
+          background-color: $lightTextColor;
+        }
+      }
+
+      // .contacts-block__card-title--telegram
+
+      &--telegram {
+        &::before {
+          background-color: $lightTextColor;
+        }
+      }
+
+      // .contacts-block__card-title--mail
+
+      &--mail {
+        &::before {
+          background-color: $lightTextColor;
+        }
+      }
+    }
+
+    // .contacts-block__card-link
+
+    &__card-link {
+    }
+  }
+
+  #back-to-top {
+    background-color: rgba(178, 183, 195, 0.5);
+    color: $mainColor !important;
+  }
+}

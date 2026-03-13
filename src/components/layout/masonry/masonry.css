@@ -1,0 +1,11 @@
+.masonry__item {
+  border: 1px solid #000;
+  padding: 30px;
+}
+
+.filter-masonry {
+  display: flex;
+}
+.filter-masonry__link {
+  padding: 10px;
+}/*# sourceMappingURL=masonry.css.map */

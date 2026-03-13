@@ -1,0 +1,627 @@
+.footer {
+  @include adaptiveValue('padding-top', 128, 96);
+  padding-bottom: 32px;
+  // .footer__container
+
+  &__container {
+    @media (max-width: toEm($mobile)) {
+      padding: 0 16px;
+    }
+  }
+
+  // .footer__content
+
+  &__content {
+    border-radius: 16px;
+    border: 1px solid rgba(89, 99, 111, 0.1);
+    padding: 32px;
+    backdrop-filter: blur(40px);
+    background-color: #c2c6d2;
+
+    @media (max-width: toEm($mobile)) {
+      padding: 8px;
+    }
+
+    translate: 0 30%;
+    transition-property: translate;
+    transition-duration: 1s;
+    &.--watcher-view {
+      translate: 0 0;
+    }
+  }
+
+  // .footer__header
+
+  &__header {
+    display: block;
+    margin: 0 auto;
+
+    text-align: center;
+    max-width: 957px;
+
+    @include adaptiveValue('margin-bottom', 48, 24);
+  }
+
+  // .footer__header-title
+
+  &__header-title {
+    @include adaptiveValue('font-size', 112, 48);
+    font-family: $fontSecondary;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    color: rgba(32, 38, 56, 0.5);
+
+    @include adaptiveValue('margin-bottom', 24, 12);
+
+    span {
+      color: $mainColor;
+    }
+  }
+
+  // &__header-title::after {
+  //   content: '?';
+  //   // letter-spacing: 0;
+  //   color: rgba(32, 38, 56, 0.5); // цвет как у заголовка
+  //   @include adaptiveValue('font-size', 112, 48);
+  //   font-family: $fontSecondary;
+  //   font-weight: 400;
+  //   line-height: 1.1;
+  //   letter-spacing: -0.05em;
+  // }
+
+  // .footer__header-text
+
+  &__header-text {
+    @include adaptiveValue('font-size', 32, 24);
+    font-family: $fontSecondary;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+
+    @media (max-width: toEm($mobile)) {
+      font-weight: 400;
+
+      line-height: 1.5;
+      letter-spacing: -0.03em;
+    }
+  }
+
+  .footer__question-mark {
+    color: rgba(32, 38, 56, 0.5); /* нужный цвет */
+  }
+  // .footer__block
+
+  &__block {
+    display: flex;
+    gap: 24px;
+    @media (max-width: toEm($mobile)) {
+      flex-direction: column;
+    }
+  }
+
+  // .footer__block-form
+
+  &__block-form {
+  }
+
+  // .footer__block-contacts
+
+  &__block-contacts {
+    flex: 1 1 581px;
+    max-width: 581px;
+
+    @media (max-width: toEm($mobile)) {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+.form-block {
+  border: 1px solid rgba(89, 99, 111, 0.2);
+  border-radius: 12px;
+  padding: 32px;
+  background-color: rgba(32, 38, 56, 0.55);
+  max-width: 803px;
+
+  @media (max-width: toEm($mobile)) {
+    padding: 24px;
+    max-width: 100%;
+  }
+
+  // .form-block__title
+
+  &__title {
+    @include adaptiveValue('font-size', 48, 32);
+    @include adaptiveValue('margin-bottom', 32, 24);
+    font-family: $fontSecondary;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    color: $lightTextColor;
+    margin-bottom: 32px;
+
+    span {
+      @include adaptiveValue('font-size', 32, 24);
+      color: rgba(212, 216, 227, 0.5);
+    }
+  }
+}
+
+.form-footer {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+
+  @media (max-width: toEm($tablet)) {
+    flex-direction: column;
+  }
+  // .form-footer__label
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include adaptiveValue('font-size', 24, 16);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    color: $lightTextColor;
+
+    @media (max-width: toEm($mobile)) {
+      line-height: 1.3;
+      letter-spacing: -0.05em;
+    }
+  }
+
+  // .form-footer__input
+
+  &__input {
+    border: 1px solid rgba(212, 216, 227, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    background-color: rgba(212, 216, 227, 0.5);
+    font-family: $fontSecondary;
+
+    // Темний колір тексту завжди
+    color: $mainColor;
+
+    // Прибираємо дефолтний outline
+    outline: none;
+
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+
+    // Кастомний фокус
+    &:focus {
+      border-color: $hoverColor;
+      // або з glow ефектом:
+      // box-shadow: 0 0 0 3px rgba(212, 216, 227, 0.2);
+    }
+
+    // &:not(:placeholder-shown):not(:focus) {
+    //   // border-color: $hoverColor;
+    // }
+
+    &.--form-error {
+      border-color: #e53563 !important;
+      // background-color: rgba(232, 90, 90, 0.1) !important;
+    }
+
+    // Автозаповнення — темний текст + зберігаємо фон
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: $mainColor;
+      // -webkit-box-shadow: 0 0 0px 1000px rgba(212, 216, 227, 0.4) inset;
+      // box-shadow: 0 0 0px 1000px rgba(212, 216, 227, 0.4) inset;
+      border-color: $hoverColor;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+}
+
+.submit-block {
+  display: flex;
+  // justify-content: space-between;
+  // justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  // На мобілці — колонка, повідомлення зверху
+  @media (max-width: toEm($tablet)) {
+    flex-direction: column-reverse; // кнопка внизу, повідомлення зверху
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  // .form-block__btn
+
+  &__btn {
+    border-radius: 16px;
+    padding: 16px 48px;
+    // width: 200px;
+    background-color: $orangeColor;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.3;
+    letter-spacing: -0.07em;
+
+    transition: background-color 0.3s ease;
+
+    @media (max-width: toEm($tablet)) {
+      border-radius: 16px;
+      padding: 8px 24px;
+      // width: 126px;
+
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -0.07em;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $hoverColor;
+      }
+    }
+  }
+
+  // Повідомлення про помилку
+  &__error-message {
+    // font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transition: opacity 0.3s ease;
+
+    font-family: $fontSecondary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.03em;
+    color: #d4d8e3;
+    background-color: #e53663;
+
+    border-radius: 8px;
+    padding: 8px 16px;
+
+    &.--visible {
+      opacity: 1;
+      visibility: visible;
+      height: auto;
+      width: 100%;
+      // margin-top: 8px;
+    }
+  }
+}
+
+.contacts-block {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: grid;
+  /* Создаем две колонки одинаковой ширины */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+
+  @media (max-width: 1130px) {
+    grid-template-columns: 1fr;
+    padding: 0;
+    gap: 24px;
+  }
+
+  // .contacts-block__card
+
+  &__card {
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &:last-child {
+      grid-column: 1 / -1;
+    }
+
+    &:hover .contacts-block__card-link {
+      // ← hover на card
+      background-color: $hoverColor;
+      color: $mainColor;
+    }
+  }
+
+  // .contacts-block__card-title
+
+  &__card-title {
+    position: relative;
+    gap: 4px;
+    background-color: #d4d8e3;
+    color: rgba($mainColor, 0.7);
+
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-align: center;
+    letter-spacing: -0.07em;
+
+    @include adaptiveValue('font-size', 24, 16);
+    @include adaptiveValue('line-height', 1.35, 1.3);
+
+    font-weight: 400;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1;
+
+    &--phone {
+      &::before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        flex-shrink: 0;
+
+        /* Иконка теперь выступает в роли маски (трафарета) */
+        -webkit-mask-image: url('@img/phone.svg');
+        mask-image: url('@img/phone.svg');
+
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-position: center;
+        mask-position: center;
+
+        /* ЭТОТ ЦВЕТ БУДЕТ ЦВЕТОМ ИКОНКИ */
+        background-color: $mainColor;
+        transition: background-color 0.3s ease;
+
+        @media (max-width: toEm($mobile)) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    &--mail {
+      &::before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        flex-shrink: 0;
+
+        /* Иконка теперь выступает в роли маски (трафарета) */
+        -webkit-mask-image: url('@img/mail.svg');
+        mask-image: url('@img/mail.svg');
+
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-position: center;
+        mask-position: center;
+
+        /* ЭТОТ ЦВЕТ БУДЕТ ЦВЕТОМ ИКОНКИ */
+        background-color: $mainColor;
+        transition: background-color 0.3s ease;
+
+        @media (max-width: toEm($mobile)) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    &--telegram {
+      &::before {
+        content: '';
+        width: 25px;
+        height: 25px;
+        flex-shrink: 0;
+
+        /* Иконка теперь выступает в роли маски (трафарета) */
+        -webkit-mask-image: url('@img/telegram.svg');
+        mask-image: url('@img/telegram.svg');
+
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-position: center;
+        mask-position: center;
+
+        /* ЭТОТ ЦВЕТ БУДЕТ ЦВЕТОМ ИКОНКИ */
+        background-color: $mainColor;
+
+        transition: background-color 0.3s ease;
+
+        @media (max-width: toEm($mobile)) {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  // .contacts-block__card-link
+
+  .contacts-block__card-link {
+    color: $orangeColor;
+    @include adaptiveValue('font-size', 24, 16);
+    @include adaptiveValue('line-height', 1.35, 1.3);
+
+    font-weight: 500;
+    letter-spacing: -0.07em;
+    text-align: center;
+
+    padding: 24px 8px;
+    background-color: #444f5f;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1;
+
+    transition: background-color 0.3s ease;
+  }
+}
+
+.success-popup {
+  // .success-popup__title
+  &__title {
+    font-family: $fontSecondary;
+    font-weight: 400;
+    @include adaptiveValue('font-size', 48, 32);
+    line-height: 1.1;
+    letter-spacing: -0.05em;
+    margin-bottom: 15px;
+    color: $mainColor;
+
+    span {
+      // Ім'я користувача можна виділити
+      // color: $orangeColor;
+    }
+  }
+
+  // .success-popup__text
+  &__text {
+    @include adaptiveValue('font-size', 24, 16);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.03em;
+    color: $mainColor;
+    margin-bottom: 32px;
+  }
+
+  // .success-popup__image
+  &__image {
+    max-width: 280px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+
+    @media (max-width: toEm($mobile)) {
+      max-width: 200px;
+    }
+  }
+}
+
+.iti {
+  // Кнопка з флагом
+  .iti__selected-country {
+    padding-left: 5px;
+  }
+}
+
+// intl-tel-input кастомізація
+.iti {
+  width: 100%;
+
+  &__country-container {
+    width: 90px;
+  }
+
+  &iti__tel-input {
+    padding-left: calc(90px + 15px) !important; // ширина контейнера + відступ
+  }
+
+  // Флаг більший
+  &__flag {
+    transform: scale(1.4);
+  }
+
+  // Стрілка
+  &__arrow {
+    display: none;
+  }
+
+  // Код країни
+  &__selected-dial-code {
+    color: $mainColor;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    padding-left: 5px;
+  }
+
+  // Дропдаун
+  .iti__dropdown-content {
+    background-color: $mainColor;
+    border: 1px solid rgba(212, 216, 227, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  // Пошук
+  .iti__search-input {
+    background-color: rgba(212, 216, 227, 0.1);
+    border: none;
+    border-bottom: 1px solid rgba(212, 216, 227, 0.2);
+    color: #d4d8e3;
+    padding: 12px;
+    padding-left: 32px;
+
+    &::placeholder {
+      color: rgba(212, 216, 227, 0.4);
+    }
+  }
+
+  // Країна в списку
+  .iti__country {
+    padding: 10px 16px;
+
+    @include adaptiveValue('font-size', 24, 16);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+    color: $lightTextColor;
+
+    @media (max-width: toEm($mobile)) {
+      line-height: 1.3;
+      letter-spacing: -0.05em;
+    }
+
+    &:hover {
+      background-color: rgba(212, 216, 227, 0.1);
+    }
+
+    &.iti__active {
+      background-color: rgba(232, 90, 90, 0.2);
+    }
+  }
+
+  .iti__dial-code {
+    color: rgba(212, 216, 227, 0.5);
+
+    @include adaptiveValue('font-size', 24, 16);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.07em;
+
+    @media (max-width: toEm($mobile)) {
+      line-height: 1.3;
+      letter-spacing: -0.05em;
+    }
+  }
+
+  // Скролбар
+  .iti__country-list {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(212, 216, 227, 0.3);
+      border-radius: 3px;
+    }
+  }
+}
+
+// Або універсально для всіх інпутів форми
+#contact-form input::placeholder {
+  color: #59636f;
+}

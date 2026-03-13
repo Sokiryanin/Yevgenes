@@ -1,0 +1,48 @@
+[data-fls-header-scroll] {
+  transition:
+    transform 0.3s ease,
+    margin-top 0.3s ease;
+
+  &.--header-scroll {
+    // top: 15px;
+  }
+}
+
+// Прибираємо стікі хедер при скролі вниз
+[data-fls-header-scroll-show] {
+  transition: margin-top 0.3s ease;
+
+  &.--header-scroll {
+    margin-top: -85px;
+
+    @media (min-width: toEm($mobile)) {
+      margin-top: -115px;
+    }
+  }
+
+  &.--header-show {
+    margin-top: 0;
+  }
+}
+
+// [data-fls-header-scroll] {
+//   transition: transform 0.3s ease;
+//   will-change: transform;
+
+//   &.--header-scroll {
+//     // styles
+//   }
+// }
+
+// [data-fls-header-scroll-show] {
+//   transition: transform 0.3s ease;
+//   will-change: transform;
+
+//   &.--header-scroll {
+//     transform: translateY(-100%);
+//   }
+
+//   &.--header-show {
+//     transform: translateY(0);
+//   }
+// }

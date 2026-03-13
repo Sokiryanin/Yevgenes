@@ -1,0 +1,155 @@
+.menu {
+  @media (min-width: toEm($tablet)) {
+    position: relative;
+    z-index: 5;
+  }
+
+  @media (max-width: toEm($tablet)) {
+    flex-grow: 1;
+  }
+
+  // .menu__icon
+  &__icon {
+    margin-left: auto;
+  }
+  // .menu__body
+  &__body {
+    @media (max-width: toEm($tablet)) {
+      position: absolute;
+      top: 100%; // отступ как на макете
+      left: 12px;
+      right: 12px;
+      width: auto; // уменьшаем ширину на 24px (по 12px с каждой стороны) и центрируем
+
+      background-color: $mainColor;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+
+      max-height: 0;
+      opacity: 0;
+
+      padding-top: 16px;
+      padding-bottom: 16px;
+      transition:
+        max-height 0.25s ease,
+        opacity 0.25s ease;
+
+      // Активное состояние
+      [data-fls-menu-open] & {
+        max-height: 900px; // достаточно, меню не переполнится
+        opacity: 1;
+      }
+    }
+  }
+  // .menu__list
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 32px;
+    align-items: center;
+
+    @media (max-width: toEm($tablet)) {
+      gap: 32px;
+      flex-direction: column;
+    }
+  }
+
+  // .menu__item
+  &__item {
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: -0.07em;
+    color: $lightTextColor;
+    transition: color 0.3s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: $hoverColor;
+      }
+    }
+
+    &:last-child {
+      padding: 8px 24px;
+      border-radius: 8px;
+      border: none;
+      background-color: $orangeColor;
+      line-height: 1.35;
+      font-weight: 500;
+      letter-spacing: -0.07em;
+      color: $mainColor;
+      transition: background-color 0.3s;
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: $hoverColor;
+          color: $mainColor;
+        }
+      }
+    }
+  }
+  // .menu__link
+  &__link {
+  }
+}
+
+//Burger Icon
+.icon-menu {
+  display: none;
+  @media (max-width: toEm($tablet)) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: $orangeColor;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 5;
+
+    @media (any-hover: none) {
+      cursor: default;
+    }
+    span,
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 18px; // немного меньше ширины кнопки для аккуратности
+      height: 2px;
+      background-color: #000; // черные полоски
+      right: 0;
+      left: 0;
+      margin: auto;
+      transition: all 0.3s ease;
+    }
+    &::before {
+      top: 12px;
+    }
+    &::after {
+      bottom: 12px;
+    }
+    span {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    [data-fls-menu-open] & {
+      span {
+        width: 0;
+      }
+
+      &::before {
+        top: 50%;
+        transform: translateY(-50%) rotate(-45deg);
+      }
+
+      &::after {
+        bottom: 50%;
+        transform: translateY(50%) rotate(45deg);
+      }
+    }
+  }
+}

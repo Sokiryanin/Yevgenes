@@ -1,0 +1,29 @@
+<template
+  src="@components/templates/main/main.html"
+  locals='{
+		"title":"YevGenes — Frontend Developer", 
+		"lang":"en",
+		"preloader": {
+			"enable":"false",
+			"once":"false"
+		},
+		"keywords":"frontend developer, web developer,  розробка сайтів, створення сайтів, веб-розробник, react, javascript, верстка сайтів, landing page, інтернет-магазин, портфоліо", 
+		"description":"YevGenes — Frontend Developer, cusctom web sites, web interface, landing page. Розробка сайтів під ключ: лендінги, інтернет-магазини, веб-додатки."
+	}'
+>
+  <block name="header">
+    <include
+      src="@components/layout/header/header.html"
+      locals='{"active":"Home"}'
+    ></include>
+  </block>
+  <block name="main">
+    <include src="@components/pages/home/home.html" locals="{}"></include>
+  </block>
+  <block name="footer">
+    <include src="@components/layout/footer/footer.html" locals="{}"></include>
+  </block>
+  <block name="popup">
+    <include src="@components/layout/popup/popup.html"></include>
+  </block>
+</template>

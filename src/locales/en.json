@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "{TAILORED TO YOUR NEEDS}",
+    "titleTop": "Development of",
+    "word1": "CUSTOM",
+    "word2": "WEBSITE",
+    "bottom": "from scratch"
+  },
+  "project": {
+    "projectLabel": "{Development}",
+    "projectTitleFirst": "Services Landing",
+    "projectTitleSecond": "Multipage site",
+    "projectTitleThird": "Water Tracker",
+    "projectVisit": "Visit site"
+  },
+  "services": {
+    "title": "What <span>we </span>can <span>do?</span>",
+    "design": {
+      "label": "{Thoughtful}",
+      "title": "Web design",
+      "text": "Designing clear, simple, and intuitive interfaces that provide a convenient user experience."
+    },
+    "development": {
+      "label": "{Reliable}",
+      "title": "Development",
+      "text": "Custom web development solutions that meet your business needs and are based on best practices."
+    },
+    "advertising": {
+      "label": "{Effective}",
+      "title": "Advertising",
+      "text": "Proven Google Ads and SEO strategies that improve your online performance and deliver fast and long-lasting results."
+    }
+  },
+  "skills": {
+    "store": "Online-stores",
+    "app": "Web App",
+    "landing": "Landing Page",
+    "card": "Business Card",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "info": "Informational"
+  },
+  "cta": {
+    "title": "Ready <span>to discuss?</span>",
+    "text": "Let's talk about how we can create a website that not only looks great, but also drives real growth for your business.",
+    "formTitle": "Fill the form <span>to discuss the project</span>"
+  },
+  "form": {
+    "name": "Your name",
+    "phone": "Phone",
+    "submit": "Submit",
+    "error": "You must fill in the highlighted fields to submit"
+  },
+  "popup": {
+    "title": "Thank you,",
+    "text": "We will contact you shortly to discuss the details of the project."
+  },
+  "footer": {
+    "phone": "{Phone}",
+    "telegram": "{Telegram}",
+    "email": "{Email}"
+  }
+}

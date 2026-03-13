@@ -1,0 +1,8 @@
+.global-bg {
+  position: fixed;
+  inset: 0;
+  background: url("@img/network.svg") center/cover no-repeat;
+  opacity: 1;
+  z-index: -1;
+  pointer-events: none;
+}/*# sourceMappingURL=main.css.map */
