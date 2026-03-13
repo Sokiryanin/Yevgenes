@@ -76,6 +76,11 @@ export function initContactForm() {
       e.preventDefault();
       handleSubmit();
     });
+
+    submitBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      handleSubmit();
+    });
   }
 
   nameInput.addEventListener('input', () => clearError(nameInput));
