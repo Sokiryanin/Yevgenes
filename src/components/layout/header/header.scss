@@ -265,25 +265,25 @@
 
   // ===== Стан: English активний (за замовчуванням) =====
   &__option--en {
-    background-color: rgba(212, 216, 227, 0.75);
-    color: #202638;
+    background-color: rgba(32, 38, 56, 0.75);
+    color: rgba(212, 216, 227, 0.1);
   }
 
   &__option--uk {
-    background-color: rgba(32, 38, 56, 0.75);
-    color: rgba(212, 216, 227, 0.1);
+    background-color: rgba(212, 216, 227, 0.75);
+    color: #202638;
   }
 
   // ===== Стан: Ukrainian активний (клас --uk на кнопці) =====
   &.--uk {
     .lang-switch__option--en {
-      background-color: rgba(32, 38, 56, 0.75);
-      color: rgba(212, 216, 227, 0.1);
+      background-color: rgba(212, 216, 227, 0.75);
+      color: #202638;
     }
 
     .lang-switch__option--uk {
-      background-color: rgba(212, 216, 227, 0.75);
-      color: #202638;
+      background-color: rgba(32, 38, 56, 0.75);
+      color: rgba(212, 216, 227, 0.1);
     }
   }
 
