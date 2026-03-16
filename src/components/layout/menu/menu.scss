@@ -21,7 +21,10 @@
       right: 12px;
       width: auto; // уменьшаем ширину на 24px (по 12px с каждой стороны) и центрируем
 
-      background-color: $mainColor;
+      // background-color: $mainColor;
+      background-color: rgba(32, 38, 56, 0.75);
+      backdrop-filter: blur(30px);
+
       border-radius: 0 0 8px 8px;
       overflow: hidden;
 
@@ -49,9 +52,9 @@
     align-items: center;
 
     @media (max-width: toEm($tablet)) {
-      gap: 32px;
+      gap: 24px;
       flex-direction: column;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
   }
 

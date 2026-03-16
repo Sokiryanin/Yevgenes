@@ -127,7 +127,12 @@
       {
         "date": "15.03.2026",
         "start": 1773591128902,
-        "end": 1773591128902
+        "end": 1773591309381
+      },
+      {
+        "date": "16.03.2026",
+        "start": 1773674780364,
+        "end": 1773674780364
       }
     ],
     "files": [
@@ -155,7 +160,9 @@
       "style.scss",
       "index.html",
       "scroll.js",
-      "darklite.scss"
+      "darklite.scss",
+      "lines.svg",
+      "lines-dark.svg"
     ]
   }
 }

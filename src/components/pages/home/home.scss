@@ -13,7 +13,7 @@
     // display: grid;
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    align-items: center;
     width: 100%;
 
     opacity: 0;
@@ -114,11 +114,14 @@
       left: 50%;
       padding-top: 12px;
       transform: translateX(-50%);
-      width: 100%; // линия равна ширине текста!
-      height: 30px; // можно адаптировать
-      background: url('@img/lines.svg') center/contain no-repeat;
+      width: 100%;
+      height: 21px;
+      background: url('@img/lines.svg') center/100% 100% no-repeat;
       opacity: 0.9;
       pointer-events: none;
+      @media (max-width: toEm($mobile)) {
+        height: 12px;
+      }
     }
 
     /* темна лінія */
@@ -571,7 +574,7 @@
     scale: 0;
 
     .--watcher-view & {
-      transition-duration: 0.5s;
+      transition-duration: 0.2s;
       @for $i from 1 through 7 {
         &:nth-child(#{$i}) {
           $delay: 0.1 * $i;

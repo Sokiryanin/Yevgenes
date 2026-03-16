@@ -9,7 +9,6 @@
   .menu {
     &__body {
       @media (max-width: toEm($mobile)) {
-        background-color: rgba(32, 38, 56);
       }
     }
   }
@@ -28,7 +27,7 @@
     &__body {
       &::before {
         backdrop-filter: blur(40px);
-        background: rgba(212, 216, 227, 0.65);
+        background-color: rgba(212, 216, 227, 0.65);
       }
     }
 
@@ -43,14 +42,15 @@
   .menu {
     &__body {
       @media (max-width: toEm($tablet)) {
-        background-color: #59636f;
+        backdrop-filter: blur(40px);
+        background: rgba(212, 216, 227, 0.65);
       }
     }
 
     &__item {
       color: $mainColor;
       @media (max-width: toEm($tablet)) {
-        color: $lightTextColor;
+        color: $mainColor;
       }
 
       @media (any-hover: hover) {
