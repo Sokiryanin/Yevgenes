@@ -3,14 +3,18 @@
   <include
     src="@components/layout/head/head.html"
     locals='{
-		"title":"[[title]]", 
-		"preloader": {
-			"enable":"[[preloader.enable]]",
-			"once":"[[preloader.once]]"
-		},
-		"keywords":"[[keywords]]", 
-		"description":"[[description]]"
-	}'
+      "title":"[[title]]",
+      "preloader": {
+        "enable":"[[preloader.enable]]",
+        "once":"[[preloader.once]]"
+      },
+      "keywords":"[[keywords]]",
+      "description":"[[description]]",
+      "canonical":"[[canonical]]",
+      "url":"[[url]]",
+      "ogImage":"[[ogImage]]",
+      "ogLocale":"[[ogLocale]]"
+    }'
   >
   </include>
   <script type="module" src="@components/templates/main/main.js"></script>

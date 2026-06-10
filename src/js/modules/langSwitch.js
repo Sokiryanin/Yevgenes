@@ -5,25 +5,20 @@ export function initLangSwitch() {
   const btn = document.getElementById('lang-switch');
   if (!btn) return;
 
-  let currentLang = localStorage.getItem('lang') || 'en';
+  // Визначаємо поточну мову з URL
+  const isUk = window.location.pathname.startsWith('/ua/');
 
-  const update = () => {
-    btn.classList.toggle('--uk', currentLang === 'ua');
-    document.documentElement.lang = currentLang;
-  };
+  // Стан кнопки
+  btn.classList.toggle('--ua', isUk);
 
-  update();
-
+  // Клік — переходимо на іншу мову
   btn.addEventListener('click', () => {
-    currentLang = currentLang === 'en' ? 'ua' : 'en';
-    localStorage.setItem('lang', currentLang);
-    update();
-
-    // Відправляємо подію для i18n
-    document.dispatchEvent(
-      new CustomEvent('langSwitch', {
-        detail: { lang: currentLang }
-      })
-    );
+    if (isUk) {
+      // Зараз UA — переходимо на EN
+      window.location.href = '/';
+    } else {
+      // Зараз EN — переходимо на UA
+      window.location.href = '/ua/';
+    }
   });
 }

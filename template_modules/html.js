@@ -7,6 +7,7 @@ import { navPanel } from './navpanel.js'
 
 import { globSync } from 'glob'
 import fs from 'fs'
+import path from 'path'
 
 // Обробка HTML
 import posthtml from 'posthtml'
@@ -23,8 +24,22 @@ const isWp = process.argv.includes('--wp')
 
 export const htmlPlugins = [
 	// Пре-обробка Inclue, Extend, Expressions
-	prerenderHTML({}),
-	// Nunjucks 
+	prerenderHTML({ root: path.resolve('./src') }),
+	// Робимо відносні шляхи до ассетів абсолютними (потрібно для сторінок у підпапках, напр. /ua/)
+	{
+		name: 'absolute-asset-paths',
+		enforce: 'pre',
+		transformIndexHtml: {
+			order: 'pre',
+			handler(html) {
+				return html.replace(
+					/((?:src|href)=")(?!\/|https?:|data:|#|mailto:|tel:)([^"]+)"/g,
+					'$1/$2"'
+				)
+			}
+		}
+	},
+	// Nunjucks
 	nunjucks(),
 	// Навігаційна панель
 	...((!isWp && ((!isProduction && templateConfig.navpanel.dev) || (isProduction && templateConfig.navpanel.build))) ? [{
@@ -58,7 +73,7 @@ export const htmlPlugins = [
 		apply: 'build',
 		enforce: 'post',
 		closeBundle: async () => {
-			const htmlFiles = globSync(`dist/*.html`)
+			const htmlFiles = globSync(`dist/**/*.html`)
 			htmlFiles.forEach(async htmlFile => {
 				let content = fs.readFileSync(htmlFile, 'utf-8')
 				// Шлихи SVG-спрайту

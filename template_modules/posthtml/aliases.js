@@ -44,9 +44,9 @@ const replaceAliases = (data, { prependDot = false, normalizePath = true, sortAl
 				result = result.replace(regex, replacement)
 			}
 		})
-		// Нормалізуємо шлях, якщо потрібно
-		if (normalizePath && !result.startsWith('http')) {
-			result = result.replace(/\/+/g, '/')
+		// Нормалізуємо шлях, якщо потрібно (не чіпаємо :// щоб не ламати https://)
+		if (normalizePath) {
+			result = result.replace(/(?<!:)\/\/+/g, '/')
 		}
 		// Прибираємо SRC
 		const src = new RegExp('src/', 'g')

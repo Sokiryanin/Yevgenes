@@ -1,27 +1,34 @@
 <template
   src="@components/templates/main/main.html"
   locals='{
-		"title":"YevGenes — Frontend Developer", 
-		"lang":"en",
-		"preloader": {
-			"enable":"false",
-			"once":"false"
-		},
-		"keywords":"frontend developer, web developer,  розробка сайтів, створення сайтів, веб-розробник, react, javascript, верстка сайтів, landing page, інтернет-магазин, портфоліо", 
-		"description":"YevGenes — Frontend Developer, cusctom web sites, web interface, landing page. Розробка сайтів під ключ: лендінги, інтернет-магазини, веб-додатки."
-	}'
+    "title":"YevGenes — Frontend Developer | Custom Websites Development",
+    "lang":"en",
+    "preloader": {
+      "enable":"false",
+      "once":"false"
+    },
+    "keywords":"frontend developer, web developer, custom websites, landing page development, react developer, javascript developer, web development",
+    "description":"Custom websites built from scratch. Landing pages, online stores, web apps. Modern web development with React and JavaScript.",
+    "canonical":"https://yevgenes.dev/",
+    "url":"https://yevgenes.dev/",
+    "ogImage":"/og-image-en.jpg",
+    "ogLocale":"en_US"
+  }'
 >
   <block name="header">
     <include
       src="@components/layout/header/header.html"
-      locals='{"active":"Home"}'
+      locals='{"active":"Home","lang":"en"}'
     ></include>
   </block>
   <block name="main">
     <include src="@components/pages/home/home.html" locals="{}"></include>
   </block>
   <block name="footer">
-    <include src="@components/layout/footer/footer.html" locals="{}"></include>
+    <include
+      src="@components/layout/footer/footer.html"
+      locals='{"lang":"en"}'
+    ></include>
   </block>
   <block name="popup">
     <include src="@components/layout/popup/popup.html"></include>

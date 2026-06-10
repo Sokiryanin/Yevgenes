@@ -50,7 +50,8 @@ export default (options = {}) => {
 
 			// Обробка <include>
 			if (node.tag === 'include' && src) {
-				const filePath = path.resolve(root, src)
+				const normalizedSrc = src.startsWith('/') ? src.slice(1) : src
+				const filePath = path.resolve(root, normalizedSrc)
 
 				let source = fs.readFileSync(filePath, encoding)
 

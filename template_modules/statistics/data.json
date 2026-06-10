@@ -152,7 +152,22 @@
       {
         "date": "10.06.2026",
         "start": 1781089307401,
-        "end": 1781089307401
+        "end": 1781090790103
+      },
+      {
+        "date": "10.06.2026",
+        "start": 1781094035590,
+        "end": 1781101678575
+      },
+      {
+        "date": "10.06.2026",
+        "start": 1781101691693,
+        "end": 1781101922389
+      },
+      {
+        "date": "10.06.2026",
+        "start": 1781101926131,
+        "end": 1781108976639
       }
     ],
     "files": [
@@ -188,7 +203,13 @@
       "work-4-crop.jpg",
       "work-4-crop-1.jpg",
       "fesmeble.jpg",
-      "fesmeble 2.jpg"
+      "fesmeble 2.jpg",
+      "preview.jpg",
+      "home-ua.html",
+      "preview-1.jpg",
+      "header-ua.html",
+      "menu-ua.html",
+      "footer-ua.html"
     ]
   }
 }

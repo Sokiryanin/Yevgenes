@@ -5,8 +5,10 @@
       locals='{"once":"[[preloader.once]]"}'
     ></include>
   </if>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Шрифти -->
   <include src="@components/layout/head/fonts-preload.html"></include>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,14 +21,119 @@
     href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap"
   />
 
+  <!-- Стилі і фавікон -->
   <link rel="stylesheet" href="@styles/fonts/iconfont.css" />
   <link rel="stylesheet" href="@styles/style.scss" />
   <link rel="shortcut icon" href="@img/favicon.ico" />
-  <if condition="'[[keywords]]' !== ''">
+
+  <!-- <if condition="'[[keywords]]' !== ''">
     <meta name="keywords" content="[[keywords]]" />
   </if>
   <if condition="'[[description]]' !== ''">
     <meta name="description" content="[[description]]" />
   </if>
+  <title>[[title]]</title> -->
+
   <title>[[title]]</title>
+
+  <if condition="'[[description]]' !== ''">
+    <meta name="description" content="[[description]]" />
+  </if>
+
+  <if condition="'[[keywords]]' !== ''">
+    <meta name="keywords" content="[[keywords]]" />
+  </if>
+
+  <!-- Canonical -->
+  <if condition="'[[canonical]]' !== ''">
+    <link rel="canonical" href="[[canonical]]" />
+  </if>
+
+  <!-- Hreflang — для всіх сторінок однаковий, бо у нас 2 мови -->
+  <link rel="alternate" hreflang="en" href="https://yevgenes.dev/" />
+  <link rel="alternate" hreflang="uk" href="https://yevgenes.dev/ua/" />
+  <link rel="alternate" hreflang="x-default" href="https://yevgenes.dev/" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="YevGenes" />
+
+  <!-- Theme color -->
+  <meta name="theme-color" content="#000000" />
+
+  <!-- ============================================ -->
+  <!--               Open Graph                      -->
+  <!-- ============================================ -->
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="YevGenes" />
+
+  <if condition="'[[ogLocale]]' !== ''">
+    <meta property="og:locale" content="[[ogLocale]]" />
+  </if>
+
+  <if condition="'[[title]]' !== ''">
+    <meta property="og:title" content="[[title]]" />
+  </if>
+
+  <if condition="'[[description]]' !== ''">
+    <meta property="og:description" content="[[description]]" />
+  </if>
+  <if condition="'[[url]]' !== ''">
+    <meta property="og:url" content="[[url]]" />
+  </if>
+
+  <if condition="'[[ogImage]]' !== ''">
+    <meta property="og:image" content="https://yevgenes.dev[[ogImage]]" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="YevGenes — Frontend Developer" />
+  </if>
+
+  <!-- ============================================ -->
+  <!--               Twitter Card                    -->
+  <!-- ============================================ -->
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <if condition="'[[title]]' !== ''">
+    <meta name="twitter:title" content="[[title]]" />
+  </if>
+
+  <if condition="'[[description]]' !== ''">
+    <meta name="twitter:description" content="[[description]]" />
+  </if>
+
+  <if condition="'[[ogImage]]' !== ''">
+    <meta name="twitter:image" content="https://yevgenes.dev[[ogImage]]" />
+  </if>
+
+  <!-- ============================================ -->
+  <!--             Schema.org JSON-LD                -->
+  <!-- ============================================ -->
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "YevGenes",
+      "url": "https://yevgenes.dev/",
+      "jobTitle": "Frontend Developer",
+      "description": "Frontend developer specializing in custom websites, landing pages, and web applications.",
+      "knowsAbout": [
+        "Frontend Development",
+        "React",
+        "JavaScript",
+        "TypeScript",
+        "Web Design",
+        "Landing Pages",
+        "E-commerce Development",
+        "SEO"
+      ],
+      "address": {
+        "@type": "PostalAddress"
+      },
+      "sameAs": ["https://github.com/sokiryanin"]
+    }
+  </script>
 </head>

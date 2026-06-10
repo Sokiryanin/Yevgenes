@@ -140,6 +140,20 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
             })
           ]
         : []),
+      // Копіювання статичних файлів з public/ (robots.txt, sitemap.xml, og-images)
+      ...(isProduction
+        ? [
+            templateImports.viteStaticCopy({
+              targets: [
+                {
+                  src: path.join(__dirname, 'public') + '/*',
+                  dest: './'
+                }
+              ],
+              silent: true
+            })
+          ]
+        : []),
       // Копіювання locales (переклади)
       ...(isProduction
         ? [
@@ -287,7 +301,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       rollupOptions: {
         input: isWp
           ? ['src/components/wordpress/fls-theme/assets/app.js']
-          : globSync('./src/*.html', {
+          : globSync('./src/{*.html,ua/*.html}', {
               ignore: [`./src/${templateConfig.devcomponents.filename}`]
             }),
         plugins: [templateImports.rollupPlugins],
