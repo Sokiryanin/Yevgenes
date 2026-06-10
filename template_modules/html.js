@@ -25,31 +25,18 @@ const isWp = process.argv.includes('--wp')
 export const htmlPlugins = [
 	// Пре-обробка Inclue, Extend, Expressions
 	prerenderHTML({ root: path.resolve('./src') }),
-	// <script>/<link>: абсолютні шляхи потрібні завжди (dev + build) для підпапок
+	// Робимо всі відносні asset-шляхи абсолютними (dev + build)
+	// В dev — щоб браузер не резолвив відносно /ua/
+	// В build — щоб Vite коректно знаходив файли з src/ і генерував абсолютні URL (base: '/')
 	{
-		name: 'absolute-script-link-paths',
+		name: 'absolute-asset-paths',
 		enforce: 'pre',
 		transformIndexHtml: {
 			order: 'pre',
 			handler(html) {
 				return html.replace(
-					/(<(?:script|link)[^>]*(?:src|href)=")(?!\/|https?:|data:|#|mailto:|tel:)([^"]+)"/g,
+					/((?:src|href)=")(?!\/|https?:|data:|#|mailto:|tel:)([^"]+)"/g,
 					'$1/$2"'
-				)
-			}
-		}
-	},
-	// <img>/<use>: абсолютні тільки в dev — в build image-плагін сам обробляє ../
-	{
-		name: 'absolute-img-paths-dev',
-		enforce: 'pre',
-		apply: 'serve',
-		transformIndexHtml: {
-			order: 'pre',
-			handler(html) {
-				return html.replace(
-					/(<(?:img|source)[^>]*src="|(<use[^>]*href="))(?!\/|https?:|data:)([^"]+)"/g,
-					'$1/$3"'
 				)
 			}
 		}

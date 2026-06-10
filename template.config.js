@@ -32,7 +32,7 @@ export default {
     showonbuild: false
   },
   server: {
-    path: './',
+    path: '/',
     isassets: false,
     buildforlocal: false,
     copyfiles: true,
