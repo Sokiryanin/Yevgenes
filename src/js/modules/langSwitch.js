@@ -9,7 +9,7 @@ export function initLangSwitch() {
   const isUk = window.location.pathname.startsWith('/ua/');
 
   // Стан кнопки
-  btn.classList.toggle('--ua', isUk);
+  btn.classList.toggle('--uk', isUk);
 
   // Клік — переходимо на іншу мову
   btn.addEventListener('click', () => {

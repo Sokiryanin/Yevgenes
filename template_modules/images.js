@@ -70,7 +70,7 @@ export const imagePlugins = [
 				!fs.existsSync(`dist/assets`) ? fs.mkdirSync('dist/assets') : null
 				!fs.existsSync('dist/assets/img') ? fs.mkdirSync('dist/assets/img') : null
 				if (templateConfig.images.optimize.enable) {
-					const files = globSync([`${dir}/*.html`, `${dir}/${isAssets}js/*.js`, `${dir}/${isAssets}css/*.css`])
+					const files = globSync([`${dir}/**/*.html`, `${dir}/${isAssets}js/*.js`, `${dir}/${isAssets}css/*.css`])
 					for (const file of files) {
 						let content = fs.readFileSync(file, 'utf-8')
 						if (file.endsWith('.html') || file.endsWith('.js')) {
@@ -102,7 +102,9 @@ export const imagePlugins = [
 								sizesAttr = !ignoreSizes ? sizesAttr ? sizesAttr.split(',') : templateConfig.images.optimize.sizes : []
 								const dpi = templateConfig.images.optimize.dpi
 
-								imagePath = imagePath.startsWith('./') ? imagePath.replace('./', '/') : imagePath
+								if (!imagePath.startsWith('/') && !imagePath.startsWith('http') && !imagePath.startsWith('data:')) {
+									imagePath = '/' + imagePath.replace(/^(\.\.\/|\.\/)+/, '')
+								}
 								const fullImagePath = `src${imagePath}`;
 
 								if (fs.existsSync(fullImagePath)) {

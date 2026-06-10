@@ -25,16 +25,31 @@ const isWp = process.argv.includes('--wp')
 export const htmlPlugins = [
 	// Пре-обробка Inclue, Extend, Expressions
 	prerenderHTML({ root: path.resolve('./src') }),
-	// Робимо відносні шляхи до ассетів абсолютними (потрібно для сторінок у підпапках, напр. /ua/)
+	// <script>/<link>: абсолютні шляхи потрібні завжди (dev + build) для підпапок
 	{
-		name: 'absolute-asset-paths',
+		name: 'absolute-script-link-paths',
 		enforce: 'pre',
 		transformIndexHtml: {
 			order: 'pre',
 			handler(html) {
 				return html.replace(
-					/((?:src|href)=")(?!\/|https?:|data:|#|mailto:|tel:)([^"]+)"/g,
+					/(<(?:script|link)[^>]*(?:src|href)=")(?!\/|https?:|data:|#|mailto:|tel:)([^"]+)"/g,
 					'$1/$2"'
+				)
+			}
+		}
+	},
+	// <img>/<use>: абсолютні тільки в dev — в build image-плагін сам обробляє ../
+	{
+		name: 'absolute-img-paths-dev',
+		enforce: 'pre',
+		apply: 'serve',
+		transformIndexHtml: {
+			order: 'pre',
+			handler(html) {
+				return html.replace(
+					/(<(?:img|source)[^>]*src="|(<use[^>]*href="))(?!\/|https?:|data:)([^"]+)"/g,
+					'$1/$3"'
 				)
 			}
 		}
