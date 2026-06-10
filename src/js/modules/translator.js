@@ -198,7 +198,7 @@ const translations = {
       projectLabel: '{Development}',
       projectTitleFirst: 'Services Landing',
       projectTitleSecond: 'Multipage site',
-      projectTitleThird: 'Water Tracker',
+      projectTitleThird: 'Furniture site',
       projectVisit: 'Visit site'
     },
     services: {
@@ -267,7 +267,7 @@ const translations = {
       projectLabel: '{Розробка}',
       projectTitleFirst: 'Сервіс Лендінг',
       projectTitleSecond: 'Лендінг дизайнера',
-      projectTitleThird: 'Водний Трекер',
+      projectTitleThird: 'Меблі під замовлення',
       projectVisit: 'Перейти'
     },
     services: {

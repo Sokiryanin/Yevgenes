@@ -138,6 +138,21 @@
         "date": "12.05.2026",
         "start": 1778601945946,
         "end": 1778601945946
+      },
+      {
+        "date": "04.06.2026",
+        "start": 1780582695176,
+        "end": 1780584016036
+      },
+      {
+        "date": "10.06.2026",
+        "start": 1781088488923,
+        "end": 1781089303681
+      },
+      {
+        "date": "10.06.2026",
+        "start": 1781089307401,
+        "end": 1781089307401
       }
     ],
     "files": [
@@ -167,7 +182,13 @@
       "scroll.js",
       "darklite.scss",
       "lines.svg",
-      "lines-dark.svg"
+      "lines-dark.svg",
+      "work-2.jpg",
+      ".DS_Store",
+      "work-4-crop.jpg",
+      "work-4-crop-1.jpg",
+      "fesmeble.jpg",
+      "fesmeble 2.jpg"
     ]
   }
 }
