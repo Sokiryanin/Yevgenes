@@ -26,6 +26,7 @@ export default async function handler(request) {
   }
 
   let telegramOk = true;
+  let emailOk = true;
 
   if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
     const text =
@@ -46,6 +47,27 @@ export default async function handler(request) {
       telegramOk = response.ok;
     } catch {
       telegramOk = false;
+    }
+  }
+
+  if (process.env.RESEND_API_KEY && process.env.CONTACT_EMAIL_TO) {
+    try {
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.RESEND_API_KEY}`
+        },
+        body: JSON.stringify({
+          from: process.env.RESEND_FROM || 'YevGenes Website <onboarding@resend.dev>',
+          to: process.env.CONTACT_EMAIL_TO,
+          subject: `New inquiry from ${name}`,
+          text: `Name: ${name}\nPhone: ${phone}\nProject: ${message || '-'}`
+        })
+      });
+      emailOk = response.ok;
+    } catch {
+      emailOk = false;
     }
   }
 
@@ -72,7 +94,11 @@ export default async function handler(request) {
     );
   }
 
-  if (!telegramOk) {
+  // Провалом вважаємо лише випадок, коли жоден з налаштованих каналів не
+  // спрацював — тобто власник сайту взагалі нічого не отримає. Якщо працює
+  // хоча б один (наприклад, Telegram тимчасово ліг, а email пройшов) —
+  // відвідувачу показуємо успіх.
+  if (!telegramOk && !emailOk) {
     return json({ error: 'Delivery failed' }, 502);
   }
 
