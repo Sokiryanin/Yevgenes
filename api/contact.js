@@ -1,3 +1,5 @@
+import { waitUntil } from '@vercel/functions';
+
 export const config = { runtime: 'edge' };
 
 export default async function handler(request) {
@@ -53,9 +55,11 @@ export default async function handler(request) {
     // Script (script.google.com -> script.googleusercontent.com), і запит
     // ніколи не доходить до doPost.
     //
-    // Відповідь навмисно ігнорується: цей редирект-проксі часто повертає
-    // помилкову відповідь навіть тоді, коли doPost вже відпрацював і рядок
-    // дописано в таблицю — тож її статус ненадійний.
+    // waitUntil, а не await: цей редирект-проксі Google повільний і часто
+    // повертає помилкову відповідь навіть тоді, коли doPost вже відпрацював
+    // і рядок дописано в таблицю. Раніше очікування цього запиту перед
+    // відповіддю клієнту додавало ~1с затримки перед попапом успіху, через
+    // що люди тисли Submit вдруге — звідси й дублі в таблиці.
     const params = new URLSearchParams({
       name,
       phone,
@@ -63,7 +67,9 @@ export default async function handler(request) {
       timestamp: new Date().toISOString()
     });
 
-    await fetch(process.env.GOOGLE_SCRIPT_URL, { method: 'POST', body: params }).catch(() => {});
+    waitUntil(
+      fetch(process.env.GOOGLE_SCRIPT_URL, { method: 'POST', body: params }).catch(() => {})
+    );
   }
 
   if (!telegramOk) {
