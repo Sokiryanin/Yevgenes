@@ -432,9 +432,26 @@
 
   &--fullscreen-popup {
     background-color: rgba(32, 38, 56, 0.65);
+    // На реальних мобільних (на відміну від емуляції в DevTools) без цього
+    // з'являвся горизонтальний скрол — довгі назви країн чи внутрішні
+    // елементи вилазили за межі екрана попри fixed-позиціювання попапу.
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
 
     .iti__country-list {
       border-radius: 12px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .iti__country-name {
+      white-space: normal;
+      word-break: break-word;
     }
   }
 
