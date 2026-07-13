@@ -496,6 +496,14 @@
         background-color: $hoverColor;
       }
     }
+
+    // Візуальний стан під час відправки — щоб було явно видно, що клік
+    // спрацював, і людина не тисла ще раз.
+    &:disabled {
+      opacity: 0.6;
+      cursor: progress;
+      pointer-events: none;
+    }
   }
 
   // Повідомлення про помилку
