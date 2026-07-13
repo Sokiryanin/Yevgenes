@@ -370,12 +370,6 @@
   &__selected-country {
     background-color: transparent;
     border-radius: 8px 0 0 8px;
-
-    @media (any-hover: hover) {
-      &:hover {
-        background-color: rgba(212, 216, 227, 0.15);
-      }
-    }
   }
 
   &__selected-country-primary {
@@ -413,6 +407,11 @@
   // темному фоні) — під нашу тему.
   --iti-border-color: rgba(212, 216, 227, 0.2);
   --iti-icon-color: rgba(212, 216, 227, 0.6);
+  // Бібліотека сама підсвічує прапорець/код через дивне правило
+  // (:has(+ .iti__country-selector:hover)), яке іноді підсвічує їх і при
+  // наведенні на сам інпут номера, неузгоджено з прямим наведенням на
+  // прапорець. Просимо прибрати хавер повністю — глушимо саму змінну.
+  --iti-hover-color: transparent;
 
   &__flag {
     // image-set() з CSS бібліотеки не рендериться в частині мобільних
