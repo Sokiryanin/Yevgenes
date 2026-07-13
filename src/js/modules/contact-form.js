@@ -4,6 +4,7 @@ export function initContactForm() {
 
   const nameInput = document.getElementById('name');
   const phoneInput = document.getElementById('phone');
+  const messageInput = document.getElementById('message');
   const errorMessage = document.getElementById('form-error');
   const popupName = document.getElementById('popup-name');
   const submitBtn = document.querySelector('button[form="contact-form"]');
@@ -48,6 +49,7 @@ export function initContactForm() {
       id: Date.now(),
       name: nameInput.value.trim(),
       phone: phoneInput.value.trim(),
+      message: messageInput ? messageInput.value.trim() : '',
       timestamp: new Date().toISOString()
     };
 
