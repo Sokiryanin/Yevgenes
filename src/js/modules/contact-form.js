@@ -6,11 +6,10 @@ export function initContactForm() {
   const phoneInput = document.getElementById('phone');
   const messageInput = document.getElementById('message');
   const consentInput = document.getElementById('consent');
+  const websiteInput = document.getElementById('website');
   const errorMessage = document.getElementById('form-error');
   const popupName = document.getElementById('popup-name');
   const submitBtn = document.querySelector('button[form="contact-form"]');
-
-  let submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
 
   const showError = (input) => {
     input.classList.add('--form-error');
@@ -28,7 +27,7 @@ export function initContactForm() {
   const validatePhone = () => phoneInput.value.replace(/\D/g, '').length >= 8;
   const validateConsent = () => !consentInput || consentInput.checked;
 
-  function handleSubmit() {
+  async function handleSubmit() {
     let isValid = true;
 
     if (!validateName()) {
@@ -55,26 +54,38 @@ export function initContactForm() {
     if (!isValid) return;
 
     const formData = {
-      id: Date.now(),
       name: nameInput.value.trim(),
       phone: phoneInput.value.trim(),
       message: messageInput ? messageInput.value.trim() : '',
-      timestamp: new Date().toISOString()
+      website: websiteInput ? websiteInput.value : ''
     };
 
-    submissions.push(formData);
-    localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+    if (submitBtn) submitBtn.disabled = true;
 
-    if (popupName) popupName.textContent = formData.name;
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
-    if (window.flsPopup) {
-      try {
-        window.flsPopup.open('success-popup');
-      } catch (e) {}
+      if (!response.ok) throw new Error('Request failed');
+
+      if (popupName) popupName.textContent = formData.name;
+
+      if (window.flsPopup) {
+        try {
+          window.flsPopup.open('success-popup');
+        } catch (e) {}
+      }
+
+      form.reset();
+      errorMessage?.classList.remove('--visible');
+    } catch (err) {
+      errorMessage?.classList.add('--visible');
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
     }
-
-    form.reset();
-    errorMessage?.classList.remove('--visible');
   }
 
   form.addEventListener('submit', (e) => {
