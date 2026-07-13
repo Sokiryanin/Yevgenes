@@ -19,19 +19,14 @@ async function detectCountryByIp() {
 }
 
 export function initContactForm() {
-  // Тимчасова діагностика — видалити після знаходження бага.
-  window.__initContactFormCount = (window.__initContactFormCount || 0) + 1;
-  console.log('[contact-form] initContactForm() call #' + window.__initContactFormCount);
-
   const form = document.getElementById('contact-form');
-  if (!form) return;
-
-  console.log(
-    '[contact-form] #contact-form elements in DOM:',
-    document.querySelectorAll('#contact-form').length,
-    'submit buttons:',
-    document.querySelectorAll('button[form="contact-form"]').length
-  );
+  // Ідемпотентність: у деяких браузерах/розширеннях (напр. спекулятивний
+  // prerendering) window "load" може спрацювати більше одного разу за
+  // один перегляд сторінки. Без цієї перевірки кожен зайвий виклик вішає
+  // ще один незалежний набір обробників на ту саму форму — і сабміт
+  // одного кліку реально йде на бекенд двічі.
+  if (!form || form.dataset.contactFormInit) return;
+  form.dataset.contactFormInit = 'true';
 
   const nameInput = document.getElementById('name');
   const phoneInput = document.getElementById('phone');
@@ -102,9 +97,6 @@ export function initContactForm() {
   let isSubmitting = false;
 
   async function handleSubmit() {
-    // Тимчасова діагностика — видалити після знаходження бага.
-    console.trace('[contact-form] handleSubmit called, isSubmitting=' + isSubmitting);
-
     if (isSubmitting) return;
 
     let isValid = true;
