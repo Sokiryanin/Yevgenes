@@ -381,13 +381,10 @@
     color: $mainColor;
   }
 
-  &__arrow {
-    border-top-color: $mainColor;
-
-    &--up {
-      border-bottom-color: $mainColor;
-    }
-  }
+  // .iti__arrow малюється через border-right + border-bottom (обидва
+  // кольору --iti-icon-color, який ми вже задали вище) — колір міняти не
+  // треба, лишень трохи збільшуємо розмір через власну змінну бібліотеки.
+  --iti-arrow-size: 6px;
 }
 
 // Спливне вікно вибору країни (у т.ч. fullscreen-режим на мобільних) —
