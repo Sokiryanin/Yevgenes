@@ -404,11 +404,20 @@
   // Flag-спрайт з CDN (у пакеті йде "no-assets" CSS без локальних url())
   --iti-path-flags-1x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags.webp');
   --iti-path-flags-2x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags@2x.webp');
+  // .iti__country-selector (зовнішня "рамка" вікна) за замовчуванням біла —
+  // без цього по кутах нашого темного заокругленого списку прозирав білий
+  // фон цієї зовнішньої обгортки.
+  --iti-country-selector-bg: #{$mainColor};
 
   &__flag {
     // image-set() з CSS бібліотеки не рендериться в частині мобільних
     // браузерів (порожні квадратики) — plain url() працює всюди.
     background-image: var(--iti-path-flags-1x);
+  }
+
+  &__country-selector {
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   &__country-list {
@@ -440,6 +449,10 @@
     width: 100vw;
     max-width: 100%;
     overflow-x: hidden;
+
+    .iti__country-selector {
+      border-radius: 12px;
+    }
 
     .iti__country-list {
       border-radius: 12px;
