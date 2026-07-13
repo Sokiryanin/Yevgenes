@@ -91,6 +91,9 @@ export function initContactForm() {
   let isSubmitting = false;
 
   async function handleSubmit() {
+    // Тимчасова діагностика — видалити після знаходження бага.
+    console.trace('[contact-form] handleSubmit called, isSubmitting=' + isSubmitting);
+
     if (isSubmitting) return;
 
     let isValid = true;
