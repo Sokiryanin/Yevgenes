@@ -19,8 +19,19 @@ async function detectCountryByIp() {
 }
 
 export function initContactForm() {
+  // Тимчасова діагностика — видалити після знаходження бага.
+  window.__initContactFormCount = (window.__initContactFormCount || 0) + 1;
+  console.log('[contact-form] initContactForm() call #' + window.__initContactFormCount);
+
   const form = document.getElementById('contact-form');
   if (!form) return;
+
+  console.log(
+    '[contact-form] #contact-form elements in DOM:',
+    document.querySelectorAll('#contact-form').length,
+    'submit buttons:',
+    document.querySelectorAll('button[form="contact-form"]').length
+  );
 
   const nameInput = document.getElementById('name');
   const phoneInput = document.getElementById('phone');
