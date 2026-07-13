@@ -76,18 +76,22 @@ export function initContactForm() {
   // відкрито" іноді плутається саме в момент кліку по країні в списку, тож
   // publichний closeCountrySelector() мовчки нічого не робить. Хак напряму
   // через classList ламав повторне відкриття (бібліотека не встигала
-  // абортити свої внутрішні слухачі), тож спершу симулюємо справжній клік
-  // поза межами списку — той шлях, що коректно прибирає за собою (працює
-  // на мобільних). Якщо за 100мс список все ще видно (десктопний dropdown
-  // не завжди реагує на симуляцію) — ховаємо примусово як запасний варіант,
-  // навіть якщо це залишить по собі зайві слухачі.
+  // абортити свої внутрішні слухачі й вішала нові при кожному відкритті).
+  // Симулюємо Escape саме на кнопці-прапорці (.iti__selected-country) —
+  // це той самий обробник, до якого прив'язаний реальний Escape, і який
+  // вже підтверджено коректно закриває й прибирає за собою.
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.iti__country')) return;
 
     setTimeout(() => {
-      document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      const trigger = document.querySelector('.iti__selected-country');
+      trigger?.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })
+      );
     }, 0);
 
+    // Запасний варіант, якщо симуляція Escape з якоїсь причини не
+    // спрацює — ховаємо примусово, навіть якщо це залишить зайві слухачі.
     setTimeout(() => {
       const stillOpen = document.querySelector(
         '.iti__country-selector:not(.iti__hide)'
