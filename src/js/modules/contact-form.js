@@ -3,6 +3,7 @@ import intlTelInput from 'intl-tel-input/intlTelInputWithUtils';
 // footer.scss (--iti-path-flags-1x/2x), бо кастомний assetFileNames у
 // vite.config.js не вміє обробляти зображення з node_modules.
 import 'intl-tel-input/dist/css/intlTelInput-no-assets.css';
+import { bodyLock, bodyUnlock } from '@js/common/functions.js';
 
 // Визначення країни відвідувача за IP через Cloudflare (безкоштовно, без
 // ключів і лімітів). Якщо не вдалось — фолбек на Україну.
@@ -36,6 +37,40 @@ export function initContactForm() {
     countryOrder: ['ua', 'gb', 'de', 'pl', 'fr', 'it', 'es'],
     separateDialCode: true
   });
+
+  // Перший "countrychange" — це асинхронний авто-визначений код за IP, а не
+  // вибір користувача, тому число не чистимо. Будь-яка наступна зміна
+  // прапорця — це вже свідомий вибір іншої країни, і стара введена
+  // послідовність цифр (в іншому форматі) не має сенсу — тому очищуємо поле.
+  let hasSetInitialCountry = false;
+  phoneInput.addEventListener('countrychange', () => {
+    if (!hasSetInitialCountry) {
+      hasSetInitialCountry = true;
+      return;
+    }
+    // setTimeout — щоб не чіпати номер синхронно всередині того ж виклику
+    // бібліотеки, який обирає країну (інакше це заважає її власній логіці).
+    setTimeout(() => phoneIti.setNumber(''), 0);
+  });
+
+  // Обхідний шлях для бага бібліотеки: внутрішня перевірка "чи список
+  // відкрито" іноді плутається саме в момент кліку по країні в списку,
+  // через що publichний closeCountrySelector() теж мовчки нічого не робить.
+  // Тому ховаємо список напряму через DOM, не покладаючись на її стан.
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.iti__country')) return;
+    setTimeout(() => {
+      document
+        .querySelectorAll('.iti__country-selector, .iti--fullscreen-popup')
+        .forEach((el) => el.classList.add('iti__hide'));
+      bodyUnlock(0);
+    }, 0);
+  });
+
+  // Блокуємо скрол сторінки, поки відкрита модалка вибору країни (особливо
+  // важливо на мобільних, де вона fullscreen).
+  phoneInput.addEventListener('open:countryselector', () => bodyLock(0));
+  phoneInput.addEventListener('close:countryselector', () => bodyUnlock(0));
 
   const showError = (input) => {
     input.classList.add('--form-error');

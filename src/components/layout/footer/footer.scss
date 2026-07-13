@@ -367,10 +367,6 @@
 .form-footer .iti {
   width: 100%;
 
-  // Flag-спрайт з CDN (у пакеті йде "no-assets" CSS без локальних url())
-  --iti-path-flags-1x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags.webp');
-  --iti-path-flags-2x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags@2x.webp');
-
   &__selected-country {
     background-color: transparent;
     border-radius: 8px 0 0 8px;
@@ -398,6 +394,22 @@
       border-bottom-color: $mainColor;
     }
   }
+}
+
+// Спливне вікно вибору країни (у т.ч. fullscreen-режим на мобільних) —
+// intl-tel-input рендерить його окремим елементом одразу в <body>, тож ці
+// стилі не можна скопувати всередину .form-footer.
+
+.iti {
+  // Flag-спрайт з CDN (у пакеті йде "no-assets" CSS без локальних url())
+  --iti-path-flags-1x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags.webp');
+  --iti-path-flags-2x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags@2x.webp');
+
+  &__flag {
+    // image-set() з CSS бібліотеки не рендериться в частині мобільних
+    // браузерів (порожні квадратики) — plain url() працює всюди.
+    background-image: var(--iti-path-flags-1x);
+  }
 
   &__country-list {
     background-color: $mainColor;
@@ -416,6 +428,14 @@
 
   &__country-name {
     color: $lightTextColor;
+  }
+
+  &--fullscreen-popup {
+    background-color: rgba(32, 38, 56, 0.65);
+
+    .iti__country-list {
+      border-radius: 12px;
+    }
   }
 
   &__search-input {
