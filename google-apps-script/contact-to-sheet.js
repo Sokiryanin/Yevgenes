@@ -6,13 +6,14 @@
 // 3. Видаліть код-заглушку, вставте вміст цього файлу, збережіть (Ctrl+S).
 // 4. Deploy -> New deployment -> шестерня "Select type" -> Web app.
 //    - Execute as: Me
-//    - Who has access: Anyone (обов'язково "Anyone", інакше Cloudflare
+//    - Who has access: Anyone (обов'язково "Anyone", інакше сервер
 //      не зможе постити без вашого Google-акаунту)
 // 5. Deploy -> дозвольте доступ (попередження "Google hasn't verified this
 //    app" — це нормально для власного скрипта: Advanced -> Go to (назва
 //    проєкту) -> Allow).
 // 6. Скопіюйте "Web app URL" (закінчується на /exec) — це значення для
-//    GOOGLE_SCRIPT_URL у Cloudflare Pages.
+//    GOOGLE_SCRIPT_URL у змінних середовища Vercel (Project -> Settings ->
+//    Environment Variables).
 //
 // Важливо: якщо потім зміните код тут, для оновлення живого URL треба
 // Manage deployments -> Edit (олівець) -> New version -> Deploy.

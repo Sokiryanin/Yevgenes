@@ -1,5 +1,9 @@
-export async function onRequestPost(context) {
-  const { request, env, waitUntil } = context;
+export const config = { runtime: 'edge' };
+
+export default async function handler(request) {
+  if (request.method !== 'POST') {
+    return json({ error: 'Method not allowed' }, 405);
+  }
 
   let data;
   try {
@@ -19,34 +23,39 @@ export async function onRequestPost(context) {
     return json({ error: 'Invalid input' }, 400);
   }
 
-  const requiredDeliveries = [];
+  let telegramOk = true;
 
-  if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+  if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
     const text =
       `New inquiry from yevgenes.dev\n\n` +
       `Name: ${name}\n` +
       `Phone: ${phone}\n` +
       `Project: ${message || '-'}`;
 
-    requiredDeliveries.push(
-      fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text })
-      })
-    );
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: process.env.TELEGRAM_CHAT_ID, text })
+        }
+      );
+      telegramOk = response.ok;
+    } catch {
+      telegramOk = false;
+    }
   }
 
-  if (env.GOOGLE_SCRIPT_URL) {
+  if (process.env.GOOGLE_SCRIPT_URL) {
     // application/x-www-form-urlencoded, не JSON — POST з
     // Content-Type: application/json ламає внутрішній редирект Google Apps
     // Script (script.google.com -> script.googleusercontent.com), і запит
     // ніколи не доходить до doPost.
     //
-    // Відповідь від Apps Script навмисно ігнорується: цей редирект-проксі
-    // часто повертає помилкову відповідь навіть тоді, коли doPost вже
-    // відпрацював і рядок дописано в таблицю — тож статус цієї відповіді
-    // ненадійний і не повинен впливати на результат для відвідувача сайту.
+    // Відповідь навмисно ігнорується: цей редирект-проксі часто повертає
+    // помилкову відповідь навіть тоді, коли doPost вже відпрацював і рядок
+    // дописано в таблицю — тож її статус ненадійний.
     const params = new URLSearchParams({
       name,
       phone,
@@ -54,15 +63,10 @@ export async function onRequestPost(context) {
       timestamp: new Date().toISOString()
     });
 
-    waitUntil(fetch(env.GOOGLE_SCRIPT_URL, { method: 'POST', body: params }).catch(() => {}));
+    await fetch(process.env.GOOGLE_SCRIPT_URL, { method: 'POST', body: params }).catch(() => {});
   }
 
-  const results = await Promise.allSettled(requiredDeliveries);
-  const failed = results.some(
-    (result) => result.status === 'rejected' || !result.value.ok
-  );
-
-  if (failed) {
+  if (!telegramOk) {
     return json({ error: 'Delivery failed' }, 502);
   }
 
