@@ -105,6 +105,27 @@
   &__block-form {
   }
 
+  // .footer__legal
+
+  &__legal {
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  // .footer__legal-link
+
+  &__legal-link {
+    font-size: 14px;
+    color: rgba(32, 38, 56, 0.5);
+    text-decoration: underline;
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: $mainColor;
+      }
+    }
+  }
+
   // .footer__block-contacts
 
   &__block-contacts {
@@ -236,6 +257,94 @@
     resize: vertical;
     height: 64px;
     max-height: 64px;
+  }
+
+  // .form-footer__consent
+
+  &__consent {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  // .form-footer__consent-input
+
+  &__consent-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &:focus-visible + .form-footer__consent-text::before {
+      outline: 2px solid $hoverColor;
+      outline-offset: 2px;
+    }
+
+    &:checked + .form-footer__consent-text::before {
+      background-color: $hoverColor;
+      border-color: $hoverColor;
+    }
+
+    &:checked + .form-footer__consent-text::after {
+      transform: scale(1);
+    }
+
+    &.--form-error + .form-footer__consent-text::before {
+      border-color: #e53563;
+    }
+  }
+
+  // .form-footer__consent-text
+
+  &__consent-text {
+    position: relative;
+    padding-left: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: rgba(212, 216, 227, 0.7);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid rgba(212, 216, 227, 0.4);
+      background-color: rgba(212, 216, 227, 0.1);
+      transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background-color: $mainColor;
+      transform: scale(0);
+      transition: transform 0.2s ease;
+    }
+
+    a {
+      color: $orangeColor;
+      text-decoration: underline;
+
+      @media (any-hover: hover) {
+        &:hover {
+          color: $hoverColor;
+        }
+      }
+    }
   }
 }
 

@@ -1,0 +1,36 @@
+<template
+  src="@components/templates/main/main.html"
+  locals='{
+    "title":"Privacy Policy | YevGenes",
+    "lang":"en",
+    "preloader": {
+      "enable":"false",
+      "once":"false"
+    },
+    "keywords":"privacy policy, GDPR, cookies",
+    "description":"How YevGenes collects, uses and protects your personal data, and how we use cookies on this site.",
+    "canonical":"https://yevgenes.dev/privacy.html",
+    "url":"https://yevgenes.dev/privacy.html",
+    "ogImage":"/og-image-en.jpg",
+    "ogLocale":"en_US"
+  }'
+>
+  <block name="header">
+    <include
+      src="@components/layout/header/header.html"
+      locals='{"active":"","lang":"en"}'
+    ></include>
+  </block>
+  <block name="main">
+    <include src="@components/pages/privacy/privacy.html" locals="{}"></include>
+  </block>
+  <block name="footer">
+    <include
+      src="@components/layout/footer/footer.html"
+      locals='{"lang":"en"}'
+    ></include>
+  </block>
+  <block name="popup">
+    <include src="@components/layout/popup/popup.html"></include>
+  </block>
+</template>

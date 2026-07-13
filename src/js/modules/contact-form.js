@@ -5,6 +5,7 @@ export function initContactForm() {
   const nameInput = document.getElementById('name');
   const phoneInput = document.getElementById('phone');
   const messageInput = document.getElementById('message');
+  const consentInput = document.getElementById('consent');
   const errorMessage = document.getElementById('form-error');
   const popupName = document.getElementById('popup-name');
   const submitBtn = document.querySelector('button[form="contact-form"]');
@@ -25,6 +26,7 @@ export function initContactForm() {
 
   const validateName = () => nameInput.value.trim().length >= 2;
   const validatePhone = () => phoneInput.value.replace(/\D/g, '').length >= 8;
+  const validateConsent = () => !consentInput || consentInput.checked;
 
   function handleSubmit() {
     let isValid = true;
@@ -41,6 +43,13 @@ export function initContactForm() {
       isValid = false;
     } else {
       clearError(phoneInput);
+    }
+
+    if (!validateConsent()) {
+      showError(consentInput);
+      isValid = false;
+    } else if (consentInput) {
+      clearError(consentInput);
     }
 
     if (!isValid) return;
@@ -87,4 +96,5 @@ export function initContactForm() {
 
   nameInput.addEventListener('input', () => clearError(nameInput));
   phoneInput.addEventListener('input', () => clearError(phoneInput));
+  consentInput?.addEventListener('change', () => clearError(consentInput));
 }

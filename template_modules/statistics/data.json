@@ -182,7 +182,13 @@
       {
         "date": "13.07.2026",
         "start": 1783926489661,
-        "end": 1783926489661
+        "end": 1783934790230,
+        "type": "build"
+      },
+      {
+        "date": "13.07.2026",
+        "start": 1783934964409,
+        "end": 1783936235456
       }
     ],
     "files": [
@@ -224,7 +230,9 @@
       "preview-1.jpg",
       "header-ua.html",
       "menu-ua.html",
-      "footer-ua.html"
+      "footer-ua.html",
+      "cookieconsent.scss",
+      "inner.html"
     ]
   }
 }

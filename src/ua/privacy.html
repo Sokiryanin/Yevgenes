@@ -1,0 +1,39 @@
+<template
+  src="@components/templates/main/main.html"
+  locals='{
+    "title":"Політика конфіденційності | YevGenes",
+    "lang":"uk",
+    "preloader": {
+      "enable":"false",
+      "once":"false"
+    },
+    "keywords":"політика конфіденційності, GDPR, cookie",
+    "description":"Як YevGenes збирає, використовує та захищає ваші персональні дані, а також як ми використовуємо cookie на цьому сайті.",
+    "canonical":"https://yevgenes.dev/ua/privacy.html",
+    "url":"https://yevgenes.dev/ua/privacy.html",
+    "ogImage":"/og-image-ua.jpg",
+    "ogLocale":"uk_UA"
+  }'
+>
+  <block name="header">
+    <include
+      src="@components/layout/header/header-ua.html"
+      locals='{"active":"","lang":"uk"}'
+    ></include>
+  </block>
+  <block name="main">
+    <include
+      src="@components/pages/privacy/privacy-ua.html"
+      locals="{}"
+    ></include>
+  </block>
+  <block name="footer">
+    <include
+      src="@components/layout/footer/footer-ua.html"
+      locals='{"lang":"uk"}'
+    ></include>
+  </block>
+  <block name="popup">
+    <include src="@components/layout/popup/popup.html"></include>
+  </block>
+</template>
