@@ -74,19 +74,30 @@ export function initContactForm() {
 
   // Обхідний шлях для бага бібліотеки: внутрішня перевірка "чи список
   // відкрито" іноді плутається саме в момент кліку по країні в списку, тож
-  // publichний closeCountrySelector() мовчки нічого не робить. Раніше тут
-  // хак ховав список напряму через classList — але бібліотека при кожному
-  // відкритті вішає на document новий набір слухачів (click-off, Escape,
-  // стрілки) і знімає їх лише у своєму internal-методі закриття; обхід
-  // classList його не викликав, і слухачі "текли" з кожною зміною країни,
-  // ламаючи повторне відкриття. Натомість симулюємо справжній клік поза
-  // межами списку — саме той шлях закриття, який вже стабільно працює
-  // (overlay/Escape), і який коректно прибирає за собою.
+  // publichний closeCountrySelector() мовчки нічого не робить. Хак напряму
+  // через classList ламав повторне відкриття (бібліотека не встигала
+  // абортити свої внутрішні слухачі), тож спершу симулюємо справжній клік
+  // поза межами списку — той шлях, що коректно прибирає за собою (працює
+  // на мобільних). Якщо за 100мс список все ще видно (десктопний dropdown
+  // не завжди реагує на симуляцію) — ховаємо примусово як запасний варіант,
+  // навіть якщо це залишить по собі зайві слухачі.
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.iti__country')) return;
+
     setTimeout(() => {
       document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     }, 0);
+
+    setTimeout(() => {
+      const stillOpen = document.querySelector(
+        '.iti__country-selector:not(.iti__hide)'
+      );
+      if (!stillOpen) return;
+      document
+        .querySelectorAll('.iti__country-selector, .iti--fullscreen-popup')
+        .forEach((el) => el.classList.add('iti__hide'));
+      closeCountrySelectorCleanup();
+    }, 100);
   });
 
   // Блокуємо скрол сторінки, поки відкрита модалка вибору країни (особливо
