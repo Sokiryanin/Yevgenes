@@ -32,12 +32,20 @@ function doPost(e) {
 
   sheet.appendRow([
     e.parameter.timestamp || new Date().toISOString(),
-    e.parameter.name || '',
-    e.parameter.phone || '',
-    e.parameter.message || ''
+    toSafeCell(e.parameter.name || ''),
+    toSafeCell(e.parameter.phone || ''),
+    toSafeCell(e.parameter.message || '')
   ]);
 
   return ContentService.createTextOutput(
     JSON.stringify({ ok: true })
   ).setMimeType(ContentService.MimeType.JSON);
+}
+
+// Google Sheets намагається трактувати значення, що починаються з
+// + - = @ (наприклад, міжнародний номер телефону "+1 415-555-2671") як
+// формулу, і показує помилку замість тексту. Апостроф на початку примусово
+// робить значення текстом і сам не відображається в клітинці.
+function toSafeCell(value) {
+  return /^[+\-=@]/.test(value) ? "'" + value : value;
 }

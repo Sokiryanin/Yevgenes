@@ -362,6 +362,75 @@
   }
 }
 
+// Оформлення intl-tel-input (вибір країни для поля Phone) під темну форму
+
+.form-footer .iti {
+  width: 100%;
+
+  // Flag-спрайт з CDN (у пакеті йде "no-assets" CSS без локальних url())
+  --iti-path-flags-1x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags.webp');
+  --iti-path-flags-2x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags@2x.webp');
+
+  &__selected-country {
+    background-color: transparent;
+    border-radius: 8px 0 0 8px;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: rgba(212, 216, 227, 0.15);
+      }
+    }
+  }
+
+  &__selected-country-primary {
+    padding-left: 15px;
+    gap: 6px;
+  }
+
+  &__selected-dial-code {
+    color: $mainColor;
+  }
+
+  &__arrow {
+    border-top-color: $mainColor;
+
+    &--up {
+      border-bottom-color: $mainColor;
+    }
+  }
+
+  &__country-list {
+    background-color: $mainColor;
+    border: 1px solid rgba(212, 216, 227, 0.2);
+    border-radius: 8px;
+    color: $lightTextColor;
+  }
+
+  &__country {
+    color: $lightTextColor;
+
+    &.iti__highlight {
+      background-color: rgba(212, 216, 227, 0.15);
+    }
+  }
+
+  &__country-name {
+    color: $lightTextColor;
+  }
+
+  &__search-input {
+    background-color: rgba(212, 216, 227, 0.1);
+    border: 1px solid rgba(212, 216, 227, 0.2);
+    border-radius: 6px;
+    color: $lightTextColor;
+    padding: 8px 10px;
+
+    &::placeholder {
+      color: rgba(212, 216, 227, 0.5);
+    }
+  }
+}
+
 .submit-block {
   display: flex;
   // justify-content: space-between;
