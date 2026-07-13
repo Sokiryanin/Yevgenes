@@ -481,6 +481,13 @@
     padding: 8px;
   }
 
+  &__search-icon {
+    // У бібліотеки немає вертикального позиціювання (лише static position),
+    // тож після наших відступів іконка збилась — центруємо явно.
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   &__search-input {
     background-color: rgba(212, 216, 227, 0.1);
     border: 1px solid rgba(212, 216, 227, 0.2);

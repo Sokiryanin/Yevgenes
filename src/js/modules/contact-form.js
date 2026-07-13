@@ -59,6 +59,19 @@ export function initContactForm() {
     setTimeout(() => phoneIti.setNumber(''), 0);
   });
 
+  // overflow:hidden на body не завжди блокує тач-скрол на iOS Safari —
+  // додатково глушимо touchmove фону, поки відкрита модалка вибору країни
+  // (сам список країн лишається скрольованим — перевірка нижче).
+  const preventBackgroundTouch = (e) => {
+    if (e.target.closest('.iti__country-list')) return;
+    e.preventDefault();
+  };
+
+  const closeCountrySelectorCleanup = () => {
+    bodyUnlock(0);
+    document.removeEventListener('touchmove', preventBackgroundTouch);
+  };
+
   // Обхідний шлях для бага бібліотеки: внутрішня перевірка "чи список
   // відкрито" іноді плутається саме в момент кліку по країні в списку,
   // через що publichний closeCountrySelector() теж мовчки нічого не робить.
@@ -69,14 +82,17 @@ export function initContactForm() {
       document
         .querySelectorAll('.iti__country-selector, .iti--fullscreen-popup')
         .forEach((el) => el.classList.add('iti__hide'));
-      bodyUnlock(0);
+      closeCountrySelectorCleanup();
     }, 0);
   });
 
   // Блокуємо скрол сторінки, поки відкрита модалка вибору країни (особливо
   // важливо на мобільних, де вона fullscreen).
-  phoneInput.addEventListener('open:countryselector', () => bodyLock(0));
-  phoneInput.addEventListener('close:countryselector', () => bodyUnlock(0));
+  phoneInput.addEventListener('open:countryselector', () => {
+    bodyLock(0);
+    document.addEventListener('touchmove', preventBackgroundTouch, { passive: false });
+  });
+  phoneInput.addEventListener('close:countryselector', closeCountrySelectorCleanup);
 
   const showError = (input) => {
     input.classList.add('--form-error');
