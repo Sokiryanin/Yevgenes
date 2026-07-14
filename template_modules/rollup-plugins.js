@@ -10,11 +10,19 @@ import { globSync } from 'glob'
 
 const criticalPages = []
 
-globSync('dist/{*.html,ua/*.html}').forEach((file) => {
+// Список сторінок беремо з src/, а не з dist/ — dist/ ще порожній у момент
+// завантаження конфігу (до старту самої збірки). На CI/Vercel, де dist/
+// завжди чистий перед білдом, глоб по dist/ раніше знаходив 0 файлів і
+// critical CSS мовчки не генерувався взагалі (працювало лише локально,
+// бо dist/ лишався заповненим від попередніх ручних збірок). Значення
+// uri/template лише рядки на цьому етапі — самі файли critical реально
+// читає пізніше, коли dist/ вже заповнений цим-таки білдом.
+globSync('src/{*.html,ua/*.html}').forEach((file) => {
 	file = normalizePath(file)
+	const relative = file.replace(/^src\//, '')
 	criticalPages.push({
-		uri: file,
-		template: file.replace('dist/', '').replace('.html', '')
+		uri: `dist/${relative}`,
+		template: relative.replace('.html', '')
 	})
 })
 
