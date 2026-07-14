@@ -2,9 +2,35 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css';
 import './cookieconsent.scss';
 import * as CookieConsent from 'vanilla-cookieconsent';
 
-// Extension point: once analytics/marketing scripts are added, load them here
-// based on acceptedCategories (e.g. only init GA when 'analytics' is included).
-function manageServices(acceptedCategories) {}
+const GA_MEASUREMENT_ID = 'G-S1TPRS1STV';
+let analyticsLoaded = false;
+
+// Завантажує gtag.js і ініціалізує GA — лише один раз, і лише коли
+// користувач реально дав згоду на аналітику.
+function loadAnalytics() {
+  if (analyticsLoaded) return;
+  analyticsLoaded = true;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag('js', new Date());
+  window.gtag('config', GA_MEASUREMENT_ID);
+}
+
+function manageServices(acceptedCategories) {
+  const hasAnalytics = acceptedCategories.includes('analytics');
+  // Офіційний opt-out прапорець GA — зупиняє збір навіть якщо скрипт уже
+  // завантажений, на випадок якщо користувач відкликав згоду пізніше.
+  window[`ga-disable-${GA_MEASUREMENT_ID}`] = !hasAnalytics;
+  if (hasAnalytics) loadAnalytics();
+}
 
 function cookieConsentInit() {
   const isUk = window.location.pathname.startsWith('/ua/');
