@@ -10,7 +10,7 @@ import { globSync } from 'glob'
 
 const criticalPages = []
 
-globSync('dist/*.html').forEach((file) => {
+globSync('dist/{*.html,ua/*.html}').forEach((file) => {
 	file = normalizePath(file)
 	criticalPages.push({
 		uri: file,
@@ -26,8 +26,10 @@ export const rollupPlugins = [
 			criticalBase: './dist/',
 			criticalPages: criticalPages,
 			criticalConfig: {
-				width: 1920,
-				height: 1080,
+				// Мобільний viewport, а не десктопний — PageSpeed оцінює саме
+				// мобільну версію, і "above the fold" на телефоні інакший.
+				width: 390,
+				height: 844,
 				inline: true,
 			},
 		})] : []),

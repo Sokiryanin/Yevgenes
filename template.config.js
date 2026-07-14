@@ -49,13 +49,13 @@ export default {
   styles: {
     tailwindcss: false,
     pxtorem: true,
-    critical: false,
+    critical: true,
     codesplit: true,
     devfiles: true
   },
   fonts: {
     iconsfont: false,
-    download: false
+    download: true
   },
   images: {
     svgsprite: false,

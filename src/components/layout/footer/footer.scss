@@ -392,9 +392,11 @@
 // стилі не можна скопувати всередину .form-footer.
 
 .iti {
-  // Flag-спрайт з CDN (у пакеті йде "no-assets" CSS без локальних url())
-  --iti-path-flags-1x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags.webp');
-  --iti-path-flags-2x: url('https://cdn.jsdelivr.net/npm/intl-tel-input@29.1.2/dist/img/flags@2x.webp');
+  // Flag-спрайт локально (пакет іде як "no-assets" CSS без url()) — власна
+  // стиснута копія (sharp, webp q60) замість оригіналу з jsDelivr: 38.6KB
+  // -> 21.5KB / 88.7KB -> 47.5KB, і на один зовнішній домен менше.
+  --iti-path-flags-1x: url('@img/intl-tel-flags/flags.webp');
+  --iti-path-flags-2x: url('@img/intl-tel-flags/flags@2x.webp');
   // .iti__country-selector (зовнішня "рамка" вікна) за замовчуванням біла —
   // без цього по кутах нашого темного заокругленого списку прозирав білий
   // фон цієї зовнішньої обгортки.

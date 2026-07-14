@@ -187,7 +187,7 @@
       {
         "date": "13.07.2026",
         "start": 1783953072124,
-        "end": 1783955958379,
+        "end": 1784024512018,
         "type": "build"
       }
     ],
@@ -232,7 +232,8 @@
       "menu-ua.html",
       "footer-ua.html",
       "cookieconsent.scss",
-      "inner.html"
+      "inner.html",
+      "cookieconsent.js"
     ]
   }
 }
